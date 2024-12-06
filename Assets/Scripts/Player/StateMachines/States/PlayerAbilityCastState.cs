@@ -10,9 +10,13 @@ public class PlayerAbilityCastState : PlayerBaseState
     [SerializeField, Required] [BoxGroup("Tasks"), LabelText("Fade Out Animation")]
     private PlayerAbilityFadeOutAnimationCommand _fadeOutAnimationCommand;
 
+    [SerializeField, Required] [BoxGroup("Tasks"), LabelText("Cast Ability")]
+    private CastAbilityCommand _castAbilityCommand;
+
     private void OnEnable()
     {
         _playAnimationCommand.Execute(this);
+        _castAbilityCommand.Execute(this);
     }
 
     private void OnDisable()

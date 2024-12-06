@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc19174be0384149aec5c0d76ad98d19, type: 3}
-  m_Name: EnergyBallInteractiveSphereConfig
+  m_Name: EnergyBallAbility
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 357599011720650044, guid: 7f1ed3016b6674b43b430157b2917bdb, type: 3}
+  InteractiveSpherePrefab: {fileID: 357599011720650044, guid: 7f1ed3016b6674b43b430157b2917bdb, type: 3}
+  EnergyBallPrefab: {fileID: 8551089607830486817, guid: 957f21cc0b380a949ad40325fb02536e, type: 3}
   Range: 10
   AppearDuration: 1
   CancelDuration: 0.25
   DisappearDuration: 0.7
+  FlyingForce: 1000

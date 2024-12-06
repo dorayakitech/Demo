@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InteractiveSphere : MonoBehaviour
 {
-    [SerializeField, Required, AssetsOnly] private SOEnergyBallInteractiveSphereConfig _config;
+    [SerializeField, Required, AssetsOnly] private SOEnergyBallAbilityConfig _config;
 
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed")]
     private SOEvent _disappearEvent;
@@ -44,7 +44,7 @@ public class InteractiveSphere : MonoBehaviour
 
     private void OnDisappearEvent()
     {
-        transform.DOScale(Vector3.zero, _config.AppearDuration).OnComplete(() => { Destroy(gameObject); });
+        transform.DOScale(Vector3.zero, _config.DisappearDuration).OnComplete(() => { Destroy(gameObject); });
     }
 
     private void OnCancelEvent()

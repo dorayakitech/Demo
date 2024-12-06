@@ -474,7 +474,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: -6.123724, y: 8.000001, z: -6.123724}
+  m_LocalPosition: {x: -9.173724, y: 8.000001, z: -6.123724}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2060,7 +2060,7 @@ Transform:
   m_GameObject: {fileID: 1163580722}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3.05, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2786,7 +2786,7 @@ Transform:
   m_GameObject: {fileID: 1870403637}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: -6.123724, y: 8.000001, z: -6.123724}
+  m_LocalPosition: {x: -9.173724, y: 8.000001, z: -6.123724}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3045,6 +3045,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: c273178314151854c81c620134a0ca0d, type: 2}
     - {fileID: 11400000, guid: 8e896d4c4b51cb946af82d94ff64b865, type: 2}
     - {fileID: 11400000, guid: 9007ffab926c60a4b91b61397196779b, type: 2}
+    - {fileID: 11400000, guid: 93e00f7ccecba8847b8376548058c26c, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -3068,6 +3069,15 @@ MonoBehaviour:
     - Name: _fadeOutAnimationCommand
       Entry: 7
       Data: 1|PlayerAbilityFadeOutAnimationCommand, Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _castAbilityCommand
+      Entry: 7
+      Data: 2|CastEnergyBallCommand, Assembly-CSharp
+    - Name: _config
+      Entry: 10
+      Data: 3
     - Name: 
       Entry: 8
       Data: 

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class InteractiveSphereAppearCommand : ICommand
 {
-    [SerializeField, Required, AssetsOnly] private SOEnergyBallInteractiveSphereConfig _config;
+    [SerializeField, Required, AssetsOnly] private SOEnergyBallAbilityConfig _config;
 
     public void Execute<T>(T receiver)
     {
@@ -14,6 +14,6 @@ public class InteractiveSphereAppearCommand : ICommand
             return;
         }
 
-        Object.Instantiate(_config.Prefab, playerLeftHand.transform.position, Quaternion.identity);
+        Object.Instantiate(_config.InteractiveSpherePrefab, playerLeftHand.transform.position, Quaternion.identity);
     }
 }
