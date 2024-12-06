@@ -1,45 +1,30 @@
-﻿using Animancer;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
+[ShowOdinSerializedPropertiesInInspector]
 public class PlayerLocomotionMoveState : PlayerBaseState
 {
-    [SerializeField, Required, AssetsOnly] [BoxGroup("Animations")]
-    private TransitionAsset _animation;
+    [SerializeField, Required] [BoxGroup("Tasks"), LabelText("Play Animation")]
+    private ICommand _playAnimationCommand;
 
-    [SerializeField, Required] [BoxGroup("Properties")]
-    private float _rotateSpeed = 10.0f;
+    [SerializeField, Required] [BoxGroup("Tasks"), LabelText("Look")]
+    private ICommand _playerLookCommand;
+
+    [SerializeField, Required] [BoxGroup("Tasks"), LabelText("Move")]
+    private ICommand _playerMoveCommand;
 
     private void OnEnable()
     {
-        Player.Instance.LocomotionLayer.Play(_animation);
+        _playAnimationCommand.Execute(this);
     }
 
     private void Update()
     {
-        Look();
+        _playerLookCommand.Execute(this);
     }
 
     private void OnAnimatorMove()
     {
-        Move();
-    }
-
-    private void Look()
-    {
-        if (Player.Instance.InputValue.MoveVector == Vector2.zero) return;
-
-        var targetDir = Player.Instance.InputValue.MoveVector;
-        var lookDir = Quaternion.LookRotation(new Vector3(targetDir.x, 0, targetDir.y).ToIsometric());
-        var startRot = Player.Instance.Rb.rotation;
-        var targetRot = Quaternion.Slerp(startRot, lookDir, _rotateSpeed * Time.deltaTime);
-        Player.Instance.Rb.MoveRotation(targetRot);
-    }
-
-    private void Move()
-    {
-        var offset = Player.Instance.Animancer.Animator.deltaPosition;
-        var currentPos = Player.Instance.Rb.position;
-        Player.Instance.Rb.MovePosition(currentPos + offset);
+        _playerMoveCommand.Execute(this);
     }
 }

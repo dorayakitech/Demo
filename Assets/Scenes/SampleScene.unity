@@ -1895,8 +1895,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d9999f1717146c9865522afb03688ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animation: {fileID: 11400000, guid: 8f06be12f0ede3a40b0f894d570fc29f, type: 2}
-  _rotateSpeed: 10
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 8f06be12f0ede3a40b0f894d570fc29f, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _playAnimationCommand
+      Entry: 7
+      Data: 0|PlayLocomotionAnimationCommand, Assembly-CSharp
+    - Name: _animation
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _playerLookCommand
+      Entry: 7
+      Data: 1|PlayerLookCommand, Assembly-CSharp
+    - Name: _rotateSpeed
+      Entry: 4
+      Data: 10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _playerMoveCommand
+      Entry: 7
+      Data: 2|PlayerMoveCommand, Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
 --- !u!114 &873901799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1909,7 +1941,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 556a651bbb47472198a8d4e310fbc8b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animation: {fileID: 11400000, guid: d076b7b6a15e15a4e9fa5713b944a860, type: 2}
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: d076b7b6a15e15a4e9fa5713b944a860, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _playAnimationCommand
+      Entry: 7
+      Data: 0|PlayLocomotionAnimationCommand, Assembly-CSharp
+    - Name: _animation
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
 --- !u!1 &1101075592
 GameObject:
   m_ObjectHideFlags: 0
@@ -2956,7 +3006,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2019864079
 Transform:
   m_ObjectHideFlags: 0
@@ -3001,6 +3051,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e33c2837d5e94604b30f0b3025e77ecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   _animation: {fileID: 11400000, guid: c273178314151854c81c620134a0ca0d, type: 2}
   _timeToDisappearInteractiveSphere: {fileID: 11400000, guid: d811ec8a81686b647be03b2114e04e20, type: 2}
   _animationEndEvent: {fileID: 11400000, guid: 8e896d4c4b51cb946af82d94ff64b865, type: 2}
@@ -3017,6 +3076,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaac3373260248c29772a10cb84e5813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   _animation: {fileID: 11400000, guid: ab93a240d5c8cbf46bcba98fd98b3d8b, type: 2}
   _animationEndEvent: {fileID: 11400000, guid: ecd4f0f35f779c2429e9b98af5ce0d1e, type: 2}
   _interactiveSphereAppearEvent: {fileID: 11400000, guid: da9eca71f584709408a4f8075f166a63, type: 2}
@@ -3033,6 +3101,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c44f612fcd44558123f0a6ef1e2ae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
 --- !u!65 &1311437657990105918
 BoxCollider:
   m_ObjectHideFlags: 0

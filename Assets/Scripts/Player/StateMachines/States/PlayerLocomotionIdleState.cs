@@ -1,14 +1,14 @@
-﻿using Animancer;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
+[ShowOdinSerializedPropertiesInInspector]
 public class PlayerLocomotionIdleState : PlayerBaseState
 {
-    [SerializeField, Required, AssetsOnly] [BoxGroup("Animations")]
-    private TransitionAsset _animation;
+    [SerializeField, Required] [BoxGroup("Tasks"), LabelText("Play Animation")]
+    private ICommand _playAnimationCommand;
 
     private void OnEnable()
     {
-        Player.Instance.LocomotionLayer.Play(_animation);
+        _playAnimationCommand.Execute(this);
     }
 }
