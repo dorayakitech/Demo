@@ -2,7 +2,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class PlayLocomotionAnimationCommand : ICommand
+public class PlayerLocomotionAnimationCommand : ICommand
 {
     [SerializeField, Required, AssetsOnly] private TransitionAsset _animation;
 

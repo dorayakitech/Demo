@@ -5,13 +5,13 @@ using UnityEngine;
 public class PlayerLocomotionMoveState : PlayerBaseState
 {
     [SerializeField, Required] [BoxGroup("Tasks"), LabelText("Play Animation")]
-    private ICommand _playAnimationCommand;
+    private PlayerLocomotionAnimationCommand _playAnimationCommand;
 
     [SerializeField, Required] [BoxGroup("Tasks"), LabelText("Look")]
-    private ICommand _playerLookCommand;
+    private PlayerLookCommand _playerLookCommand;
 
     [SerializeField, Required] [BoxGroup("Tasks"), LabelText("Move")]
-    private ICommand _playerMoveCommand;
+    private PlayerMoveCommand _playerMoveCommand;
 
     private void OnEnable()
     {

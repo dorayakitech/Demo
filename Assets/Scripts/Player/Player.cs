@@ -33,6 +33,10 @@ public class Player : Singleton<Player>
         _abilityLayer.Mask = _upperBodyMask;
 
         _rb = GetComponent<Rigidbody>();
+
+        // Register Global Variables
+        var leftHandGameObj = GameObject.Find(GlobalVariableNamesDefine.PlayerLeftHand);
+        GlobalVariablesManager.Instance.SetValue(GlobalVariableNamesDefine.PlayerLeftHand, leftHandGameObj);
     }
 
     private void OnEnable()

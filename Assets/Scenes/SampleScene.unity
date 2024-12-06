@@ -1511,6 +1511,79 @@ Transform:
   - {fileID: 1870403638}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &759332679
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 759332681}
+  - component: {fileID: 759332680}
+  m_Layer: 0
+  m_Name: GlobalVariables
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &759332680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759332679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cde0ca2668c466483ba8143c146a22c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _variablesDict
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[IVariableData,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+--- !u!4 &759332681
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759332679}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &776957724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1907,7 +1980,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _playAnimationCommand
       Entry: 7
-      Data: 0|PlayLocomotionAnimationCommand, Assembly-CSharp
+      Data: 0|PlayerLocomotionAnimationCommand, Assembly-CSharp
     - Name: _animation
       Entry: 10
       Data: 0
@@ -1953,45 +2026,13 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _playAnimationCommand
       Entry: 7
-      Data: 0|PlayLocomotionAnimationCommand, Assembly-CSharp
+      Data: 0|PlayerLocomotionAnimationCommand, Assembly-CSharp
     - Name: _animation
       Entry: 10
       Data: 0
     - Name: 
       Entry: 8
       Data: 
---- !u!1 &1101075592
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1101075593}
-  m_Layer: 0
-  m_Name: VFX
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1101075593
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1101075592}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1578626550}
-  m_Father: {fileID: 1163580723}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1163580722
 GameObject:
   m_ObjectHideFlags: 0
@@ -2027,7 +2068,6 @@ Transform:
   - {fileID: 463977418}
   - {fileID: 873901796}
   - {fileID: 2019864079}
-  - {fileID: 1101075593}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &1163580724
@@ -2719,59 +2759,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576907027}
   m_Mesh: {fileID: 4300000, guid: 13fbbd71d0278e9449670d69a9885156, type: 3}
---- !u!1 &1578174602
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1578626550}
-  - component: {fileID: 1598019299}
-  m_Layer: 0
-  m_Name: Interactive Sphere
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1578626550
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1578174602}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1101075593}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1598019299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1578174602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f16d70ffeab8504eb867c2697dcc93f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targetRange: 10
-  _appearDuration: 1
-  _cancelDuration: 0.25
-  _disappearDuration: 0.7
-  _hand: {fileID: 1649489337506135305}
-  _effect: {fileID: 5421499238049270691, guid: 7f1ed3016b6674b43b430157b2917bdb, type: 3}
-  _interactiveSphereAppearEvent: {fileID: 11400000, guid: da9eca71f584709408a4f8075f166a63, type: 2}
-  _interactiveSphereCancelEvent: {fileID: 11400000, guid: 5484643e91792414d8f19c2c3d798eda, type: 2}
-  _interactiveSphereDisappearEvent: {fileID: 11400000, guid: 9007ffab926c60a4b91b61397196779b, type: 2}
 --- !u!1 &1870403637
 GameObject:
   m_ObjectHideFlags: 0
@@ -3006,7 +2993,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2019864079
 Transform:
   m_ObjectHideFlags: 0
@@ -3054,16 +3041,36 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: c273178314151854c81c620134a0ca0d, type: 2}
+    - {fileID: 11400000, guid: 8e896d4c4b51cb946af82d94ff64b865, type: 2}
+    - {fileID: 11400000, guid: 9007ffab926c60a4b91b61397196779b, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
-  _animation: {fileID: 11400000, guid: c273178314151854c81c620134a0ca0d, type: 2}
-  _timeToDisappearInteractiveSphere: {fileID: 11400000, guid: d811ec8a81686b647be03b2114e04e20, type: 2}
-  _animationEndEvent: {fileID: 11400000, guid: 8e896d4c4b51cb946af82d94ff64b865, type: 2}
-  _interactiveSphereDisappearEvent: {fileID: 11400000, guid: 9007ffab926c60a4b91b61397196779b, type: 2}
+    SerializationNodes:
+    - Name: _playAnimationCommand
+      Entry: 7
+      Data: 0|PlayerAbilityPlayCastAnimationCommand, Assembly-CSharp
+    - Name: _animation
+      Entry: 10
+      Data: 0
+    - Name: _animationEndEvent
+      Entry: 10
+      Data: 1
+    - Name: _animationEvent
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _fadeOutAnimationCommand
+      Entry: 7
+      Data: 1|PlayerAbilityFadeOutAnimationCommand, Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
 --- !u!114 &2019864083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3079,16 +3086,42 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: ab93a240d5c8cbf46bcba98fd98b3d8b, type: 2}
+    - {fileID: 11400000, guid: ecd4f0f35f779c2429e9b98af5ce0d1e, type: 2}
+    - {fileID: 11400000, guid: 93e00f7ccecba8847b8376548058c26c, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
-  _animation: {fileID: 11400000, guid: ab93a240d5c8cbf46bcba98fd98b3d8b, type: 2}
-  _animationEndEvent: {fileID: 11400000, guid: ecd4f0f35f779c2429e9b98af5ce0d1e, type: 2}
-  _interactiveSphereAppearEvent: {fileID: 11400000, guid: da9eca71f584709408a4f8075f166a63, type: 2}
-  _interactiveSphereCancelEvent: {fileID: 11400000, guid: 5484643e91792414d8f19c2c3d798eda, type: 2}
+    SerializationNodes:
+    - Name: _playAnimationCommand
+      Entry: 7
+      Data: 0|PlayerAbilityPlayChargeAnimationCommand, Assembly-CSharp
+    - Name: _animation
+      Entry: 10
+      Data: 0
+    - Name: _animationEndEvent
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _fadeOutAnimationCommand
+      Entry: 7
+      Data: 1|PlayerAbilityFadeOutAnimationCommand, Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _interactiveSphereAppearCommand
+      Entry: 7
+      Data: 2|InteractiveSphereAppearCommand, Assembly-CSharp
+    - Name: _config
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
 --- !u!114 &2019864084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3110,6 +3143,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  _cancelInteractiveSphereEvent: {fileID: 11400000, guid: 5484643e91792414d8f19c2c3d798eda, type: 2}
 --- !u!65 &1311437657990105918
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5259,7 +5293,8 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 753061021}
   - {fileID: 410087041}
   - {fileID: 1163580723}
-  - {fileID: 753061021}
   - {fileID: 10651455}
+  - {fileID: 759332681}

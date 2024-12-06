@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerLocomotionIdleState : PlayerBaseState
 {
     [SerializeField, Required] [BoxGroup("Tasks"), LabelText("Play Animation")]
-    private ICommand _playAnimationCommand;
+    private PlayerLocomotionAnimationCommand _playAnimationCommand;
 
     private void OnEnable()
     {

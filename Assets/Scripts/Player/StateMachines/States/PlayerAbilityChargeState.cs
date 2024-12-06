@@ -1,37 +1,26 @@
-﻿using Animancer;
-using Animancer.FSM;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
+[ShowOdinSerializedPropertiesInInspector]
 public class PlayerAbilityChargeState : PlayerBaseState
 {
-    [SerializeField, Required, AssetsOnly] [BoxGroup("Animations")]
-    private TransitionAsset _animation;
+    [SerializeField, Required] [BoxGroup("Tasks"), LabelText("Play Animation")]
+    private PlayerAbilityPlayChargeAnimationCommand _playAnimationCommand;
 
-    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Animation End")]
-    private SOEvent _animationEndEvent;
+    [SerializeField, Required] [BoxGroup("Tasks"), LabelText("Fade Out Animation")]
+    private PlayerAbilityFadeOutAnimationCommand _fadeOutAnimationCommand;
 
-    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Interactive Sphere Appear")]
-    private SOEvent _interactiveSphereAppearEvent;
-
-    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Interactive Sphere Cancel")]
-    private SOEvent _interactiveSphereCancelEvent;
+    [SerializeField, Required] [BoxGroup("Tasks"), LabelText("Appear Interactive Sphere")]
+    private InteractiveSphereAppearCommand _interactiveSphereAppearCommand;
 
     private void OnEnable()
     {
-        var state = Player.Instance.AbilityLayer.Play(_animation);
-        state.Events(this).OnEnd ??= () => { _animationEndEvent.Notify(); };
-
-        _interactiveSphereAppearEvent.Notify();
+        _playAnimationCommand.Execute(this);
+        _interactiveSphereAppearCommand.Execute(this);
     }
 
     private void OnDisable()
     {
-        Player.Instance.AbilityLayer.StartFade(0.0f);
-
-        if (this.GetNextState<PlayerBaseState>() is PlayerAbilityIdleState)
-        {
-            _interactiveSphereCancelEvent.Notify();
-        }
+        _fadeOutAnimationCommand.Execute(this);
     }
 }

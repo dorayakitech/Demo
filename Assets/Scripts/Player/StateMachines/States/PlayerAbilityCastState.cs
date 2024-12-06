@@ -1,31 +1,22 @@
-﻿using Animancer;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
+[ShowOdinSerializedPropertiesInInspector]
 public class PlayerAbilityCastState : PlayerBaseState
 {
-    [SerializeField, Required, AssetsOnly] [BoxGroup("Animations")]
-    private TransitionAsset _animation;
+    [SerializeField, Required] [BoxGroup("Tasks"), LabelText("Play Animation")]
+    private PlayerAbilityPlayCastAnimationCommand _playAnimationCommand;
 
-    [SerializeField, Required, AssetsOnly] [BoxGroup("Animations")]
-    private StringAsset _timeToDisappearInteractiveSphere;
-
-    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Animation End")]
-    private SOEvent _animationEndEvent;
-
-    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Interactive Sphere Disappear")]
-    private SOEvent _interactiveSphereDisappearEvent;
+    [SerializeField, Required] [BoxGroup("Tasks"), LabelText("Fade Out Animation")]
+    private PlayerAbilityFadeOutAnimationCommand _fadeOutAnimationCommand;
 
     private void OnEnable()
     {
-        var state = Player.Instance.AbilityLayer.Play(_animation);
-        state.Events(this).OnEnd ??= () => { _animationEndEvent.Notify(); };
-        state.Events(this).SetCallback(_timeToDisappearInteractiveSphere.Name,
-            () => { _interactiveSphereDisappearEvent.Notify(); });
+        _playAnimationCommand.Execute(this);
     }
 
     private void OnDisable()
     {
-        Player.Instance.AbilityLayer.StartFade(0.0f);
+        _fadeOutAnimationCommand.Execute(this);
     }
 }
