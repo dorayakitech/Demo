@@ -39,12 +39,20 @@ public class PlayerInputManager : MonoBehaviour
         _inputValueChangedEvent.Notify(_inputValue);
     }
 
+    private void OnChangeIsPressingRun(InputAction.CallbackContext ctx)
+    {
+        _inputValue.IsPressingRun = ctx.ReadValueAsButton();
+        _inputValueChangedEvent.Notify(_inputValue);
+    }
+
     private void Subscribe()
     {
         _inputActions.Player.Move.performed += OnChangeMoveVector;
         _inputActions.Player.Move.canceled += OnChangeMoveVector;
         _inputActions.Player.UseAbility.performed += OnChangeIsPressingUseAbility;
         _inputActions.Player.UseAbility.canceled += OnChangeIsPressingUseAbility;
+        _inputActions.Player.Run.performed += OnChangeIsPressingRun;
+        _inputActions.Player.Run.canceled += OnChangeIsPressingRun;
     }
 
     private void Unsubscribe()
@@ -53,6 +61,8 @@ public class PlayerInputManager : MonoBehaviour
         _inputActions.Player.Move.canceled -= OnChangeMoveVector;
         _inputActions.Player.UseAbility.performed -= OnChangeIsPressingUseAbility;
         _inputActions.Player.UseAbility.canceled -= OnChangeIsPressingUseAbility;
+        _inputActions.Player.Run.performed -= OnChangeIsPressingRun;
+        _inputActions.Player.Run.canceled -= OnChangeIsPressingRun;
     }
 }
 
@@ -60,4 +70,5 @@ public struct PlayerInputValue
 {
     public Vector2 MoveVector;
     public bool IsPressingUseAbility;
+    public bool IsPressingRun;
 }

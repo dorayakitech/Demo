@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2418527853316531822}
   - component: {fileID: 468566684262637894}
   - component: {fileID: 8942803503404561785}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: InteractiveSphere_EnergyBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

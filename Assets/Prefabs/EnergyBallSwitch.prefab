@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2044672447894518923}
   - component: {fileID: 5475122449743969568}
   - component: {fileID: 1417006640689626450}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: EnergyBallSwitch
   m_TagString: EnergyBallSwitch
   m_Icon: {fileID: 0}
