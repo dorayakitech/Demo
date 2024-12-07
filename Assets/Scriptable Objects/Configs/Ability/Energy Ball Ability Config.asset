@@ -15,8 +15,7 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 9007ffab926c60a4b91b61397196779b, type: 2}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -73,9 +72,6 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 6|PlayerAbilityPlayCastAnimationCommand, Assembly-CSharp
-    - Name: _animationEvent
-      Entry: 10
-      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -112,11 +108,7 @@ MonoBehaviour:
   ChargeAnimation: {fileID: 11400000, guid: ab93a240d5c8cbf46bcba98fd98b3d8b, type: 2}
   CastAnimation: {fileID: 11400000, guid: c273178314151854c81c620134a0ca0d, type: 2}
   ChargeAnimationEndEvent: {fileID: 11400000, guid: ecd4f0f35f779c2429e9b98af5ce0d1e, type: 2}
+  CastMidwayEvent: {fileID: 11400000, guid: 9007ffab926c60a4b91b61397196779b, type: 2}
   CastAnimationEndEvent: {fileID: 11400000, guid: 8e896d4c4b51cb946af82d94ff64b865, type: 2}
   InteractiveSpherePrefab: {fileID: 357599011720650044, guid: 7f1ed3016b6674b43b430157b2917bdb, type: 3}
-  Range: 10
-  AppearDuration: 1
-  CancelDuration: 0.25
-  DisappearDuration: 0.7
   EnergyBallPrefab: {fileID: 8551089607830486817, guid: 957f21cc0b380a949ad40325fb02536e, type: 3}
-  FlyingForce: 1000

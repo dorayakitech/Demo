@@ -1,13 +1,13 @@
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class EnergyBallSwitchDetection : MonoBehaviour
+public class GravityObjectDetection : MonoBehaviour
 {
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Switch Detected")]
-    private SOGameObjectNotifiedEvent _switchDetectedEvent;
+    private SOGameObjectNotifiedEvent _detectedEvent;
 
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Switch Undetected")]
-    private SOGameObjectNotifiedEvent _switchUndetectedEvent;
+    private SOGameObjectNotifiedEvent _undetectedEvent;
 
     // TODO
     private Color _defaultColor;
@@ -19,20 +19,20 @@ public class EnergyBallSwitchDetection : MonoBehaviour
 
     private void OnEnable()
     {
-        _switchDetectedEvent.Subscribe(OnDetected);
-        _switchUndetectedEvent.Subscribe(OnUndetected);
+        _detectedEvent.Subscribe(OnDetected);
+        _undetectedEvent.Subscribe(OnUndetected);
     }
 
     private void OnDisable()
     {
-        _switchDetectedEvent.Unsubscribe(OnDetected);
-        _switchUndetectedEvent.Unsubscribe(OnUndetected);
+        _detectedEvent.Unsubscribe(OnDetected);
+        _undetectedEvent.Unsubscribe(OnUndetected);
     }
 
     private void OnDetected(GameObject obj)
     {
         if (gameObject != obj) return;
-        GetComponent<MeshRenderer>().materials[0].color = Color.red;
+        GetComponent<MeshRenderer>().materials[0].color = Color.yellow;
     }
 
     private void OnUndetected(GameObject obj)

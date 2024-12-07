@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - EnergyBallSwitch
+  - GravityObject
   layers:
   - Default
   - TransparentFX

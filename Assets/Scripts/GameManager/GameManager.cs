@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Switch Ability")]
-    private SOEvent _switchAbilityEvent;
+    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Change Active Ability")]
+    private SOEvent _changeActiveAbilityEvent;
 
     [SerializeField, Required, AssetsOnly] [BoxGroup("Abilities"), LabelText("Available")]
     private List<SOAbilityConfig> _availableAbilities;
@@ -17,15 +17,15 @@ public class GameManager : Singleton<GameManager>
 
     private void OnEnable()
     {
-        _switchAbilityEvent.Subscribe(OnAbilitySwitched);
+        _changeActiveAbilityEvent.Subscribe(OnChangeActiveAbility);
     }
 
     private void OnDisable()
     {
-        _switchAbilityEvent.Unsubscribe(OnAbilitySwitched);
+        _changeActiveAbilityEvent.Unsubscribe(OnChangeActiveAbility);
     }
 
-    private void OnAbilitySwitched()
+    private void OnChangeActiveAbility()
     {
         _activeAbilityIndex += 1;
         if (_activeAbilityIndex >= _availableAbilities.Count)

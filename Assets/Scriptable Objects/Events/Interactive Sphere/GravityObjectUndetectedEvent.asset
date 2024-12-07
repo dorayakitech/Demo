@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bebd893033284f1da5c257af9bf1c310, type: 3}
-  m_Name: InteractiveSphereAppearEvent
+  m_Script: {fileID: 11500000, guid: bbb6aebd053b461980687a5628a5cb82, type: 3}
+  m_Name: GravityObjectUndetectedEvent
   m_EditorClassIdentifier: 

@@ -19,6 +19,12 @@ public class PlayerAbilityStateMachine : MonoBehaviour
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Cast Animation End")]
     private SOEvent _castAnimationEndEvent;
 
+    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Player Press Switch Ability")]
+    private SOEvent _pressedSwitchAbilityEvent;
+
+    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Change Active Ability")]
+    private SOEvent _changeActiveAbilityEvent;
+
     private readonly StateMachine<PlayerBaseState>.WithDefault _stateMachine = new();
 
     private bool _isChargeAnimationEnd;
@@ -33,12 +39,14 @@ public class PlayerAbilityStateMachine : MonoBehaviour
     {
         _chargeAnimationEndEvent.Subscribe(OnChargeAnimationEnd);
         _castAnimationEndEvent.Subscribe(OnCastAnimationEnd);
+        _pressedSwitchAbilityEvent.Subscribe(OnPressedSwitchAbility);
     }
 
     private void OnDisable()
     {
         _chargeAnimationEndEvent.Unsubscribe(OnChargeAnimationEnd);
         _castAnimationEndEvent.Unsubscribe(OnCastAnimationEnd);
+        _pressedSwitchAbilityEvent.Unsubscribe(OnPressedSwitchAbility);
     }
 
     private void Update()
@@ -76,5 +84,11 @@ public class PlayerAbilityStateMachine : MonoBehaviour
     private void OnCastAnimationEnd()
     {
         _isCastAnimationEnd = true;
+    }
+
+    private void OnPressedSwitchAbility()
+    {
+        if (_stateMachine.CurrentState is PlayerAbilityIdleState)
+            _changeActiveAbilityEvent.Notify();
     }
 }

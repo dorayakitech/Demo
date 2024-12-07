@@ -7,8 +7,8 @@ public class PlayerInputManager : MonoBehaviour
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Input Value Change")]
     private SOPlayerInputValueChangedEvent _inputValueChangedEvent;
 
-    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Switch Ability")]
-    private SOEvent _switchAbilityEvent;
+    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Switch Ability Pressed")]
+    private SOEvent _switchAbilityPressedEvent;
 
     private PlayerInputActions _inputActions;
     private PlayerInputValue _inputValue;
@@ -50,7 +50,7 @@ public class PlayerInputManager : MonoBehaviour
 
     private void OnPressSwitchAbility(InputAction.CallbackContext ctx)
     {
-        _switchAbilityEvent.Notify();
+        _switchAbilityPressedEvent.Notify();
     }
 
     private void Subscribe()

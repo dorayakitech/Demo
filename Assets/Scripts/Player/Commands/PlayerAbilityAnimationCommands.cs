@@ -1,6 +1,4 @@
 ﻿using Animancer;
-using Sirenix.OdinInspector;
-using UnityEngine;
 
 public class PlayerAbilityPlayChargeAnimationCommand : ICommand
 {
@@ -23,9 +21,6 @@ public class PlayerAbilityFadeOutAnimationCommand : ICommand
 
 public class PlayerAbilityPlayCastAnimationCommand : ICommand
 {
-    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Cast Midway Event")]
-    private SOEvent _animationEvent;
-
     private static readonly StringReference
         _animationMidwayEventName = VariableNamesDefine.CastAnimationMidwayEventName;
 
@@ -35,6 +30,6 @@ public class PlayerAbilityPlayCastAnimationCommand : ICommand
 
         var state = Player.Instance.AbilityLayer.Play(cfg.CastAnimation);
         state.Events(this).OnEnd ??= () => { cfg.CastAnimationEndEvent.Notify(); };
-        state.Events(this).SetCallback(_animationMidwayEventName, () => { _animationEvent.Notify(); });
+        state.Events(this).SetCallback(_animationMidwayEventName, () => { cfg.CastMidwayEvent.Notify(); });
     }
 }
