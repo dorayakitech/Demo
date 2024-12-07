@@ -6,29 +6,33 @@ public class EnergyBall : MonoBehaviour
     [SerializeField, Required, AssetsOnly] private SOEnergyBallAbilityConfig _config;
 
     [SerializeField, Required, AssetsOnly] [BoxGroup("Prefabs")]
-    private GameObject _impactParticle; // Effect spawned when projectile hits a collider
+    private GameObject _impactParticle;
 
     [SerializeField, Required, AssetsOnly] [BoxGroup("Prefabs")]
-    private GameObject _projectileParticle; // Effect attached to the gameobject as child
+    private GameObject _projectileParticle;
 
     [SerializeField, Required, AssetsOnly] [BoxGroup("Prefabs")]
-    private GameObject _muzzleParticle; // Effect instantly spawned when gameobject is spawned
+    private GameObject _muzzleParticle;
 
-    [SerializeField, Range(0f, 1f)]
     // This is an offset that moves the impact effect slightly away from the point of impact to reduce clipping of the impact effect
-    private float _collideOffset = 0.15f;
+    [SerializeField, Range(0f, 1f)] private float _collideOffset = 0.15f;
 
     private Rigidbody _rb;
     private SphereCollider _collider;
     private ParticleSystem[] _trails;
 
     private Vector3 _spawnPoint;
+    private float _ballRadius;
+    private Vector3 _ballFlyingDirection;
+    private float _collisionDetectionDistance;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
         _collider = GetComponent<SphereCollider>();
         _trails = GetComponentsInChildren<ParticleSystem>();
+
+        _ballRadius = _collider.radius;
 
         // register spawn position
         _spawnPoint = transform.position;
@@ -41,9 +45,8 @@ public class EnergyBall : MonoBehaviour
     {
         _projectileParticle = Instantiate(_projectileParticle, transform.position, transform.rotation);
         _projectileParticle.transform.parent = transform;
-
         _muzzleParticle = Instantiate(_muzzleParticle, transform.position, transform.rotation);
-        Destroy(_muzzleParticle, 1.5f); // 2nd parameter is lifetime of effect in seconds
+        Destroy(_muzzleParticle, 1.5f);
     }
 
     void FixedUpdate()
@@ -66,33 +69,43 @@ public class EnergyBall : MonoBehaviour
         if (_rb.linearVelocity.magnitude != 0)
             transform.rotation = Quaternion.LookRotation(_rb.linearVelocity);
 
-        var radius = _collider.radius;
-        var direction = _rb.linearVelocity.normalized;
-        var detectionDistance = _rb.linearVelocity.magnitude * Time.fixedDeltaTime;
+        _ballFlyingDirection = _rb.linearVelocity.normalized;
+        _collisionDetectionDistance = _rb.linearVelocity.magnitude * Time.fixedDeltaTime;
 
-        if (Physics.SphereCast(transform.position, radius, direction, out var hit,
-                detectionDistance)) // Checks if collision will happen
+        // Interactive Sphere cannot be detected since the ball is spawned inside the Sphere. They're overlapping
+        if (Physics.SphereCast(transform.position, _ballRadius, _ballFlyingDirection, out var hit,
+                _collisionDetectionDistance))
         {
-            transform.position = hit.point + (hit.normal * _collideOffset); // Move projectile to point of collision
+            // Move projectile to point of collision
+            transform.position = hit.point + (hit.normal * _collideOffset);
             ExecuteDestroyProcess(Quaternion.FromToRotation(Vector3.up, hit.normal));
         }
     }
 
     private void ExecuteDestroyProcess(Quaternion impactRotation)
     {
-        var impactP = Instantiate(_impactParticle, transform.position, impactRotation); // Spawns impact effect
+        var impactP = Instantiate(_impactParticle, transform.position, impactRotation);
 
-        //Component at [0] is that of the parent i.e. this object (if there is any)
-        for (var i = 1; i < _trails.Length; i++) // Loop to cycle through found particle systems
+        //Loop index starts from 1 since component at [0] is that of the parent i.e. this object
+        for (var i = 1; i < _trails.Length; i++)
         {
             var trail = _trails[i];
 
             if (trail.gameObject.name.Contains("Trail"))
-                Destroy(trail.gameObject, 2f); // Removes the trail after seconds
+                Destroy(trail.gameObject, 2f);
         }
 
-        Destroy(_projectileParticle, 3f); // Removes particle effect after delay
-        Destroy(impactP, 3.5f); // Removes impact effect after delay
-        Destroy(gameObject); // Removes the projectile
+        Destroy(_projectileParticle, 3f);
+        Destroy(impactP, 3.5f);
+        Destroy(gameObject);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _ballRadius);
+        Vector3 endPosition = transform.position + _ballFlyingDirection.normalized * _collisionDetectionDistance;
+        Gizmos.DrawWireSphere(endPosition, _ballRadius);
+        Gizmos.DrawLine(transform.position, endPosition);
     }
 }
