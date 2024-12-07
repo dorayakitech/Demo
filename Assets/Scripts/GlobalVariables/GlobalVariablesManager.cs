@@ -36,6 +36,8 @@ public class GlobalVariablesManager : Singleton<GlobalVariablesManager>, ISerial
         _variablesDict.Remove(key);
     }
 
+    public bool HasKey(string key) => _variablesDict.ContainsKey(key);
+
     # region Used for Odin Serialization
 
     [SerializeField, HideInInspector] private SerializationData serializationData;

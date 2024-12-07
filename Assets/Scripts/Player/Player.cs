@@ -35,8 +35,8 @@ public class Player : Singleton<Player>
         _rb = GetComponent<Rigidbody>();
 
         // Register Global Variables
-        var leftHandGameObj = GameObject.Find(GlobalVariableNamesDefine.PlayerLeftHand);
-        GlobalVariablesManager.Instance.SetValue(GlobalVariableNamesDefine.PlayerLeftHand, leftHandGameObj);
+        var leftHandGameObj = GameObject.Find(VariableNamesDefine.PlayerLeftHand);
+        GlobalVariablesManager.Instance.SetValue(VariableNamesDefine.PlayerLeftHand, leftHandGameObj);
     }
 
     private void OnEnable()

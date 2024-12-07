@@ -7,7 +7,7 @@ public class InteractiveSphereAppearCommand : ICommand
 
     public void Execute<T>(T receiver)
     {
-        if (!GlobalVariablesManager.Instance.GetValue(GlobalVariableNamesDefine.PlayerLeftHand,
+        if (!GlobalVariablesManager.Instance.GetValue(VariableNamesDefine.PlayerLeftHand,
                 out GameObject playerLeftHand))
         {
             Debug.LogError("Player Left Hand Not Found");
