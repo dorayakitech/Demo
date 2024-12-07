@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using UnityEngine;
 
 [ShowOdinSerializedPropertiesInInspector]
-public class GlobalVariablesManager : Singleton<GlobalVariablesManager>, ISerializationCallbackReceiver,
-    ISupportsPrefabSerialization
+public class GlobalVariablesManager : Singleton<GlobalVariablesManager>
 {
     [SerializeField, Required] private Dictionary<string, IVariableData> _variablesDict;
 
@@ -37,26 +35,4 @@ public class GlobalVariablesManager : Singleton<GlobalVariablesManager>, ISerial
     }
 
     public bool HasKey(string key) => _variablesDict.ContainsKey(key);
-
-    # region Used for Odin Serialization
-
-    [SerializeField, HideInInspector] private SerializationData serializationData;
-
-    SerializationData ISupportsPrefabSerialization.SerializationData
-    {
-        get => serializationData;
-        set => serializationData = value;
-    }
-
-    void ISerializationCallbackReceiver.OnAfterDeserialize()
-    {
-        UnitySerializationUtility.DeserializeUnityObject(this, ref this.serializationData);
-    }
-
-    void ISerializationCallbackReceiver.OnBeforeSerialize()
-    {
-        UnitySerializationUtility.SerializeUnityObject(this, ref this.serializationData);
-    }
-
-    #endregion
 }

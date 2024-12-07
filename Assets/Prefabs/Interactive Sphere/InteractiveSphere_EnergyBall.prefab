@@ -4871,7 +4871,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f16d70ffeab8504eb867c2697dcc93f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _config: {fileID: 11400000, guid: 93e00f7ccecba8847b8376548058c26c, type: 2}
+  _range: 10
+  _appearDuration: 1
+  _cancelDuration: 0.25
+  _disappearDuration: 0.7
   _disappearEvent: {fileID: 11400000, guid: 9007ffab926c60a4b91b61397196779b, type: 2}
   _cancelEvent: {fileID: 11400000, guid: 5484643e91792414d8f19c2c3d798eda, type: 2}
 --- !u!114 &8942803503404561785

@@ -1,26 +1,22 @@
-﻿using Sirenix.OdinInspector;
-using UnityEngine;
-
-[ShowOdinSerializedPropertiesInInspector]
-public class PlayerAbilityChargeState : PlayerBaseState
+﻿public class PlayerAbilityChargeState : PlayerBaseState
 {
-    [SerializeField, Required] [BoxGroup("Tasks"), LabelText("Play Animation")]
-    private PlayerAbilityPlayChargeAnimationCommand _playAnimationCommand;
-
-    [SerializeField, Required] [BoxGroup("Tasks"), LabelText("Fade Out Animation")]
-    private PlayerAbilityFadeOutAnimationCommand _fadeOutAnimationCommand;
-
-    [SerializeField, Required] [BoxGroup("Tasks"), LabelText("Appear Interactive Sphere")]
-    private InteractiveSphereAppearCommand _interactiveSphereAppearCommand;
+    private SOAbilityConfig _config;
 
     private void OnEnable()
     {
-        _playAnimationCommand.Execute(this);
-        _interactiveSphereAppearCommand.Execute(this);
+        _config = GameManager.Instance.ActiveAbilityConfig;
+
+        foreach (var task in _config.ChargeStepOnEnableTasks)
+        {
+            task.Execute(this);
+        }
     }
 
     private void OnDisable()
     {
-        _fadeOutAnimationCommand.Execute(this);
+        foreach (var task in _config.ChargeStepOnDisableTasks)
+        {
+            task.Execute(this);
+        }
     }
 }

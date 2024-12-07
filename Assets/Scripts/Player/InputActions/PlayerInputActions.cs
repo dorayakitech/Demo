@@ -53,6 +53,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""901dd61e-c754-4a5d-8ee5-ef3019ee7168"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -113,8 +122,30 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""f371b53f-d2d9-48ce-8e84-ef567f4b6ad6"",
+                    ""path"": ""<XInputController>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""263262cd-82d7-4e60-85f9-2693b454f7da"",
                     ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""92c22f1c-94b7-4b44-8dbb-6ef27b1b26fc"",
+                    ""path"": ""<XInputController>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -132,6 +163,39 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Run"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7d8c4f0f-e8ea-4cca-9f04-e175debddf16"",
+                    ""path"": ""<XInputController>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5369f3e5-f1c3-4025-901d-78e65f4e3236"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e026bb59-8bbe-4ba7-b012-c1d4e0ed6d82"",
+                    ""path"": ""<XInputController>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -143,6 +207,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_UseAbility = m_Player.FindAction("UseAbility", throwIfNotFound: true);
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
+        m_Player_SwitchAbility = m_Player.FindAction("SwitchAbility", throwIfNotFound: true);
     }
 
     ~@PlayerInputActions()
@@ -212,6 +277,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_UseAbility;
     private readonly InputAction m_Player_Run;
+    private readonly InputAction m_Player_SwitchAbility;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -219,6 +285,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @UseAbility => m_Wrapper.m_Player_UseAbility;
         public InputAction @Run => m_Wrapper.m_Player_Run;
+        public InputAction @SwitchAbility => m_Wrapper.m_Player_SwitchAbility;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -237,6 +304,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Run.started += instance.OnRun;
             @Run.performed += instance.OnRun;
             @Run.canceled += instance.OnRun;
+            @SwitchAbility.started += instance.OnSwitchAbility;
+            @SwitchAbility.performed += instance.OnSwitchAbility;
+            @SwitchAbility.canceled += instance.OnSwitchAbility;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -250,6 +320,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Run.started -= instance.OnRun;
             @Run.performed -= instance.OnRun;
             @Run.canceled -= instance.OnRun;
+            @SwitchAbility.started -= instance.OnSwitchAbility;
+            @SwitchAbility.performed -= instance.OnSwitchAbility;
+            @SwitchAbility.canceled -= instance.OnSwitchAbility;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -272,5 +345,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnUseAbility(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
+        void OnSwitchAbility(InputAction.CallbackContext context);
     }
 }

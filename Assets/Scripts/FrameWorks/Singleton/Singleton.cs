@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using Sirenix.Serialization;
+using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+public class Singleton<T> : MonoBehaviour, ISerializationCallbackReceiver,
+    ISupportsPrefabSerialization where T : MonoBehaviour
 {
     private static T _instance;
     private static readonly object _lock = new();
@@ -29,4 +31,26 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             }
         }
     }
+
+    # region Used for Odin Serialization
+
+    [SerializeField, HideInInspector] private SerializationData serializationData;
+
+    SerializationData ISupportsPrefabSerialization.SerializationData
+    {
+        get => serializationData;
+        set => serializationData = value;
+    }
+
+    void ISerializationCallbackReceiver.OnAfterDeserialize()
+    {
+        UnitySerializationUtility.DeserializeUnityObject(this, ref this.serializationData);
+    }
+
+    void ISerializationCallbackReceiver.OnBeforeSerialize()
+    {
+        UnitySerializationUtility.SerializeUnityObject(this, ref this.serializationData);
+    }
+
+    #endregion
 }

@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class InteractiveSphereVFX : MonoBehaviour
 {
-    [SerializeField, Required, AssetsOnly] private SOEnergyBallAbilityConfig _config;
+    [SerializeField, Required, BoxGroup("Properties")]
+    private float _range;
+
+    [SerializeField, Required, BoxGroup("Properties")]
+    private float _appearDuration;
+
+    [SerializeField, Required, BoxGroup("Properties")]
+    private float _cancelDuration;
+
+    [SerializeField, Required, BoxGroup("Properties")]
+    private float _disappearDuration;
 
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed")]
     private SOEvent _disappearEvent;
@@ -34,7 +44,7 @@ public class InteractiveSphereVFX : MonoBehaviour
         }
 
         transform.DOKill();
-        transform.DOScale(Vector3.one * _config.Range, _config.AppearDuration);
+        transform.DOScale(Vector3.one * _range, _appearDuration);
     }
 
     private void LateUpdate()
@@ -44,12 +54,12 @@ public class InteractiveSphereVFX : MonoBehaviour
 
     private void OnDisappearEvent()
     {
-        transform.DOScale(Vector3.zero, _config.DisappearDuration).OnComplete(() => { Destroy(gameObject); });
+        transform.DOScale(Vector3.zero, _disappearDuration).OnComplete(() => { Destroy(gameObject); });
     }
 
     private void OnCancelEvent()
     {
         transform.DOKill();
-        transform.DOScale(Vector3.zero, _config.CancelDuration).OnComplete(() => { Destroy(gameObject); });
+        transform.DOScale(Vector3.zero, _cancelDuration).OnComplete(() => { Destroy(gameObject); });
     }
 }

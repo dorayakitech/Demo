@@ -1,10 +1,7 @@
-﻿using Sirenix.OdinInspector;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class InteractiveSphereAppearCommand : ICommand
 {
-    [SerializeField, Required, AssetsOnly] private SOEnergyBallAbilityConfig _config;
-
     public void Execute<T>(T receiver)
     {
         if (!GlobalVariablesManager.Instance.GetValue(VariableNamesDefine.PlayerLeftHand,
@@ -14,6 +11,7 @@ public class InteractiveSphereAppearCommand : ICommand
             return;
         }
 
-        Object.Instantiate(_config.InteractiveSpherePrefab, playerLeftHand.transform.position, Quaternion.identity);
+        Object.Instantiate(GameManager.Instance.ActiveAbilityConfig.InteractiveSpherePrefab,
+            playerLeftHand.transform.position, Quaternion.identity);
     }
 }

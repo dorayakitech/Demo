@@ -1216,6 +1216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputValueChangedEvent: {fileID: 11400000, guid: 11a7abef5422185428877e2268501d7e, type: 2}
+  _switchAbilityEvent: {fileID: 11400000, guid: 75e7754e395da1d4fa5dc6bdfaaa9989, type: 2}
 --- !u!1 &480859232
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,6 +1441,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1759817027}
     m_Modifications:
+    - target: {fileID: 1795001760905134482, guid: 0c3fcc7eed017234b8f9ddfcbfe4e539, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3414439387362025841, guid: 0c3fcc7eed017234b8f9ddfcbfe4e539, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.41
@@ -2129,6 +2134,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea1826e70eb86e408cf3fa2d5d302f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   _upperBodyMask: {fileID: 31900000, guid: 567856eeb9e68394cbf778c484b37468, type: 2}
   _inputValueChangedEvent: {fileID: 11400000, guid: 11a7abef5422185428877e2268501d7e, type: 2}
 --- !u!54 &1163580725
@@ -2158,6 +2172,64 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
+--- !u!1 &1206483071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1206483072}
+  - component: {fileID: 1206483073}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1206483072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206483071}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1206483073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206483071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c43b06282efee654b8ce9fae5c464f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _switchAbilityEvent: {fileID: 11400000, guid: 75e7754e395da1d4fa5dc6bdfaaa9989, type: 2}
+  _availableAbilities:
+  - {fileID: 11400000, guid: 824a3e788b01f714d8eee01b01084578, type: 2}
+  - {fileID: 11400000, guid: 01fe7643847fed2488331c0f1fe8ace6, type: 2}
+  _activeAbilityIndex: 0
 --- !u!1 &1301876150
 GameObject:
   m_ObjectHideFlags: 0
@@ -3188,7 +3260,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: c273178314151854c81c620134a0ca0d, type: 2}
     - {fileID: 11400000, guid: 8e896d4c4b51cb946af82d94ff64b865, type: 2}
     - {fileID: 11400000, guid: 9007ffab926c60a4b91b61397196779b, type: 2}
-    - {fileID: 11400000, guid: 93e00f7ccecba8847b8376548058c26c, type: 2}
+    - {fileID: 11400000, guid: 824a3e788b01f714d8eee01b01084578, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -3240,9 +3312,7 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11400000, guid: ab93a240d5c8cbf46bcba98fd98b3d8b, type: 2}
-    - {fileID: 11400000, guid: ecd4f0f35f779c2429e9b98af5ce0d1e, type: 2}
-    - {fileID: 11400000, guid: 93e00f7ccecba8847b8376548058c26c, type: 2}
+    - {fileID: 11400000, guid: 824a3e788b01f714d8eee01b01084578, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -3251,12 +3321,9 @@ MonoBehaviour:
     - Name: _playAnimationCommand
       Entry: 7
       Data: 0|PlayerAbilityPlayChargeAnimationCommand, Assembly-CSharp
-    - Name: _animation
+    - Name: _config
       Entry: 10
       Data: 0
-    - Name: _animationEndEvent
-      Entry: 10
-      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3271,7 +3338,7 @@ MonoBehaviour:
       Data: 2|InteractiveSphereAppearCommand, Assembly-CSharp
     - Name: _config
       Entry: 10
-      Data: 2
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -5451,4 +5518,5 @@ SceneRoots:
   - {fileID: 10651455}
   - {fileID: 1163580723}
   - {fileID: 759332681}
+  - {fileID: 1206483072}
   - {fileID: 1759817027}

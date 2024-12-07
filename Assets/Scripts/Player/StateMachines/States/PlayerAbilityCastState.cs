@@ -1,26 +1,22 @@
-﻿using Sirenix.OdinInspector;
-using UnityEngine;
-
-[ShowOdinSerializedPropertiesInInspector]
-public class PlayerAbilityCastState : PlayerBaseState
+﻿public class PlayerAbilityCastState : PlayerBaseState
 {
-    [SerializeField, Required] [BoxGroup("Tasks"), LabelText("Play Animation")]
-    private PlayerAbilityPlayCastAnimationCommand _playAnimationCommand;
-
-    [SerializeField, Required] [BoxGroup("Tasks"), LabelText("Fade Out Animation")]
-    private PlayerAbilityFadeOutAnimationCommand _fadeOutAnimationCommand;
-
-    [SerializeField, Required] [BoxGroup("Tasks"), LabelText("Cast Ability")]
-    private CastAbilityCommand _castAbilityCommand;
+    private SOAbilityConfig _config;
 
     private void OnEnable()
     {
-        _playAnimationCommand.Execute(this);
-        _castAbilityCommand.Execute(this);
+        _config = GameManager.Instance.ActiveAbilityConfig;
+
+        foreach (var task in _config.CastStepOnEnableTasks)
+        {
+            task.Execute(this);
+        }
     }
 
     private void OnDisable()
     {
-        _fadeOutAnimationCommand.Execute(this);
+        foreach (var task in _config.CastStepOnDisableTasks)
+        {
+            task.Execute(this);
+        }
     }
 }

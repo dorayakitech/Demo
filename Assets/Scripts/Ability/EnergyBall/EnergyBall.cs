@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class EnergyBall : MonoBehaviour
 {
-    [SerializeField, Required, AssetsOnly] private SOEnergyBallAbilityConfig _config;
-
     [SerializeField, Required, AssetsOnly] [BoxGroup("Prefabs")]
     private GameObject _impactParticle;
 
@@ -13,6 +11,9 @@ public class EnergyBall : MonoBehaviour
 
     [SerializeField, Required, AssetsOnly] [BoxGroup("Prefabs")]
     private GameObject _muzzleParticle;
+
+    [SerializeField, Required] private float _flyForce;
+    [SerializeField, Required] private float _maxFlyDistance;
 
     // This is an offset that moves the impact effect slightly away from the point of impact to reduce clipping of the impact effect
     [SerializeField, Range(0f, 1f)] private float _collideOffset = 0.15f;
@@ -25,6 +26,8 @@ public class EnergyBall : MonoBehaviour
     private float _ballRadius;
     private Vector3 _ballFlyingDirection;
     private float _collisionDetectionDistance;
+
+    private bool _hasTarget;
 
     private void Awake()
     {
@@ -54,27 +57,27 @@ public class EnergyBall : MonoBehaviour
 
     void FixedUpdate()
     {
-        // TODO: 
-        HandleCollision();
-        HandleSelfDestroy();
+        if (_hasTarget)
+            HandleCollision();
+        else
+            HandleSelfDestroy();
     }
 
     private void Fly()
     {
-        var flyDir = GlobalVariablesManager.Instance.GetValue(VariableNamesDefine.TargetEnergyBallSwitch,
-            out GameObject targetSwitch)
-            ? (targetSwitch.transform.position - transform.position).normalized
-            : transform.forward;
+        _hasTarget = GlobalVariablesManager.Instance.GetValue(VariableNamesDefine.TargetEnergyBallSwitch,
+            out GameObject targetSwitch);
 
-        _rb.AddForce(flyDir * _config.FlyingForce);
+        var flyDir = _hasTarget ? (targetSwitch.transform.position - transform.position).normalized : transform.forward;
+        _rb.AddForce(flyDir * _flyForce);
     }
 
     private void HandleSelfDestroy()
     {
         // Calculate current distance from spawn point
         var distance = Vector3.Distance(transform.position, _spawnPoint);
-        if (distance >= _config.Range * 0.5f)
-            ExecuteDestroyProcess(Quaternion.identity);
+        if (distance >= _maxFlyDistance)
+            ExecuteDestroyProcess(Quaternion.identity, true);
     }
 
     private void HandleCollision()
@@ -95,10 +98,8 @@ public class EnergyBall : MonoBehaviour
         }
     }
 
-    private void ExecuteDestroyProcess(Quaternion impactRotation)
+    private void ExecuteDestroyProcess(Quaternion impactRotation, bool selfDestroy = false)
     {
-        var impactP = Instantiate(_impactParticle, transform.position, impactRotation);
-
         //Loop index starts from 1 since component at [0] is that of the parent i.e. this object
         for (var i = 1; i < _trails.Length; i++)
         {
@@ -109,8 +110,13 @@ public class EnergyBall : MonoBehaviour
         }
 
         Destroy(_projectileParticle, 3f);
-        Destroy(impactP, 3.5f);
         Destroy(gameObject);
+
+        if (!selfDestroy)
+        {
+            var impactP = Instantiate(_impactParticle, transform.position, impactRotation);
+            Destroy(impactP, 3.5f);
+        }
     }
 
     private void OnDrawGizmos()

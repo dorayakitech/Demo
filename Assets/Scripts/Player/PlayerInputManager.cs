@@ -4,8 +4,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputManager : MonoBehaviour
 {
-    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Publish")]
+    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Input Value Change")]
     private SOPlayerInputValueChangedEvent _inputValueChangedEvent;
+
+    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Switch Ability")]
+    private SOEvent _switchAbilityEvent;
 
     private PlayerInputActions _inputActions;
     private PlayerInputValue _inputValue;
@@ -45,6 +48,11 @@ public class PlayerInputManager : MonoBehaviour
         _inputValueChangedEvent.Notify(_inputValue);
     }
 
+    private void OnPressSwitchAbility(InputAction.CallbackContext ctx)
+    {
+        _switchAbilityEvent.Notify();
+    }
+
     private void Subscribe()
     {
         _inputActions.Player.Move.performed += OnChangeMoveVector;
@@ -53,6 +61,7 @@ public class PlayerInputManager : MonoBehaviour
         _inputActions.Player.UseAbility.canceled += OnChangeIsPressingUseAbility;
         _inputActions.Player.Run.performed += OnChangeIsPressingRun;
         _inputActions.Player.Run.canceled += OnChangeIsPressingRun;
+        _inputActions.Player.SwitchAbility.started += OnPressSwitchAbility;
     }
 
     private void Unsubscribe()
@@ -63,6 +72,7 @@ public class PlayerInputManager : MonoBehaviour
         _inputActions.Player.UseAbility.canceled -= OnChangeIsPressingUseAbility;
         _inputActions.Player.Run.performed -= OnChangeIsPressingRun;
         _inputActions.Player.Run.canceled -= OnChangeIsPressingRun;
+        _inputActions.Player.SwitchAbility.started -= OnPressSwitchAbility;
     }
 }
 
