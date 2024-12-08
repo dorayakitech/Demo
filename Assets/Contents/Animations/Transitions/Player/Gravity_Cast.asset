@@ -24,7 +24,7 @@ MonoBehaviour:
         _Speed: 1
         _Events:
           _NormalizedTimes:
-          - 0.5898204
+          - 0.059064616
           - NaN
           _Callbacks: []
           _Names:

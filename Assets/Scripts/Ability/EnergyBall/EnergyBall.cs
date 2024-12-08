@@ -26,8 +26,8 @@ public class EnergyBall : MonoBehaviour
     private float _ballRadius;
     private Vector3 _ballFlyingDirection;
     private float _collisionDetectionDistance;
-
-    private bool _hasTarget;
+    private GameObject _targetSwitch;
+    private int _castLayerMask;
 
     private void Awake()
     {
@@ -37,38 +37,42 @@ public class EnergyBall : MonoBehaviour
 
         _ballRadius = _collider.radius;
 
+        _castLayerMask = CalculateCastLayerMask();
+
         // register spawn position
         _spawnPoint = transform.position;
     }
 
     void Start()
     {
-        _projectileParticle = Instantiate(_projectileParticle, transform.position, transform.rotation);
-        _projectileParticle.transform.parent = transform;
-
-        _muzzleParticle = Instantiate(_muzzleParticle, transform.position,
-            transform.rotation * Quaternion.Euler(0.0f, 180.0f, 0.0f));
-        _muzzleParticle.transform.parent = transform;
-        Destroy(_muzzleParticle, 1.5f);
-
-        // Handle Fly
+        GlobalVariablesManager.Instance.GetValue(VariableNamesDefine.TargetEnergyBallSwitch, out _targetSwitch);
+        HandleObjectCollision();
+        GenerateVFX();
         Fly();
     }
 
     void FixedUpdate()
     {
-        if (_hasTarget)
-            HandleCollision();
+        if (_targetSwitch != null)
+            HandleExplosion();
         else
             HandleSelfDestroy();
     }
 
     private void Fly()
     {
-        _hasTarget = GlobalVariablesManager.Instance.GetValue(VariableNamesDefine.TargetEnergyBallSwitch,
-            out GameObject targetSwitch);
+        Vector3 flyDir;
 
-        var flyDir = _hasTarget ? (targetSwitch.transform.position - transform.position).normalized : transform.forward;
+        if (_targetSwitch == null)
+        {
+            flyDir = transform.forward;
+        }
+        else
+        {
+            var hitPoint = _targetSwitch.transform.GetChild(0);
+            flyDir = (hitPoint.position - transform.position).normalized;
+        }
+
         _rb.AddForce(flyDir * _flyForce);
     }
 
@@ -80,7 +84,7 @@ public class EnergyBall : MonoBehaviour
             ExecuteDestroyProcess(Quaternion.identity, true);
     }
 
-    private void HandleCollision()
+    private void HandleExplosion()
     {
         if (_rb.linearVelocity.magnitude != 0)
             transform.rotation = Quaternion.LookRotation(_rb.linearVelocity);
@@ -90,7 +94,7 @@ public class EnergyBall : MonoBehaviour
 
         // Interactive Sphere cannot be detected since the ball is spawned inside the Sphere. They're overlapping
         if (Physics.SphereCast(transform.position, _ballRadius, _ballFlyingDirection, out var hit,
-                _collisionDetectionDistance))
+                _collisionDetectionDistance, _castLayerMask))
         {
             // Move projectile to point of collision
             transform.position = hit.point + (hit.normal * _collideOffset);
@@ -126,5 +130,42 @@ public class EnergyBall : MonoBehaviour
         Vector3 endPosition = transform.position + _ballFlyingDirection.normalized * _collisionDetectionDistance;
         Gizmos.DrawWireSphere(endPosition, _ballRadius);
         Gizmos.DrawLine(transform.position, endPosition);
+    }
+
+    private void HandleObjectCollision()
+    {
+        IgnoreCollisionBetweenPlayer();
+
+        if (_targetSwitch == null)
+            _rb.detectCollisions = false;
+    }
+
+    private void IgnoreCollisionBetweenPlayer()
+    {
+        if (!GlobalVariablesManager.Instance.GetValue(VariableNamesDefine.PlayerCollider,
+                out CapsuleCollider playerCollider))
+        {
+            Debug.LogError("Player Collider Not Found!");
+            return;
+        }
+
+        Physics.IgnoreCollision(_collider, playerCollider, true);
+    }
+
+    private int CalculateCastLayerMask()
+    {
+        var playerLayer = LayerMask.NameToLayer("Player");
+        return ~(1 << playerLayer);
+    }
+
+    private void GenerateVFX()
+    {
+        _projectileParticle = Instantiate(_projectileParticle, transform.position, transform.rotation);
+        _projectileParticle.transform.parent = transform;
+
+        _muzzleParticle = Instantiate(_muzzleParticle, transform.position,
+            transform.rotation * Quaternion.Euler(0.0f, 180.0f, 0.0f));
+        _muzzleParticle.transform.parent = transform;
+        Destroy(_muzzleParticle, 1.5f);
     }
 }

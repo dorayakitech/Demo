@@ -48,7 +48,7 @@ public class InteractiveSphereDetection : MonoBehaviour
     {
         if (!other.CompareTag(InteractableItemTag)) return;
 
-        Debug.Log("Interactive Sphere OnTriggerEnter: " + other.gameObject.name);
+        // Debug.Log("Interactive Sphere OnTriggerEnter: " + other.gameObject.name);
         _detectedEvent.Notify(other.gameObject);
         SetTarget(other.gameObject);
     }
@@ -64,7 +64,7 @@ public class InteractiveSphereDetection : MonoBehaviour
     {
         if (!other.CompareTag(InteractableItemTag)) return;
 
-        Debug.Log("Interactive Sphere OnTriggerExit: " + other.gameObject.name);
+        // Debug.Log("Interactive Sphere OnTriggerExit: " + other.gameObject.name);
         _undetectedEvent.Notify(other.gameObject);
         UnsetTarget(other.gameObject);
     }

@@ -42,7 +42,7 @@ public class PlayerLocomotionManager : MonoBehaviour
         if (Player.Instance.InputValue.MoveVector == Vector2.zero) return;
 
         var targetDir = Player.Instance.InputValue.MoveVector;
-        var lookDir = Quaternion.LookRotation(new Vector3(targetDir.x, 0, targetDir.y).ToIsometric());
+        var lookDir = Quaternion.LookRotation(new Vector3(targetDir.x, 0, targetDir.y).normalized.ToIsometric());
         var startRot = Player.Instance.Rb.rotation;
         var targetRot = Quaternion.Slerp(startRot, lookDir, _rotateSpeed * Time.deltaTime);
         Player.Instance.Rb.MoveRotation(targetRot);

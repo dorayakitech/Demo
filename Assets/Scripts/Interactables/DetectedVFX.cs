@@ -1,20 +1,19 @@
-﻿using Sirenix.OdinInspector;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class GravityObjectDetection : MonoBehaviour
+public class DetectedVFX : MonoBehaviour
 {
-    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Switch Detected")]
+    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Detected")]
     private SOGameObjectNotifiedEvent _detectedEvent;
 
-    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Switch Undetected")]
+    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Undetected")]
     private SOGameObjectNotifiedEvent _undetectedEvent;
 
-    // TODO
-    private Color _defaultColor;
+    private FlashVFX _flashVFX;
 
     private void Awake()
     {
-        _defaultColor = GetComponent<MeshRenderer>().materials[0].color;
+        _flashVFX = GetComponent<FlashVFX>();
     }
 
     private void OnEnable()
@@ -32,12 +31,12 @@ public class GravityObjectDetection : MonoBehaviour
     private void OnDetected(GameObject obj)
     {
         if (gameObject != obj) return;
-        GetComponent<MeshRenderer>().materials[0].color = Color.yellow;
+        _flashVFX.StartFlash();
     }
 
     private void OnUndetected(GameObject obj)
     {
         if (gameObject != obj) return;
-        GetComponent<MeshRenderer>().materials[0].color = _defaultColor;
+        _flashVFX.StopFlash();
     }
 }

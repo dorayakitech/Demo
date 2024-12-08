@@ -2,7 +2,7 @@ using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class GravityObjectLocomotion : MonoBehaviour
+public class GravityObjectAttraction : MonoBehaviour
 {
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Set Target")]
     private SOGameObjectNotifiedEvent _setTargetEvent;
@@ -15,17 +15,15 @@ public class GravityObjectLocomotion : MonoBehaviour
 
     [SerializeField, Required] private float _moveDuration = 1.0f;
 
-    private Rigidbody _rb;
-    private SphereCollider _objCollider;
+    private Collider _objCollider;
     private CapsuleCollider _playerCollider;
     private GameObject _playerLeftHand;
     private bool _isAttractionTarget;
-    private Vector3 _movingEndPoint;
+    private Tweener _moveTweener;
 
     private void Awake()
     {
-        _rb = GetComponent<Rigidbody>();
-        _objCollider = GetComponent<SphereCollider>();
+        _objCollider = GetComponent<Collider>();
     }
 
     private void Start()
@@ -50,18 +48,9 @@ public class GravityObjectLocomotion : MonoBehaviour
         _unsetTargetEvent.Unsubscribe(OnUnsetTarget);
     }
 
-    private void LateUpdate()
+    private void Update()
     {
-        var handForward = -_playerLeftHand.transform.right;
-        handForward.y = 0.0f;
-        handForward.Normalize();
-        _movingEndPoint = _playerLeftHand.transform.position + handForward * _playerLeftHandOffset.z +
-                          Vector3.up * _playerLeftHandOffset.y;
-    }
-
-    private void FixedUpdate()
-    {
-        HandleAttraction();
+        HandleAttraction(CalculateMoveEndPoint());
     }
 
     private void OnSetTarget(GameObject target)
@@ -77,14 +66,32 @@ public class GravityObjectLocomotion : MonoBehaviour
         if (target != gameObject) return;
 
         _isAttractionTarget = false;
-        _rb.DOKill();
         ActivateCollisionBetweenPlayer(true);
+
+        _moveTweener?.Kill();
+        _moveTweener = null;
     }
 
-    private void HandleAttraction()
+    private void HandleAttraction(Vector3 moveEndPoint)
     {
         if (!_isAttractionTarget) return;
-        _rb.DOMove(_movingEndPoint, _moveDuration);
+        if (_moveTweener == null)
+        {
+            _moveTweener = transform.DOMove(moveEndPoint, _moveDuration);
+        }
+        else
+        {
+            _moveTweener.ChangeEndValue(moveEndPoint, true);
+        }
+    }
+
+    private Vector3 CalculateMoveEndPoint()
+    {
+        var handForward = -_playerLeftHand.transform.right;
+        handForward.y = 0.0f;
+        handForward.Normalize();
+        return _playerLeftHand.transform.position + handForward * _playerLeftHandOffset.z +
+               Vector3.up * _playerLeftHandOffset.y;
     }
 
     private void ActivateCollisionBetweenPlayer(bool active)
