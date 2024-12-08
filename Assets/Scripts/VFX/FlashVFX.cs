@@ -40,6 +40,7 @@ public class FlashVFX : MonoBehaviour
 
         // reset material
         ChangeMaterial(_defaultMaterial);
+        _activeGlowMatIndex = 0;
     }
 
     private IEnumerator FlashCoroutine()
