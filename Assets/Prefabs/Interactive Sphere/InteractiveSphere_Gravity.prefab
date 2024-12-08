@@ -81,9 +81,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 46003477f665620489a50386ce4ed36a, type: 2}
     - target: {fileID: 8942803503404561785, guid: 7f1ed3016b6674b43b430157b2917bdb, type: 3}
+      propertyPath: _setTargetEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 4a1740d62f06f0d44a0ae7c8dfebf8c9, type: 2}
+    - target: {fileID: 8942803503404561785, guid: 7f1ed3016b6674b43b430157b2917bdb, type: 3}
       propertyPath: _undetectedEvent
       value: 
       objectReference: {fileID: 11400000, guid: ed376ef6b93e0ad4ba6c4951cadf715f, type: 2}
+    - target: {fileID: 8942803503404561785, guid: 7f1ed3016b6674b43b430157b2917bdb, type: 3}
+      propertyPath: _unsetTargetEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 286c7c6d2127bbf408c4ea2b83d1364a, type: 2}
     - target: {fileID: 8942803503404561785, guid: 7f1ed3016b6674b43b430157b2917bdb, type: 3}
       propertyPath: _interactableItemType
       value: 1

@@ -12,6 +12,12 @@ public class InteractiveSphereDetection : MonoBehaviour
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Undetected")]
     private SOGameObjectNotifiedEvent _undetectedEvent;
 
+    [SerializeField, AssetsOnly] [BoxGroup("Events Published"), LabelText("Set Target")]
+    private SOGameObjectNotifiedEvent _setTargetEvent;
+
+    [SerializeField, AssetsOnly] [BoxGroup("Events Published"), LabelText("Unset Target")]
+    private SOGameObjectNotifiedEvent _unsetTargetEvent;
+
     private string InteractableItemTag
     {
         get
@@ -42,26 +48,44 @@ public class InteractiveSphereDetection : MonoBehaviour
     {
         if (!other.CompareTag(InteractableItemTag)) return;
 
+        Debug.Log("Interactive Sphere OnTriggerEnter: " + other.gameObject.name);
         _detectedEvent.Notify(other.gameObject);
+        SetTarget(other.gameObject);
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (!other.CompareTag(InteractableItemTag)) return;
 
-        if (!GlobalVariablesManager.Instance.HasKey(TargetInteractableItemKey))
-            GlobalVariablesManager.Instance.SetValue(TargetInteractableItemKey, other.gameObject);
+        SetTarget(other.gameObject);
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag(InteractableItemTag)) return;
 
-        if (GlobalVariablesManager.Instance.GetValue(TargetInteractableItemKey, out GameObject storedTarget) &&
-            storedTarget == other.gameObject)
-            GlobalVariablesManager.Instance.RemoveValue(TargetInteractableItemKey);
-
+        Debug.Log("Interactive Sphere OnTriggerExit: " + other.gameObject.name);
         _undetectedEvent.Notify(other.gameObject);
+        UnsetTarget(other.gameObject);
+    }
+
+    private void SetTarget(GameObject target)
+    {
+        if (GlobalVariablesManager.Instance.HasKey(TargetInteractableItemKey)) return;
+
+        Debug.Log("Interactive Sphere Set Target: " + target.gameObject.name);
+        GlobalVariablesManager.Instance.SetValue(TargetInteractableItemKey, target);
+        _setTargetEvent?.Notify(target);
+    }
+
+    private void UnsetTarget(GameObject target)
+    {
+        if (!GlobalVariablesManager.Instance.GetValue(TargetInteractableItemKey, out GameObject storedTarget) ||
+            storedTarget != target) return;
+
+        Debug.Log("Interactive Sphere Unset Target: " + target.gameObject.name);
+        GlobalVariablesManager.Instance.RemoveValue(TargetInteractableItemKey);
+        _unsetTargetEvent?.Notify(target);
     }
 }
 

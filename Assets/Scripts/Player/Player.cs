@@ -1,3 +1,4 @@
+using System;
 using Animancer;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -35,8 +36,7 @@ public class Player : Singleton<Player>
         _rb = GetComponent<Rigidbody>();
 
         // Register Global Variables
-        var leftHandGameObj = GameObject.Find(VariableNamesDefine.PlayerLeftHand);
-        GlobalVariablesManager.Instance.SetValue(VariableNamesDefine.PlayerLeftHand, leftHandGameObj);
+        RegisterGlobalVariables();
     }
 
     private void OnEnable()
@@ -52,5 +52,15 @@ public class Player : Singleton<Player>
     private void OnInputValueChanged(PlayerInputValue newValue)
     {
         _inputValue = newValue;
+    }
+
+    private void RegisterGlobalVariables()
+    {
+        var leftHandGameObj = GameObject.Find(VariableNamesDefine.PlayerLeftHand);
+        GlobalVariablesManager.Instance.SetValue(VariableNamesDefine.PlayerLeftHand, leftHandGameObj);
+
+        var playerColliderGameObj = GameObject.Find(VariableNamesDefine.PlayerColliderGameObject);
+        GlobalVariablesManager.Instance.SetValue(VariableNamesDefine.PlayerCollider,
+            playerColliderGameObj.GetComponent<CapsuleCollider>());
     }
 }

@@ -63,21 +63,33 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: CastStepOnEnableTasks
+    - Name: ChargeStepLateUpdateTasks
       Entry: 7
       Data: 5|System.Collections.Generic.List`1[[ICommand, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: CastStepOnEnableTasks
+      Entry: 7
+      Data: 6|System.Collections.Generic.List`1[[ICommand, Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 2
     - Name: 
       Entry: 7
-      Data: 6|PlayerAbilityPlayCastAnimationCommand, Assembly-CSharp
+      Data: 7|PlayerAbilityPlayCastAnimationCommand, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 7
-      Data: 7|CastEnergyBallCommand, Assembly-CSharp
+      Data: 8|CastEnergyBallCommand, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 
@@ -89,13 +101,13 @@ MonoBehaviour:
       Data: 
     - Name: CastStepOnDisableTasks
       Entry: 7
-      Data: 8|System.Collections.Generic.List`1[[ICommand, Assembly-CSharp]], mscorlib
+      Data: 9|System.Collections.Generic.List`1[[ICommand, Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 9|PlayerAbilityFadeOutAnimationCommand, Assembly-CSharp
+      Data: 10|PlayerAbilityFadeOutAnimationCommand, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 
