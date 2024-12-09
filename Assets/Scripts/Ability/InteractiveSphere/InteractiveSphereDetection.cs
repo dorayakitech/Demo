@@ -18,6 +18,11 @@ public class InteractiveSphereDetection : MonoBehaviour
     [SerializeField, AssetsOnly] [BoxGroup("Events Published"), LabelText("Unset Target")]
     private SOGameObjectNotifiedEvent _unsetTargetEvent;
 
+    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Disappear")]
+    private SOEvent _disappearEvent;
+
+    private bool _isInteractiveSphereDisappearing;
+
     private string InteractableItemTag
     {
         get
@@ -44,11 +49,21 @@ public class InteractiveSphereDetection : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        _disappearEvent.Subscribe(OnInteractiveSphereDisappear);
+    }
+
+    private void OnDisable()
+    {
+        _disappearEvent.Unsubscribe(OnInteractiveSphereDisappear);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag(InteractableItemTag)) return;
 
-        // Debug.Log("Interactive Sphere OnTriggerEnter: " + other.gameObject.name);
+        Debug.Log("Interactive Sphere OnTriggerEnter: " + other.gameObject.name);
         _detectedEvent.Notify(other.gameObject);
         SetTarget(other.gameObject);
     }
@@ -64,7 +79,7 @@ public class InteractiveSphereDetection : MonoBehaviour
     {
         if (!other.CompareTag(InteractableItemTag)) return;
 
-        // Debug.Log("Interactive Sphere OnTriggerExit: " + other.gameObject.name);
+        Debug.Log("Interactive Sphere OnTriggerExit: " + other.gameObject.name);
         _undetectedEvent.Notify(other.gameObject);
         UnsetTarget(other.gameObject);
     }
@@ -72,6 +87,7 @@ public class InteractiveSphereDetection : MonoBehaviour
     private void SetTarget(GameObject target)
     {
         if (GlobalVariablesManager.Instance.HasKey(TargetInteractableItemKey)) return;
+        if (_isInteractiveSphereDisappearing) return;
 
         Debug.Log("Interactive Sphere Set Target: " + target.gameObject.name);
         GlobalVariablesManager.Instance.SetValue(TargetInteractableItemKey, target);
@@ -86,6 +102,11 @@ public class InteractiveSphereDetection : MonoBehaviour
         Debug.Log("Interactive Sphere Unset Target: " + target.gameObject.name);
         GlobalVariablesManager.Instance.RemoveValue(TargetInteractableItemKey);
         _unsetTargetEvent?.Notify(target);
+    }
+
+    private void OnInteractiveSphereDisappear()
+    {
+        _isInteractiveSphereDisappearing = true;
     }
 }
 

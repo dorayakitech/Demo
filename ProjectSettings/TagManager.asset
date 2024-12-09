@@ -6,6 +6,7 @@ TagManager:
   tags:
   - EnergyBallSwitch
   - GravityObject
+  - Ground
   layers:
   - Default
   - TransparentFX

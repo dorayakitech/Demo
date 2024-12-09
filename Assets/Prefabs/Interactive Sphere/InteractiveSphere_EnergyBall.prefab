@@ -4892,3 +4892,6 @@ MonoBehaviour:
   _interactableItemType: 0
   _detectedEvent: {fileID: 11400000, guid: bb0166c81b094bb499184e92d19b08e8, type: 2}
   _undetectedEvent: {fileID: 11400000, guid: 9c4207d2969663b419817af44cf7817e, type: 2}
+  _setTargetEvent: {fileID: 0}
+  _unsetTargetEvent: {fileID: 0}
+  _disappearEvent: {fileID: 11400000, guid: 9007ffab926c60a4b91b61397196779b, type: 2}

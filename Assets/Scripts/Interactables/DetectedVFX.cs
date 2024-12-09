@@ -1,6 +1,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
+[RequireComponent(typeof(FlashVFX))]
 public class DetectedVFX : MonoBehaviour
 {
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Detected")]

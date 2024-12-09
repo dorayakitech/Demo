@@ -5,25 +5,22 @@ using UnityEngine;
 
 public class FlashVFX : MonoBehaviour
 {
+    [SerializeField] private GameObject _meshRendererOwner;
     [SerializeField, Required, AssetsOnly] private List<Material> _glowMats;
     [SerializeField, Required, AssetsOnly] private Material _defaultMaterial;
     [SerializeField, Required] private float _transitionDuration = 2.0f;
 
     private MeshRenderer _meshRenderer;
-    private readonly List<MeshRenderer> _childrenMeshRenderers = new();
+    private List<MeshRenderer> _childrenMeshRenderers;
     private int _activeGlowMatIndex;
     private Coroutine _flashCoroutine;
 
     private void Awake()
     {
-        _meshRenderer = GetComponent<MeshRenderer>();
-
-        foreach (Transform child in transform)
-        {
-            var mr = child.gameObject.GetComponent<MeshRenderer>();
-            if (mr != null)
-                _childrenMeshRenderers.Add(mr);
-        }
+        if (_meshRendererOwner != null)
+            GetMeshRenderers(_meshRendererOwner, out _meshRenderer, out _childrenMeshRenderers);
+        else
+            GetMeshRenderers(gameObject, out _meshRenderer, out _childrenMeshRenderers);
     }
 
     public void StartFlash()
@@ -67,6 +64,20 @@ public class FlashVFX : MonoBehaviour
         foreach (var mr in _childrenMeshRenderers)
         {
             mr.sharedMaterials = newMats;
+        }
+    }
+
+    private void GetMeshRenderers(GameObject owner, out MeshRenderer meshRenderer,
+        out List<MeshRenderer> childrenMeshRenderers)
+    {
+        meshRenderer = owner.GetComponent<MeshRenderer>();
+
+        childrenMeshRenderers = new List<MeshRenderer>();
+        foreach (Transform child in owner.transform)
+        {
+            var mr = child.gameObject.GetComponent<MeshRenderer>();
+            if (mr != null)
+                childrenMeshRenderers.Add(mr);
         }
     }
 }

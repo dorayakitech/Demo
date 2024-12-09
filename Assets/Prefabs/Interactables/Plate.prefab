@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c888135d5ca209a40a78261867913066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _meshRendererOwner: {fileID: 9123704145303718384}
   _glowMats:
   - {fileID: 2100000, guid: 4772ac4625388e2449127332990bab2c, type: 2}
   - {fileID: 2100000, guid: 73058677f02445e44af4a8eb978c279b, type: 2}

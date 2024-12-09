@@ -30,13 +30,14 @@ public class PressedPlate : MonoBehaviour
     {
         var currentPressed = IsPressed();
 
-        if (currentPressed && !_isPressed)
+        switch (currentPressed)
         {
-            _flashVFX.StartFlash();
-        }
-        else if (!currentPressed && _isPressed)
-        {
-            _flashVFX.StopFlash();
+            case true when !_isPressed:
+                _flashVFX.StartFlash();
+                break;
+            case false when _isPressed:
+                _flashVFX.StopFlash();
+                break;
         }
 
         _isPressed = currentPressed;
