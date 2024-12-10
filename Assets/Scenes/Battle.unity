@@ -1321,6 +1321,7 @@ GameObject:
   - component: {fileID: 438700962}
   - component: {fileID: 438700966}
   - component: {fileID: 438700967}
+  - component: {fileID: 438700968}
   m_Layer: 0
   m_Name: Wall (1)
   m_TagString: Untagged
@@ -1440,16 +1441,10 @@ MonoBehaviour:
     SerializationNodes:
     - Name: Filter
       Entry: 7
-      Data: 0|RevertFilter, Assembly-CSharp
-    - Name: Filter
-      Entry: 7
-      Data: 1|ObjectTagHasMatch, Assembly-CSharp
-    - Name: Tag
+      Data: 0|ObjectNameHasMatch, Assembly-CSharp
+    - Name: TargetName
       Entry: 1
-      Data: Player
-    - Name: 
-      Entry: 8
-      Data: 
+      Data: BossEnergyBall(Clone)
     - Name: 
       Entry: 8
       Data: 
@@ -1475,6 +1470,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &438700968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438700961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27bc67f86f0743018c950b0442fe115b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShakeEvent: {fileID: 11400000, guid: c80939b062e1e5e499aa6e85943e7ce6, type: 2}
+  Duration: 1
+  Strength: 1
 --- !u!1 &463601721
 GameObject:
   m_ObjectHideFlags: 0
@@ -2712,6 +2722,7 @@ GameObject:
   - component: {fileID: 1034715096}
   - component: {fileID: 1034715100}
   - component: {fileID: 1034715101}
+  - component: {fileID: 1034715102}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -2831,16 +2842,10 @@ MonoBehaviour:
     SerializationNodes:
     - Name: Filter
       Entry: 7
-      Data: 0|RevertFilter, Assembly-CSharp
-    - Name: Filter
-      Entry: 7
-      Data: 1|ObjectTagHasMatch, Assembly-CSharp
-    - Name: Tag
+      Data: 0|ObjectNameHasMatch, Assembly-CSharp
+    - Name: TargetName
       Entry: 1
-      Data: Player
-    - Name: 
-      Entry: 8
-      Data: 
+      Data: BossEnergyBall(Clone)
     - Name: 
       Entry: 8
       Data: 
@@ -2866,6 +2871,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1034715102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034715095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27bc67f86f0743018c950b0442fe115b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShakeEvent: {fileID: 11400000, guid: c80939b062e1e5e499aa6e85943e7ce6, type: 2}
+  Duration: 1
+  Strength: 1
 --- !u!1 &1163580722
 GameObject:
   m_ObjectHideFlags: 0
@@ -3519,6 +3539,7 @@ GameObject:
   - component: {fileID: 1424302283}
   - component: {fileID: 1424302287}
   - component: {fileID: 1424302288}
+  - component: {fileID: 1424302289}
   m_Layer: 0
   m_Name: Wall (2)
   m_TagString: Untagged
@@ -3638,16 +3659,10 @@ MonoBehaviour:
     SerializationNodes:
     - Name: Filter
       Entry: 7
-      Data: 0|RevertFilter, Assembly-CSharp
-    - Name: Filter
-      Entry: 7
-      Data: 1|ObjectTagHasMatch, Assembly-CSharp
-    - Name: Tag
+      Data: 0|ObjectNameHasMatch, Assembly-CSharp
+    - Name: TargetName
       Entry: 1
-      Data: Player
-    - Name: 
-      Entry: 8
-      Data: 
+      Data: BossEnergyBall(Clone)
     - Name: 
       Entry: 8
       Data: 
@@ -3673,6 +3688,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1424302289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424302282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27bc67f86f0743018c950b0442fe115b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShakeEvent: {fileID: 11400000, guid: c80939b062e1e5e499aa6e85943e7ce6, type: 2}
+  Duration: 1
+  Strength: 1
 --- !u!1 &1470460790
 GameObject:
   m_ObjectHideFlags: 0
@@ -3687,6 +3717,7 @@ GameObject:
   - component: {fileID: 1470460791}
   - component: {fileID: 1470460795}
   - component: {fileID: 1470460796}
+  - component: {fileID: 1470460797}
   m_Layer: 0
   m_Name: Wall (3)
   m_TagString: Untagged
@@ -3806,16 +3837,10 @@ MonoBehaviour:
     SerializationNodes:
     - Name: Filter
       Entry: 7
-      Data: 0|RevertFilter, Assembly-CSharp
-    - Name: Filter
-      Entry: 7
-      Data: 1|ObjectTagHasMatch, Assembly-CSharp
-    - Name: Tag
+      Data: 0|ObjectNameHasMatch, Assembly-CSharp
+    - Name: TargetName
       Entry: 1
-      Data: Player
-    - Name: 
-      Entry: 8
-      Data: 
+      Data: BossEnergyBall(Clone)
     - Name: 
       Entry: 8
       Data: 
@@ -3841,6 +3866,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1470460797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470460790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27bc67f86f0743018c950b0442fe115b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShakeEvent: {fileID: 11400000, guid: c80939b062e1e5e499aa6e85943e7ce6, type: 2}
+  Duration: 1
+  Strength: 1
 --- !u!1 &1487694070
 GameObject:
   m_ObjectHideFlags: 0

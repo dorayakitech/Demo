@@ -16,6 +16,9 @@ public class RandomChangeEnergyLaserTurretPos : MonoBehaviour
     [FormerlySerializedAs("Duration")] [Min(0.1f), LabelText("移动时间")]
     public float MoveTime = 1f;
     private int _lowIndex = -1;
+    //来个冷却
+    private float _coolDown = 0.5f;
+    private float _lastChangeTime = float.MinValue;
 
     private void Awake()
     {
@@ -29,6 +32,9 @@ public class RandomChangeEnergyLaserTurretPos : MonoBehaviour
 
     private void RandomSetPos()
     {
+        if (Time.time - _lastChangeTime < _coolDown)
+            return;
+        _lastChangeTime = Time.time;
         //一个挪到低位，剩余的挪到高位
         var newLowIndex = UnityEngine.Random.Range(0, targets.Length);
         while(targets.Length > 1 && newLowIndex == _lowIndex)
