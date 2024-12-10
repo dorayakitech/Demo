@@ -1,53 +1,24 @@
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+
+
+public enum InteractiveSphereDetectionType
+{
+    EnergyBallReceiver,
+    GravityObject
+}
 
 public class InteractiveSphereDetection : MonoBehaviour
 {
     [SerializeField, Required, EnumToggleButtons]
     private InteractiveSphereDetectionType _interactableItemType;
 
-    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Detected")]
-    private SOGameObjectNotifiedEvent _detectedEvent;
-
-    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Undetected")]
-    private SOGameObjectNotifiedEvent _undetectedEvent;
-
-    [SerializeField, AssetsOnly] [BoxGroup("Events Published"), LabelText("Set Target")]
-    private SOGameObjectNotifiedEvent _setTargetEvent;
-
-    [SerializeField, AssetsOnly] [BoxGroup("Events Published"), LabelText("Unset Target")]
-    private SOGameObjectNotifiedEvent _unsetTargetEvent;
-
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Disappear")]
     private SOEvent _disappearEvent;
 
+    private List<IInteractable> _cachedInteractables = new();
     private bool _isInteractiveSphereDisappearing;
-
-    private string InteractableItemTag
-    {
-        get
-        {
-            return _interactableItemType switch
-            {
-                InteractiveSphereDetectionType.EnergyBallSwitch => VariableNamesDefine.EnergyBallSwitchTag,
-                InteractiveSphereDetectionType.GravityObject => VariableNamesDefine.GravityObjectTag,
-                _ => ""
-            };
-        }
-    }
-
-    private string TargetInteractableItemKey
-    {
-        get
-        {
-            return _interactableItemType switch
-            {
-                InteractiveSphereDetectionType.EnergyBallSwitch => VariableNamesDefine.TargetEnergyBallSwitch,
-                InteractiveSphereDetectionType.GravityObject => VariableNamesDefine.TargetGravityObject,
-                _ => ""
-            };
-        }
-    }
 
     private void OnEnable()
     {
@@ -61,57 +32,92 @@ public class InteractiveSphereDetection : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag(InteractableItemTag)) return;
+        switch (_interactableItemType)
+        {
+            case InteractiveSphereDetectionType.EnergyBallReceiver:
+                if (!other.TryGetComponent(out EnergyBallReceiver energyBallReceiver)) break;
+                energyBallReceiver.IsDetected();
+                SetTarget(VariableNamesDefine.TargetEnergyBallReceiver, energyBallReceiver);
+                _cachedInteractables.Add(energyBallReceiver);
 
-        Debug.Log("Interactive Sphere OnTriggerEnter: " + other.gameObject.name);
-        _detectedEvent.Notify(other.gameObject);
-        SetTarget(other.gameObject);
+                break;
+
+            case InteractiveSphereDetectionType.GravityObject:
+                if (!other.TryGetComponent(out GravityObject gravityObject)) break;
+                gravityObject.IsDetected();
+                SetTarget(VariableNamesDefine.TargetGravityObject, gravityObject);
+                _cachedInteractables.Add(gravityObject);
+
+                break;
+        }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (!other.CompareTag(InteractableItemTag)) return;
+        IInteractable newTarget = null;
 
-        SetTarget(other.gameObject);
+        foreach (var interactable in _cachedInteractables)
+        {
+            if (interactable.Obj != other.gameObject) continue;
+
+            newTarget = interactable;
+            break;
+        }
+
+        switch (_interactableItemType)
+        {
+            case InteractiveSphereDetectionType.EnergyBallReceiver when newTarget != null:
+                SetTarget(VariableNamesDefine.TargetEnergyBallReceiver, newTarget);
+                break;
+
+            case InteractiveSphereDetectionType.GravityObject when newTarget != null:
+                SetTarget(VariableNamesDefine.TargetGravityObject, newTarget);
+                break;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (!other.CompareTag(InteractableItemTag)) return;
+        switch (_interactableItemType)
+        {
+            case InteractiveSphereDetectionType.EnergyBallReceiver:
+                if (!other.TryGetComponent(out EnergyBallReceiver energyBallReceiver)) break;
+                energyBallReceiver.IsUndetected();
+                UnsetTarget(VariableNamesDefine.TargetEnergyBallReceiver, energyBallReceiver);
+                _cachedInteractables.Remove(energyBallReceiver);
 
-        Debug.Log("Interactive Sphere OnTriggerExit: " + other.gameObject.name);
-        _undetectedEvent.Notify(other.gameObject);
-        UnsetTarget(other.gameObject);
+                break;
+
+            case InteractiveSphereDetectionType.GravityObject:
+                if (!other.TryGetComponent(out GravityObject gravityObject)) break;
+                gravityObject.IsUndetected();
+                UnsetTarget(VariableNamesDefine.TargetGravityObject, gravityObject);
+                _cachedInteractables.Remove(gravityObject);
+
+                break;
+        }
     }
 
-    private void SetTarget(GameObject target)
+    private void SetTarget(string key, IInteractable target)
     {
-        if (GlobalVariablesManager.Instance.HasKey(TargetInteractableItemKey)) return;
+        if (GlobalVariablesManager.Instance.HasKey(key)) return;
         if (_isInteractiveSphereDisappearing) return;
 
-        Debug.Log("Interactive Sphere Set Target: " + target.gameObject.name);
-        GlobalVariablesManager.Instance.SetValue(TargetInteractableItemKey, target);
-        _setTargetEvent?.Notify(target);
+        GlobalVariablesManager.Instance.SetValue(key, target.Obj);
+        target.IsSetTarget();
     }
 
-    private void UnsetTarget(GameObject target)
+    private void UnsetTarget(string key, IInteractable target)
     {
-        if (!GlobalVariablesManager.Instance.GetValue(TargetInteractableItemKey, out GameObject storedTarget) ||
-            storedTarget != target) return;
+        if (!GlobalVariablesManager.Instance.GetValue(key, out GameObject storedTarget) ||
+            storedTarget != target.Obj) return;
 
-        Debug.Log("Interactive Sphere Unset Target: " + target.gameObject.name);
-        GlobalVariablesManager.Instance.RemoveValue(TargetInteractableItemKey);
-        _unsetTargetEvent?.Notify(target);
+        GlobalVariablesManager.Instance.RemoveValue(key);
+        target.IsUnsetTarget();
     }
 
     private void OnInteractiveSphereDisappear()
     {
         _isInteractiveSphereDisappearing = true;
     }
-}
-
-public enum InteractiveSphereDetectionType
-{
-    EnergyBallSwitch,
-    GravityObject
 }

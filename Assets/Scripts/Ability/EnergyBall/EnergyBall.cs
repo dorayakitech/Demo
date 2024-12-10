@@ -45,7 +45,7 @@ public class EnergyBall : MonoBehaviour
 
     void Start()
     {
-        GlobalVariablesManager.Instance.GetValue(VariableNamesDefine.TargetEnergyBallSwitch, out _targetSwitch);
+        GlobalVariablesManager.Instance.GetValue(VariableNamesDefine.TargetEnergyBallReceiver, out _targetSwitch);
         HandleObjectCollision();
         GenerateVFX();
         Fly();

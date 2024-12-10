@@ -6,7 +6,7 @@
     public const string EnergyBallSwitchTag = "EnergyBallSwitch";
     public const string GravityObjectTag = "GravityObject";
     public const string GroundTag = "Ground";
-    public const string TargetEnergyBallSwitch = "TargetEnergyBallSwitch";
+    public const string TargetEnergyBallReceiver = "TargetEnergyBallReceiver";
     public const string TargetGravityObject = "TargetGravityObject";
     public const string CastAnimationMidwayEventName = "TimeToDisappearInteractiveSphere";
 }
