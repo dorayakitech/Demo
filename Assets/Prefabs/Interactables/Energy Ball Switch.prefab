@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 2969282370493043117}
   - component: {fileID: 855684236385145998}
   - component: {fileID: 325331220849654273}
+  - component: {fileID: 4271765883143608571}
   m_Layer: 0
   m_Name: Energy Ball Switch
   m_TagString: EnergyBallSwitch
@@ -199,3 +200,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4b30cb15e0411ea8bd1a39c3e7be42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4271765883143608571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600881630475504148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5289afcbcf846d64791379c7551305d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _floatingDistance: 0.15
+  _floatingDuration: 0.6

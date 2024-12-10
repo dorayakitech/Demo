@@ -170,6 +170,68 @@ Transform:
   - {fileID: 1943905138}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &24603876
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1759817027}
+    m_Modifications:
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6600881630475504148, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_Name
+      value: Energy Ball Switch (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+--- !u!4 &24603877 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+  m_PrefabInstance: {fileID: 24603876}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &100335068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1555,72 +1617,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 492830457}
   m_Mesh: {fileID: 4300000, guid: 13fbbd71d0278e9449670d69a9885156, type: 3}
---- !u!1001 &496317567
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1759817027}
-    m_Modifications:
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.63
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.69
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6600881630475504148, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_Name
-      value: Energy Ball Switch 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6600881630475504148, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
---- !u!4 &496317568 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-  m_PrefabInstance: {fileID: 496317567}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &534711748
 GameObject:
   m_ObjectHideFlags: 0
@@ -1729,6 +1725,68 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534711748}
   m_Mesh: {fileID: 4300000, guid: 13fbbd71d0278e9449670d69a9885156, type: 3}
+--- !u!1001 &704375146
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1759817027}
+    m_Modifications:
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6600881630475504148, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_Name
+      value: Energy Ball Switch
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+--- !u!4 &704375147 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+  m_PrefabInstance: {fileID: 704375146}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &753061020
 GameObject:
   m_ObjectHideFlags: 0
@@ -2052,72 +2110,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2735758825235669627, guid: ef27d25d46b84f642bcdf6ac643f2d98, type: 3}
   m_PrefabInstance: {fileID: 802487158}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &842979748
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1759817027}
-    m_Modifications:
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.63
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.81
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6600881630475504148, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_Name
-      value: Energy Ball Switch 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6600881630475504148, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
---- !u!4 &842979749 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-  m_PrefabInstance: {fileID: 842979748}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &849756056
 GameObject:
@@ -3228,15 +3220,77 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1881007216}
-  - {fileID: 496317568}
-  - {fileID: 842979749}
   - {fileID: 897003311}
   - {fileID: 1586597941}
   - {fileID: 802487159}
   - {fileID: 338676314}
+  - {fileID: 704375147}
+  - {fileID: 1798052715}
+  - {fileID: 24603877}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1798052714
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1759817027}
+    m_Modifications:
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6600881630475504148, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: m_Name
+      value: Energy Ball Switch (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+--- !u!4 &1798052715 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+  m_PrefabInstance: {fileID: 1798052714}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1870403637
 GameObject:
   m_ObjectHideFlags: 0
@@ -3344,72 +3398,6 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
---- !u!1001 &1881007215
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1759817027}
-    m_Modifications:
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.77
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4.71
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6600881630475504148, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_Name
-      value: Energy Ball Switch 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6600881630475504148, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
---- !u!4 &1881007216 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3083514646877175864, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
-  m_PrefabInstance: {fileID: 1881007215}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1886587424
 PrefabInstance:
   m_ObjectHideFlags: 0
