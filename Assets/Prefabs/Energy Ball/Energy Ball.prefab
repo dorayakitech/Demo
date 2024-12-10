@@ -99,4 +99,3 @@ MonoBehaviour:
   _muzzleParticle: {fileID: 177544, guid: 9b0b48e1c4a7a1f4d9006a0e51564684, type: 3}
   _flyForce: 800
   _maxFlyDistance: 4
-  _collideOffset: 0.15

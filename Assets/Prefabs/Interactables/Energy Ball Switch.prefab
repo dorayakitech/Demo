@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 4271765883143608571}
   m_Layer: 0
   m_Name: Energy Ball Switch
-  m_TagString: EnergyBallSwitch
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
