@@ -185,7 +185,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _energyBallReceiverCfg: {fileID: 11400000, guid: ab96695f0dcdbc144bbe572a37fa4341, type: 2}
-  _gravityObjectCfg: {fileID: 11400000, guid: 295a53cc056669a499a419fc341b4117, type: 2}
+  _gravityObjectCfg: {fileID: 0}
+  _pressedPlateCfg: {fileID: 0}
 --- !u!114 &325331220849654273
 MonoBehaviour:
   m_ObjectHideFlags: 0

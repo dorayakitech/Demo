@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7984152815332593565}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Check Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 2898902175161074538}
   - component: {fileID: 8294252147722989030}
   - component: {fileID: 311577200596154240}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pressed Plate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,8 +177,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4334cbaf7aaa4b29b473d9451708f9c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _energyBallReceiverCfg: {fileID: 11400000, guid: ab96695f0dcdbc144bbe572a37fa4341, type: 2}
-  _gravityObjectCfg: {fileID: 11400000, guid: 295a53cc056669a499a419fc341b4117, type: 2}
+  _energyBallReceiverCfg: {fileID: 0}
+  _gravityObjectCfg: {fileID: 0}
   _pressedPlateCfg: {fileID: 11400000, guid: 5140584f9dd7c3844b4a2d0a378ca793, type: 2}
 --- !u!114 &311577200596154240
 MonoBehaviour:
@@ -193,4 +193,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _checkPoint: {fileID: 7984152815332593565}
-  _checkRange: 0.3

@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class InteractableFlashVFX : MonoBehaviour
 {
-    [SerializeField, Required, AssetsOnly] private SOInteractableFlashVFXConfig _energyBallReceiverCfg;
-    [SerializeField, Required, AssetsOnly] private SOInteractableFlashVFXConfig _gravityObjectCfg;
-    [SerializeField, Required, AssetsOnly] private SOInteractableFlashVFXConfig _pressedPlateCfg;
+    [SerializeField, AssetsOnly] private SOInteractableFlashVFXConfig _energyBallReceiverCfg;
+    [SerializeField, AssetsOnly] private SOInteractableFlashVFXConfig _gravityObjectCfg;
+    [SerializeField, AssetsOnly] private SOInteractableFlashVFXConfig _pressedPlateCfg;
 
     private MeshRenderer _meshRenderer;
     private readonly List<MeshRenderer> _childrenMeshRenderers = new();
