@@ -9,14 +9,13 @@ public class InteractableFlashVFX : MonoBehaviour
     [SerializeField, AssetsOnly] private SOInteractableFlashVFXConfig _gravityObjectCfg;
     [SerializeField, AssetsOnly] private SOInteractableFlashVFXConfig _pressedPlateCfg;
 
-    private MeshRenderer _meshRenderer;
-    private readonly List<MeshRenderer> _childrenMeshRenderers = new();
+    private readonly List<MeshRenderer> _meshRenderers = new();
     private int _activeGlowMaterialIndex;
     private Coroutine _flashCoroutine;
 
     private void Awake()
     {
-        GetMeshRenderers();
+        FindMeshRenderersRecursively(transform);
     }
 
     public void StartFlash(InteractableType interactableType)
@@ -57,24 +56,20 @@ public class InteractableFlashVFX : MonoBehaviour
     private void ChangeMaterial(Material mat)
     {
         var newMats = new[] { mat };
-
-        if (_meshRenderer != null)
-            _meshRenderer.materials = newMats;
-
-        // handle child component
-        foreach (var mr in _childrenMeshRenderers)
+        foreach (var mr in _meshRenderers)
         {
             mr.materials = newMats;
         }
     }
 
-    private void GetMeshRenderers()
+    private void FindMeshRenderersRecursively(Transform parent)
     {
-        _meshRenderer = GetComponent<MeshRenderer>();
-        foreach (Transform child in transform)
+        if (parent.TryGetComponent<MeshRenderer>(out var mr))
+            _meshRenderers.Add(mr);
+
+        foreach (Transform child in parent)
         {
-            if (child.gameObject.TryGetComponent<MeshRenderer>(out var mr))
-                _childrenMeshRenderers.Add(mr);
+            FindMeshRenderersRecursively(child);
         }
     }
 

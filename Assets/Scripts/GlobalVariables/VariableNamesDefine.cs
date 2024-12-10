@@ -8,4 +8,5 @@
     public const string TargetGravityObject = "TargetGravityObject";
     public const string CastAnimationMidwayEventName = "TimeToDisappearInteractiveSphere";
     public const string PressedPlateLayerMaskName = "Pressed Plate";
+    public const string EnergyBallReceiverHitPoint = "HitPoint";
 }

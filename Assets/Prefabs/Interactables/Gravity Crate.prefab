@@ -308,7 +308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerLeftHandOffset: {x: 0, y: 0.8, z: 1}
   _elevateDuration: 0.5
-  _pressedPlateCheckBoxSize: {x: 2, y: 3, z: 2}
+  _pressedPlateCheckBoxSize: {x: 2, y: 2, z: 2}
   _pressedPlateCheckDistance: 5
   _freeFallingForce: 19.6
   _flyToPressedPlateDuration: 0.5

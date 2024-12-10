@@ -54,7 +54,7 @@ public class EnergyBall : MonoBehaviour
         }
         else
         {
-            var hitPoint = _targetSwitch.transform.GetChild(0);
+            var hitPoint = _targetSwitch.transform.Find(VariableNamesDefine.EnergyBallReceiverHitPoint);
             flyDir = (hitPoint.position - transform.position).normalized;
         }
 
