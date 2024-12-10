@@ -1,17 +1,25 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(InteractableFlashVFX))]
 public class EnergyBallReceiver : MonoBehaviour, IInteractable
 {
+    private InteractableFlashVFX _flashVFX;
+
     public GameObject Obj => gameObject;
+
+    private void Awake()
+    {
+        _flashVFX = GetComponent<InteractableFlashVFX>();
+    }
 
     public void IsDetected()
     {
-        Debug.Log($"{gameObject.name} Is detected");
+        _flashVFX.StartFlash(InteractableType.EnergyBallReceiver);
     }
 
     public void IsUndetected()
     {
-        Debug.Log($"{gameObject.name} Is undetected");
+        _flashVFX.StopFlash(InteractableType.EnergyBallReceiver);
     }
 
     public void IsSetTarget()

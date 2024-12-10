@@ -2,7 +2,6 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-[RequireComponent(typeof(DetectedVFX))]
 [RequireComponent(typeof(GravityObjectStaticState))]
 [RequireComponent(typeof(GravityObjectElevateState))]
 [RequireComponent(typeof(GravityObjectFallState))]

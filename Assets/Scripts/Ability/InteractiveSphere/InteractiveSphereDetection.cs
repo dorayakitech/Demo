@@ -2,22 +2,15 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-
-public enum InteractiveSphereDetectionType
-{
-    EnergyBallReceiver,
-    GravityObject
-}
-
 public class InteractiveSphereDetection : MonoBehaviour
 {
     [SerializeField, Required, EnumToggleButtons]
-    private InteractiveSphereDetectionType _interactableItemType;
+    private InteractableType _interactableItemType;
 
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Disappear")]
     private SOEvent _disappearEvent;
 
-    private List<IInteractable> _cachedInteractables = new();
+    private readonly List<IInteractable> _cachedInteractables = new();
     private bool _isInteractiveSphereDisappearing;
 
     private void OnEnable()
@@ -34,7 +27,7 @@ public class InteractiveSphereDetection : MonoBehaviour
     {
         switch (_interactableItemType)
         {
-            case InteractiveSphereDetectionType.EnergyBallReceiver:
+            case InteractableType.EnergyBallReceiver:
                 if (!other.TryGetComponent(out EnergyBallReceiver energyBallReceiver)) break;
                 energyBallReceiver.IsDetected();
                 SetTarget(VariableNamesDefine.TargetEnergyBallReceiver, energyBallReceiver);
@@ -42,7 +35,7 @@ public class InteractiveSphereDetection : MonoBehaviour
 
                 break;
 
-            case InteractiveSphereDetectionType.GravityObject:
+            case InteractableType.GravityObject:
                 if (!other.TryGetComponent(out GravityObject gravityObject)) break;
                 gravityObject.IsDetected();
                 SetTarget(VariableNamesDefine.TargetGravityObject, gravityObject);
@@ -66,11 +59,11 @@ public class InteractiveSphereDetection : MonoBehaviour
 
         switch (_interactableItemType)
         {
-            case InteractiveSphereDetectionType.EnergyBallReceiver when newTarget != null:
+            case InteractableType.EnergyBallReceiver when newTarget != null:
                 SetTarget(VariableNamesDefine.TargetEnergyBallReceiver, newTarget);
                 break;
 
-            case InteractiveSphereDetectionType.GravityObject when newTarget != null:
+            case InteractableType.GravityObject when newTarget != null:
                 SetTarget(VariableNamesDefine.TargetGravityObject, newTarget);
                 break;
         }
@@ -80,7 +73,7 @@ public class InteractiveSphereDetection : MonoBehaviour
     {
         switch (_interactableItemType)
         {
-            case InteractiveSphereDetectionType.EnergyBallReceiver:
+            case InteractableType.EnergyBallReceiver:
                 if (!other.TryGetComponent(out EnergyBallReceiver energyBallReceiver)) break;
                 energyBallReceiver.IsUndetected();
                 UnsetTarget(VariableNamesDefine.TargetEnergyBallReceiver, energyBallReceiver);
@@ -88,7 +81,7 @@ public class InteractiveSphereDetection : MonoBehaviour
 
                 break;
 
-            case InteractiveSphereDetectionType.GravityObject:
+            case InteractableType.GravityObject:
                 if (!other.TryGetComponent(out GravityObject gravityObject)) break;
                 gravityObject.IsUndetected();
                 UnsetTarget(VariableNamesDefine.TargetGravityObject, gravityObject);

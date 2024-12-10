@@ -10,3 +10,10 @@ public interface IInteractable
     void IsSetTarget();
     void IsUnsetTarget();
 }
+
+public enum InteractableType
+{
+    EnergyBallReceiver,
+    GravityObject,
+    PressedPlate
+}

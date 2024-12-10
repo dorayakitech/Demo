@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3913710835776767565
+--- !u!1 &504317242165920425
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5176588946927138360}
+  - component: {fileID: 218034700868794740}
   m_Layer: 0
   m_Name: HitPoint
   m_TagString: Untagged
@@ -16,22 +16,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5176588946927138360
+--- !u!4 &218034700868794740
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3913710835776767565}
+  m_GameObject: {fileID: 504317242165920425}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3083522776320276660}
+  m_Father: {fileID: 3083514646877175864}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7427194919617754022
+--- !u!1 &6600881630475504148
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -39,13 +39,13 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3083522776320276660}
-  - component: {fileID: 5266454469150180648}
-  - component: {fileID: 3439896042803071650}
-  - component: {fileID: 7221883180234250178}
-  - component: {fileID: 336528857285970615}
-  - component: {fileID: 8328588039589792889}
-  - component: {fileID: 5910351286295286187}
+  - component: {fileID: 3083514646877175864}
+  - component: {fileID: 8149871857969719579}
+  - component: {fileID: 2255158028444432470}
+  - component: {fileID: 7907398115723636781}
+  - component: {fileID: 2969282370493043117}
+  - component: {fileID: 855684236385145998}
+  - component: {fileID: 325331220849654273}
   m_Layer: 0
   m_Name: Energy Ball Switch
   m_TagString: EnergyBallSwitch
@@ -53,37 +53,37 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3083522776320276660
+--- !u!4 &3083514646877175864
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7427194919617754022}
+  m_GameObject: {fileID: 6600881630475504148}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5176588946927138360}
+  - {fileID: 218034700868794740}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5266454469150180648
+--- !u!33 &8149871857969719579
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7427194919617754022}
+  m_GameObject: {fileID: 6600881630475504148}
   m_Mesh: {fileID: 4300000, guid: cd34a87d3dd683540852f74f003ba31e, type: 3}
---- !u!23 &3439896042803071650
+--- !u!23 &2255158028444432470
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7427194919617754022}
+  m_GameObject: {fileID: 6600881630475504148}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -122,13 +122,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &7221883180234250178
+--- !u!54 &7907398115723636781
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7427194919617754022}
+  m_GameObject: {fileID: 6600881630475504148}
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
@@ -149,13 +149,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &336528857285970615
+--- !u!136 &2969282370493043117
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7427194919617754022}
+  m_GameObject: {fileID: 6600881630475504148}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -172,35 +172,29 @@ CapsuleCollider:
   m_Height: 0.49670935
   m_Direction: 1
   m_Center: {x: -0.000000048428774, y: 0.24835467, z: 0.00000024214387}
---- !u!114 &8328588039589792889
+--- !u!114 &855684236385145998
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7427194919617754022}
+  m_GameObject: {fileID: 6600881630475504148}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c888135d5ca209a40a78261867913066, type: 3}
+  m_Script: {fileID: 11500000, guid: 4334cbaf7aaa4b29b473d9451708f9c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _meshRendererOwner: {fileID: 7427194919617754022}
-  _glowMats:
-  - {fileID: 2100000, guid: dcb4b58df1b09d04696b0743f2d209b7, type: 2}
-  - {fileID: 2100000, guid: ee07010402e7d5748a86afea831a822c, type: 2}
-  _defaultMaterial: {fileID: 2100000, guid: f5a87e0c1466cb04d82551705bfebd4d, type: 2}
-  _transitionDuration: 0.4
---- !u!114 &5910351286295286187
+  _energyBallReceiverCfg: {fileID: 11400000, guid: ab96695f0dcdbc144bbe572a37fa4341, type: 2}
+  _gravityObjectCfg: {fileID: 11400000, guid: 295a53cc056669a499a419fc341b4117, type: 2}
+--- !u!114 &325331220849654273
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7427194919617754022}
+  m_GameObject: {fileID: 6600881630475504148}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4dbb0085dd28094d8b0df032c251c50, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b4b30cb15e0411ea8bd1a39c3e7be42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _detectedEvent: {fileID: 11400000, guid: bb0166c81b094bb499184e92d19b08e8, type: 2}
-  _undetectedEvent: {fileID: 11400000, guid: 9c4207d2969663b419817af44cf7817e, type: 2}
