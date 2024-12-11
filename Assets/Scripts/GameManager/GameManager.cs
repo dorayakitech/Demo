@@ -13,7 +13,11 @@ public class GameManager : Singleton<GameManager>
     [SerializeField, ReadOnly] [BoxGroup("Abilities"), LabelText("Active Index")]
     private int _activeAbilityIndex;
 
+    // TODO:
+    [SerializeField] private bool _isNPCActive;
+
     public SOAbilityConfig ActiveAbilityConfig => _availableAbilities[_activeAbilityIndex];
+    public bool IsNPCActive => _isNPCActive;
 
     private void OnEnable()
     {
