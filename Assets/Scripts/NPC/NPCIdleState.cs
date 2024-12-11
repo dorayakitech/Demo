@@ -8,11 +8,9 @@ public class NPCIdleState : NPCLocomotionBaseState
 
     public override void OnEnterState()
     {
-        Debug.Log("NPC Enter Idle State");
     }
 
     public override void OnExitState()
     {
-        Debug.Log("NPC Exit Idle State");
     }
 }

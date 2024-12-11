@@ -14,8 +14,6 @@ public class NPCArcMoveState : NPCLocomotionBaseState
 
     public override void OnEnterState()
     {
-        Debug.Log("NPC Enter ArcMove State");
-
         var waypoints = CalculateWaypoints();
         _moveTweener = context.transform.DOMove(waypoints[0], 0.01f)
             .SetEase(Ease.Flash)
@@ -35,7 +33,6 @@ public class NPCArcMoveState : NPCLocomotionBaseState
 
     public override void OnExitState()
     {
-        Debug.Log("NPC Exit ArcMove State");
         _moveTweener?.Kill();
         _circularTweener?.Kill();
         _floatTweener?.Kill();

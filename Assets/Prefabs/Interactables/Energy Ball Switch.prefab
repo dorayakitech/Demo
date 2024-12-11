@@ -200,6 +200,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4b30cb15e0411ea8bd1a39c3e7be42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 9ec7938138fc8334690d9e82ac26b5d4, type: 2}
+    - {fileID: 2100000, guid: 7eb2957201e8981438592a92e74361ca, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _tasksAfterActivated
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[ICommand, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 1|ActivateLockCommand, Assembly-CSharp
+    - Name: _activateLockEvent
+      Entry: 10
+      Data: 0
+    - Name: _lockNum
+      Entry: 3
+      Data: 666
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 2|ChangeAppearanceCommand, Assembly-CSharp
+    - Name: _newMaterial
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
 --- !u!114 &4271765883143608571
 MonoBehaviour:
   m_ObjectHideFlags: 0

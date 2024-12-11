@@ -1,8 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Sirenix.OdinInspector;
+using UnityEngine;
 
 [RequireComponent(typeof(InteractableFlashVFX))]
-public class EnergyBallReceiver : MonoBehaviour, IInteractable
+public class EnergyBallReceiver : SerializedMonoBehaviour, IInteractable, IActivate
 {
+    [SerializeField, Required] private List<ICommand> _tasksAfterActivated = new();
+
     private InteractableFlashVFX _flashVFX;
 
     public GameObject Obj => gameObject;
@@ -24,11 +28,23 @@ public class EnergyBallReceiver : MonoBehaviour, IInteractable
 
     public void IsSetTarget()
     {
-        Debug.Log($"{gameObject.name} Is set target");
     }
 
     public void IsUnsetTarget()
     {
-        Debug.Log($"{gameObject.name} Is unset target");
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (!other.collider.CompareTag(VariableNamesDefine.EnergyTag)) return;
+        Activate();
+    }
+
+    public void Activate()
+    {
+        foreach (var command in _tasksAfterActivated)
+        {
+            command.Execute(this);
+        }
     }
 }

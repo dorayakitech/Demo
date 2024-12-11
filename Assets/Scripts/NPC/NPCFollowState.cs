@@ -1,5 +1,4 @@
 ﻿using DG.Tweening;
-using UnityEngine;
 
 public class NPCFollowState : NPCLocomotionBaseState
 {
@@ -11,7 +10,6 @@ public class NPCFollowState : NPCLocomotionBaseState
 
     public override void OnEnterState()
     {
-        Debug.Log("NPC Enter Follow State");
         _tweener = context.transform.DOMove(context.FollowStartPosition, context.FollowDuration);
     }
 
@@ -22,7 +20,6 @@ public class NPCFollowState : NPCLocomotionBaseState
 
     public override void OnExitState()
     {
-        Debug.Log("NPC Exit Follow State");
         _tweener.Kill();
         _tweener = null;
     }

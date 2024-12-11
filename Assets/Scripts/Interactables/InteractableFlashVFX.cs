@@ -9,13 +9,14 @@ public class InteractableFlashVFX : MonoBehaviour
     [SerializeField, AssetsOnly] private SOInteractableFlashVFXConfig _gravityObjectCfg;
     [SerializeField, AssetsOnly] private SOInteractableFlashVFXConfig _pressedPlateCfg;
 
-    private readonly List<MeshRenderer> _meshRenderers = new();
+    private List<MeshRenderer> _meshRenderers = new();
+    private List<Material> _defaultMaterials = new();
     private int _activeGlowMaterialIndex;
     private Coroutine _flashCoroutine;
 
     private void Awake()
     {
-        FindMeshRenderersRecursively(transform);
+        MaterialChanger.FindMeshRenderersRecursively(transform, ref _meshRenderers, ref _defaultMaterials);
     }
 
     public void StartFlash(InteractableType interactableType)
@@ -33,8 +34,7 @@ public class InteractableFlashVFX : MonoBehaviour
         _flashCoroutine = null;
 
         // reset material
-        var cfg = GetConfig(interactableType);
-        ChangeMaterial(cfg.DefaultMaterial);
+        ResetMaterials();
         _activeGlowMaterialIndex = 0;
     }
 
@@ -43,7 +43,7 @@ public class InteractableFlashVFX : MonoBehaviour
         while (true)
         {
             var newMat = cfg.GlowMaterials[_activeGlowMaterialIndex];
-            ChangeMaterial(newMat);
+            MaterialChanger.ChangeMaterial(newMat, ref _meshRenderers);
 
             _activeGlowMaterialIndex += 1;
             if (_activeGlowMaterialIndex >= cfg.GlowMaterials.Count)
@@ -53,23 +53,12 @@ public class InteractableFlashVFX : MonoBehaviour
         }
     }
 
-    private void ChangeMaterial(Material mat)
+    private void ResetMaterials()
     {
-        var newMats = new[] { mat };
-        foreach (var mr in _meshRenderers)
+        for (var i = 0; i < _meshRenderers.Count; i++)
         {
-            mr.materials = newMats;
-        }
-    }
-
-    private void FindMeshRenderersRecursively(Transform parent)
-    {
-        if (parent.TryGetComponent<MeshRenderer>(out var mr))
-            _meshRenderers.Add(mr);
-
-        foreach (Transform child in parent)
-        {
-            FindMeshRenderersRecursively(child);
+            var defaultMaterial = new[] { _defaultMaterials[i] };
+            _meshRenderers[i].materials = defaultMaterial;
         }
     }
 

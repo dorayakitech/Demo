@@ -6,7 +6,6 @@ using UnityEngine;
     menuName = "Scriptable Object/Configs/Interactable Flash VFX")]
 public class SOInteractableFlashVFXConfig : ScriptableObject
 {
-    [Required, AssetsOnly] public Material DefaultMaterial;
     [Required, AssetsOnly] public List<Material> GlowMaterials;
     [Required] public float TransitionDuration = 1.0f;
 }

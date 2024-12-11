@@ -9,4 +9,5 @@
     public const string CastAnimationMidwayEventName = "TimeToDisappearInteractiveSphere";
     public const string PressedPlateLayerMaskName = "Pressed Plate";
     public const string EnergyBallReceiverHitPoint = "HitPoint";
+    public const string EnergyTag = "Energy";
 }
