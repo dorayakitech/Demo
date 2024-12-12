@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5473d7efa4ea5014baa7b9192503d66e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _impactParticle: {fileID: 1612385547688008, guid: f43814cdfb102fb4586cccd3cdda81ea, type: 3}
+  _impactParticle: {fileID: 5715630433554908486, guid: 608ecab1435f83243acea21d7cdfb514, type: 3}
   _projectileParticle: {fileID: 1538232804517532, guid: 61a05c0cbc7a83546955238edd9de024, type: 3}
   _muzzleParticle: {fileID: 177544, guid: 9b0b48e1c4a7a1f4d9006a0e51564684, type: 3}
   _flyForce: 800

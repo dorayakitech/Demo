@@ -80,8 +80,10 @@ public class EnergyBall : MonoBehaviour
         Destroy(_projectileParticle, 3f);
 
         if (!collisionDetected) return;
-        var impactP = Instantiate(_impactParticle, transform.position, Quaternion.identity);
-        Destroy(impactP, 3.5f);
+        // var impactP = Instantiate(_impactParticle, transform.position, Quaternion.identity);
+        // Destroy(impactP, 3.5f);
+
+        Instantiate(_impactParticle, transform.position, Quaternion.identity);
     }
 
     private void IgnoreCollisionBetweenPlayer()

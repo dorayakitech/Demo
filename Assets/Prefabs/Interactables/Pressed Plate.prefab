@@ -192,4 +192,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c180e55825c1a459d13761d0263ff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 9ec7938138fc8334690d9e82ac26b5d4, type: 2}
+    - {fileID: 11400000, guid: 164d7909bc83ca547be430c96c983c26, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _tasksAfterActivated
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[ICommand, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|OperateLockCommand, Assembly-CSharp
+    - Name: _operateLockEvent
+      Entry: 10
+      Data: 0
+    - Name: _lockNum
+      Entry: 3
+      Data: 123
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tasksAfterDeactivated
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[ICommand, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 3|OperateLockCommand, Assembly-CSharp
+    - Name: _operateLockEvent
+      Entry: 10
+      Data: 1
+    - Name: _lockNum
+      Entry: 3
+      Data: 123
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   _checkPoint: {fileID: 7984152815332593565}

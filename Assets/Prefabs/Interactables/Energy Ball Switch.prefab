@@ -202,8 +202,8 @@ MonoBehaviour:
       Data: 2
     - Name: 
       Entry: 7
-      Data: 1|ActivateLockCommand, Assembly-CSharp
-    - Name: _activateLockEvent
+      Data: 1|OperateLockCommand, Assembly-CSharp
+    - Name: _operateLockEvent
       Entry: 10
       Data: 0
     - Name: _lockNum

@@ -22,13 +22,11 @@ public class GravityObjectElevateState : GravityObjectBaseState
 
     public override void OnEnterState()
     {
-        Debug.Log("Enter Elevate State");
         context.IgnoreCollisionBetweenPlayer(true);
     }
 
     public override void OnExitState()
     {
-        Debug.Log("Exit Elevate State");
         _tweener?.Kill();
         _tweener = null;
     }

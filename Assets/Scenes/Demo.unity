@@ -1834,7 +1834,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &617371009
 Transform:
   m_ObjectHideFlags: 0
@@ -2315,7 +2315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2735758825235669627, guid: ef27d25d46b84f642bcdf6ac643f2d98, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 2735758825235669627, guid: ef27d25d46b84f642bcdf6ac643f2d98, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2941,7 +2941,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1211881204
 Transform:
   m_ObjectHideFlags: 0
@@ -4034,6 +4034,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1759817027}
     m_Modifications:
+    - target: {fileID: 311577200596154240, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 311577200596154240, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
     - target: {fileID: 3460716989427996495, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.21
@@ -7456,7 +7460,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2649801002364527799
 Transform:
   m_ObjectHideFlags: 0
@@ -7843,6 +7847,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1759817027}
     m_Modifications:
+    - target: {fileID: 311577200596154240, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 311577200596154240, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
     - target: {fileID: 3460716989427996495, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.63

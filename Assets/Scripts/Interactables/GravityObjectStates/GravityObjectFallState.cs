@@ -14,7 +14,6 @@ public class GravityObjectFallState : GravityObjectBaseState
 
     public override void OnEnterState()
     {
-        Debug.Log("Enter Fall State");
         context.IgnoreCollisionBetweenPlayer(true);
 
         _isFreeFalling = !HasPressedPlateUnderneath();
@@ -29,11 +28,6 @@ public class GravityObjectFallState : GravityObjectBaseState
             _freeFallingHeight = context.transform.position.y;
             _freeFallingVelocity = 0.0f;
         }
-    }
-
-    public override void OnExitState()
-    {
-        Debug.Log("Exit Fall State");
     }
 
     public override void Update()

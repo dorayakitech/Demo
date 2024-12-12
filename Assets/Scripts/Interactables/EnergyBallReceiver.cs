@@ -45,11 +45,15 @@ public abstract class EnergyBallReceiver : SerializedMonoBehaviour, IInteractabl
 
     public void Activate()
     {
-        Debug.Log("Activate");
+        Debug.Log("EnergyBallReceiver Activate");
 
         foreach (var command in _tasksAfterActivated)
         {
             command.Execute(this);
         }
+    }
+
+    public void Deactivate()
+    {
     }
 }

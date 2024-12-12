@@ -14798,7 +14798,7 @@ GameObject:
   - component: {fileID: 1381244902309050942}
   - component: {fileID: 4578206415044003020}
   m_Layer: 0
-  m_Name: Laser Hit VFX
+  m_Name: Energy Hit VFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

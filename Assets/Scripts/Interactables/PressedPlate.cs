@@ -3,14 +3,17 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 [RequireComponent(typeof(InteractableFlashVFX))]
-public class PressedPlate : MonoBehaviour
+public class PressedPlate : SerializedMonoBehaviour, IActivate
 {
     [SerializeField, Required] private Transform _checkPoint;
+    [SerializeField, Required] private List<ICommand> _tasksAfterActivated = new();
+    [SerializeField, Required] private List<ICommand> _tasksAfterDeactivated = new();
 
     private InteractableFlashVFX _flashVFX;
     private readonly List<Collider> _pressers = new();
     private List<MeshRenderer> _meshRenderers;
     private List<Material> _currentMaterials;
+    private bool _isActive;
 
     private void Awake()
     {
@@ -24,6 +27,10 @@ public class PressedPlate : MonoBehaviour
 
         if (!_pressers.Contains(other))
             _pressers.Add(other);
+
+        if (_isActive) return;
+        Activate();
+        _isActive = true;
     }
 
     private void OnTriggerExit(Collider other)
@@ -31,7 +38,29 @@ public class PressedPlate : MonoBehaviour
         if (_pressers.Contains(other))
             _pressers.Remove(other);
 
-        if (_pressers.Count == 0)
-            _flashVFX.StopFlash(_meshRenderers, _currentMaterials);
+        if (_pressers.Count != 0) return;
+        Deactivate();
+        _flashVFX.StopFlash(_meshRenderers, _currentMaterials);
+        _isActive = false;
+    }
+
+    public void Activate()
+    {
+        Debug.Log("PressedPlate Activate");
+        RunTasks(_tasksAfterActivated);
+    }
+
+    public void Deactivate()
+    {
+        Debug.Log("PressedPlate Deactivate");
+        RunTasks(_tasksAfterDeactivated);
+    }
+
+    private void RunTasks(List<ICommand> tasks)
+    {
+        foreach (var command in tasks)
+        {
+            command.Execute(this);
+        }
     }
 }
