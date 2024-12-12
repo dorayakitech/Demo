@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 [RequireComponent(typeof(InteractableFlashVFX))]
-public abstract class EnergyBallReceiver : SerializedMonoBehaviour, IInteractable, IActivate
+public abstract class EnergyBallReceiver : SerializedMonoBehaviour, IInteractable, IKey
 {
     [SerializeField, Required] private List<ICommand> _tasksAfterActivated = new();
 

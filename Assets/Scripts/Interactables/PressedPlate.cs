@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 [RequireComponent(typeof(InteractableFlashVFX))]
-public class PressedPlate : SerializedMonoBehaviour, IActivate
+public class PressedPlate : SerializedMonoBehaviour, IKey
 {
     [SerializeField, Required] private Transform _checkPoint;
     [SerializeField, Required] private List<ICommand> _tasksAfterActivated = new();
