@@ -3,30 +3,30 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 [RequireComponent(typeof(InteractableFlashVFX))]
-public class EnergyBallReceiver : SerializedMonoBehaviour, IInteractable, IActivate
+public abstract class EnergyBallReceiver : SerializedMonoBehaviour, IInteractable, IActivate
 {
     [SerializeField, Required] private List<ICommand> _tasksAfterActivated = new();
 
     private InteractableFlashVFX _flashVFX;
-    private List<MeshRenderer> _meshRenderers;
+    protected List<MeshRenderer> meshRenderers;
     protected List<Material> currentMaterials;
 
     public GameObject Obj => gameObject;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _flashVFX = GetComponent<InteractableFlashVFX>();
-        MaterialChanger.FindMeshRenderers(transform, out _meshRenderers, out currentMaterials);
+        MaterialChanger.FindMeshRenderers(transform, out meshRenderers, out currentMaterials);
     }
 
     public void IsDetected()
     {
-        _flashVFX.StartFlash(InteractableType.EnergyBallReceiver, _meshRenderers);
+        _flashVFX.StartFlash(InteractableType.EnergyBallReceiver, meshRenderers);
     }
 
     public void IsUndetected()
     {
-        _flashVFX.StopFlash(_meshRenderers, currentMaterials);
+        _flashVFX.StopFlash(meshRenderers, currentMaterials);
     }
 
     public void IsSetTarget()
@@ -45,6 +45,8 @@ public class EnergyBallReceiver : SerializedMonoBehaviour, IInteractable, IActiv
 
     public void Activate()
     {
+        Debug.Log("Activate");
+
         foreach (var command in _tasksAfterActivated)
         {
             command.Execute(this);

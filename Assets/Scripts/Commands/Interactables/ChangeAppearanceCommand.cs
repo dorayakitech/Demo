@@ -8,6 +8,6 @@ public class ChangeAppearanceCommand : ICommand
     public void Execute<T>(T receiver)
     {
         if (receiver is not IAppearanceChangeable obj) return;
-        obj.ChangeAppearance(_newMaterial);
+        obj.CurrentMaterial = _newMaterial;
     }
 }

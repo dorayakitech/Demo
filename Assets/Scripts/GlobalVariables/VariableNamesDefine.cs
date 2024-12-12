@@ -10,4 +10,6 @@
     public const string PressedPlateLayerMaskName = "Pressed Plate";
     public const string EnergyBallReceiverHitPoint = "HitPoint";
     public const string EnergyTag = "Energy";
+    public const string LaserTurretChargingPoint = "ChargingPoint";
+    public const string LaserTurretShootingPoint = "ShootingPoint";
 }

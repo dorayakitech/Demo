@@ -3,8 +3,12 @@ using UnityEngine;
 
 public class EnergyBallSwitch : EnergyBallReceiver, IAppearanceChangeable
 {
-    public void ChangeAppearance(Material newMaterial)
+    public Material CurrentMaterial
     {
-        currentMaterials = new List<Material> { newMaterial };
+        set
+        {
+            currentMaterials = new List<Material> { value };
+            MaterialChanger.ChangeMaterial(value, ref meshRenderers);
+        }
     }
 }
