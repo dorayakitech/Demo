@@ -54,11 +54,30 @@ public class EnergyBall : MonoBehaviour
         }
         else
         {
-            var hitPoint = _targetSwitch.transform.Find(VariableNamesDefine.EnergyBallReceiverHitPoint);
+            var hitPoint = FindHitPoint();
+
+            if (hitPoint == null)
+            {
+                Debug.LogError("HitPoint Not Found");
+                return;
+            }
+
             flyDir = (hitPoint.position - transform.position).normalized;
         }
 
         _rb.AddForce(flyDir * _flyForce);
+    }
+
+    private Transform FindHitPoint()
+    {
+        var nodes = _targetSwitch.GetComponentsInChildren<Transform>();
+        foreach (var node in nodes)
+        {
+            if (node.name == VariableNamesDefine.EnergyBallReceiverHitPoint)
+                return node;
+        }
+
+        return null;
     }
 
     private void HandleSelfDestroy()
