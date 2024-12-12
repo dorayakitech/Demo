@@ -1,4 +1,5 @@
-﻿using Animancer.FSM;
+﻿using System.Collections.Generic;
+using Animancer.FSM;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -29,6 +30,8 @@ public class GravityObject : MonoBehaviour, IInteractable
     private CapsuleCollider _playerCollider;
     private GameObject _playerLeftHand;
     private InteractableFlashVFX _flashVFX;
+    private List<MeshRenderer> _meshRenderers;
+    private List<Material> _currentMaterials;
 
     public GameObject Obj => gameObject;
     public Vector3 PlayerLeftHandOffset => _playerLeftHandOffset;
@@ -43,6 +46,7 @@ public class GravityObject : MonoBehaviour, IInteractable
     {
         _collider = GetComponent<Collider>();
         _flashVFX = GetComponent<InteractableFlashVFX>();
+        MaterialChanger.FindMeshRenderers(transform, out _meshRenderers, out _currentMaterials);
 
         InitStates();
     }
@@ -73,6 +77,7 @@ public class GravityObject : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!enabled) return;
         if (!other.CompareTag(VariableNamesDefine.GroundTag)) return;
         _stateMachine.TrySetState(_staticState);
     }
@@ -91,12 +96,12 @@ public class GravityObject : MonoBehaviour, IInteractable
 
     public void IsDetected()
     {
-        _flashVFX.StartFlash(InteractableType.GravityObject);
+        _flashVFX.StartFlash(InteractableType.GravityObject, _meshRenderers);
     }
 
     public void IsUndetected()
     {
-        _flashVFX.StopFlash(InteractableType.GravityObject);
+        _flashVFX.StopFlash(_meshRenderers, _currentMaterials);
     }
 
     public void IgnoreCollisionBetweenPlayer(bool ignore)

@@ -9,41 +9,34 @@ public class InteractableFlashVFX : MonoBehaviour
     [SerializeField, AssetsOnly] private SOInteractableFlashVFXConfig _gravityObjectCfg;
     [SerializeField, AssetsOnly] private SOInteractableFlashVFXConfig _pressedPlateCfg;
 
-    private List<MeshRenderer> _meshRenderers = new();
-    private List<Material> _defaultMaterials = new();
     private int _activeGlowMaterialIndex;
     private Coroutine _flashCoroutine;
 
-    private void Awake()
-    {
-        MaterialChanger.FindMeshRenderersRecursively(transform, ref _meshRenderers, ref _defaultMaterials);
-    }
-
-    public void StartFlash(InteractableType interactableType)
+    public void StartFlash(InteractableType interactableType, List<MeshRenderer> meshRenderers)
     {
         if (_flashCoroutine != null) return;
 
         var cfg = GetConfig(interactableType);
-        _flashCoroutine = StartCoroutine(FlashCoroutine(cfg));
+        _flashCoroutine = StartCoroutine(FlashCoroutine(cfg, meshRenderers));
     }
 
-    public void StopFlash(InteractableType interactableType)
+    public void StopFlash(List<MeshRenderer> meshRenderers, List<Material> defaultMaterials)
     {
         if (_flashCoroutine == null) return;
         StopCoroutine(_flashCoroutine);
         _flashCoroutine = null;
 
         // reset material
-        ResetMaterials();
+        ResetMaterials(ref meshRenderers, defaultMaterials);
         _activeGlowMaterialIndex = 0;
     }
 
-    private IEnumerator FlashCoroutine(SOInteractableFlashVFXConfig cfg)
+    private IEnumerator FlashCoroutine(SOInteractableFlashVFXConfig cfg, List<MeshRenderer> meshRenderers)
     {
         while (true)
         {
             var newMat = cfg.GlowMaterials[_activeGlowMaterialIndex];
-            MaterialChanger.ChangeMaterial(newMat, ref _meshRenderers);
+            MaterialChanger.ChangeMaterial(newMat, ref meshRenderers);
 
             _activeGlowMaterialIndex += 1;
             if (_activeGlowMaterialIndex >= cfg.GlowMaterials.Count)
@@ -53,12 +46,12 @@ public class InteractableFlashVFX : MonoBehaviour
         }
     }
 
-    private void ResetMaterials()
+    private void ResetMaterials(ref List<MeshRenderer> meshRenderers, List<Material> defaultMaterials)
     {
-        for (var i = 0; i < _meshRenderers.Count; i++)
+        for (var i = 0; i < meshRenderers.Count; i++)
         {
-            var defaultMaterial = new[] { _defaultMaterials[i] };
-            _meshRenderers[i].materials = defaultMaterial;
+            var defaultMaterial = new[] { defaultMaterials[i] };
+            meshRenderers[i].materials = defaultMaterial;
         }
     }
 

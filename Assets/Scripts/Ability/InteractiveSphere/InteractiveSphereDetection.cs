@@ -28,7 +28,8 @@ public class InteractiveSphereDetection : MonoBehaviour
         switch (_interactableItemType)
         {
             case InteractableType.EnergyBallReceiver:
-                if (!other.TryGetComponent(out EnergyBallReceiver energyBallReceiver)) break;
+                if (!other.TryGetComponent(out EnergyBallReceiver energyBallReceiver) ||
+                    !energyBallReceiver.enabled) break;
                 energyBallReceiver.IsDetected();
                 SetTarget(VariableNamesDefine.TargetEnergyBallReceiver, energyBallReceiver);
                 _cachedInteractables.Add(energyBallReceiver);
@@ -36,7 +37,7 @@ public class InteractiveSphereDetection : MonoBehaviour
                 break;
 
             case InteractableType.GravityObject:
-                if (!other.TryGetComponent(out GravityObject gravityObject)) break;
+                if (!other.TryGetComponent(out GravityObject gravityObject) || !gravityObject.enabled) break;
                 gravityObject.IsDetected();
                 SetTarget(VariableNamesDefine.TargetGravityObject, gravityObject);
                 _cachedInteractables.Add(gravityObject);

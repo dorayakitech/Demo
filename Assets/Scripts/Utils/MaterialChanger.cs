@@ -5,25 +5,23 @@ public static class MaterialChanger
 {
     public static void ChangeMaterial(Material mat, ref List<MeshRenderer> meshRenderers)
     {
-        var newMats = new[] { mat };
+        var newMats = new List<Material> { mat };
         foreach (var mr in meshRenderers)
         {
-            mr.materials = newMats;
+            mr.SetMaterials(newMats);
         }
     }
 
-    public static void FindMeshRenderersRecursively(Transform parent, ref List<MeshRenderer> meshRenderers,
-        ref List<Material> defaultMaterials)
+    public static void FindMeshRenderers(Transform parent, out List<MeshRenderer> meshRenderers,
+        out List<Material> currentMaterials)
     {
-        if (parent.TryGetComponent<MeshRenderer>(out var mr))
-        {
-            meshRenderers.Add(mr);
-            defaultMaterials.Add(mr.materials[0]);
-        }
+        meshRenderers = new List<MeshRenderer>();
+        currentMaterials = new List<Material>();
 
-        foreach (Transform child in parent)
+        parent.GetComponentsInChildren(false, meshRenderers);
+        foreach (var meshRenderer in meshRenderers)
         {
-            FindMeshRenderersRecursively(child, ref meshRenderers, ref defaultMaterials);
+            currentMaterials.Add(meshRenderer.materials[0]);
         }
     }
 }
