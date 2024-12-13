@@ -6,7 +6,7 @@ public class CameraRayCast : MonoBehaviour
 {
     [SerializeField, Required] private LayerMask _obstacleLayer;
     private readonly List<TransparencyController> _currentObstacles = new();
-    private RaycastHit[] _raycastHits = new RaycastHit[10];
+    private readonly RaycastHit[] _raycastHits = new RaycastHit[10];
 
     private void LateUpdate()
     {

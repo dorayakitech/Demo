@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System.Collections.Generic;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -6,25 +7,36 @@ public class TransparencyController : MonoBehaviour
 {
     [SerializeField, Required] private float _targetTransparency = 0.5f;
     [SerializeField, Required] private float _fadeDuration = 0.5f;
-    private MeshRenderer _meshRenderer;
-    private Material _material;
-    private Tweener _tweener;
+    private readonly List<Material> _materials = new();
+    private readonly List<Tweener> _tweeners = new();
 
     private void Awake()
     {
-        _meshRenderer = GetComponent<MeshRenderer>();
-        _material = _meshRenderer.materials[0];
+        var meshRenderers = GetComponentsInChildren<MeshRenderer>();
+        foreach (var mr in meshRenderers)
+        {
+            if (mr.materials.Length == 0) continue;
+
+            _materials.Add(mr.materials[0]);
+            _tweeners.Add(mr.materials[0].DOFade(_targetTransparency, _fadeDuration).Pause());
+        }
     }
 
     public void FadeIn()
     {
-        _tweener?.Kill();
-        _tweener = _material.DOFade(_targetTransparency, _fadeDuration);
+        for (var i = 0; i < _materials.Count; i++)
+        {
+            _tweeners[i]?.Kill();
+            _tweeners[i] = _materials[i].DOFade(_targetTransparency, _fadeDuration);
+        }
     }
 
     public void FadeOut()
     {
-        _tweener?.Kill();
-        _tweener = _material.DOFade(1.0f, _fadeDuration);
+        for (var i = 0; i < _materials.Count; i++)
+        {
+            _tweeners[i]?.Kill();
+            _tweeners[i] = _materials[i].DOFade(1.0f, _fadeDuration);
+        }
     }
 }

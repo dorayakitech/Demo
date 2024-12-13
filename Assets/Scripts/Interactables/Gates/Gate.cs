@@ -41,7 +41,7 @@ public class Gate : MonoBehaviour
 
         _gateAnimationState = _animancer.Play(_open);
 
-        _gateAnimationState.Speed = 1.0f;
+        _gateAnimationState.Speed = _open.Speed;
         _gateAnimationState.IsPlaying = true;
         _gateAnimationState.Events(this).OnEnd ??= () => { _gateAnimationState.IsPlaying = false; };
     }
@@ -52,6 +52,6 @@ public class Gate : MonoBehaviour
 
         _gateAnimationState = _animancer.Play(_open);
         _gateAnimationState.IsPlaying = true;
-        _gateAnimationState.Speed = -1.0f;
+        _gateAnimationState.Speed = _open.Speed * -1.0f;
     }
 }

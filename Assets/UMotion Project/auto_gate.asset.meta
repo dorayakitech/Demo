@@ -1,5 +1,7 @@
 fileFormatVersion: 2
-guid: b006cfbfbdee6074da629d5efbe5311e
+guid: a48e44bae330b874a8bf0c16460616cb
+labels:
+- UMotion Project
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000
