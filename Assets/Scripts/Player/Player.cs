@@ -1,3 +1,4 @@
+using System;
 using Animancer;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -33,7 +34,10 @@ public class Player : Singleton<Player>
         _abilityLayer.Mask = _upperBodyMask;
 
         _rb = GetComponent<Rigidbody>();
+    }
 
+    private void Start()
+    {
         // Register Global Variables
         RegisterGlobalVariables();
     }

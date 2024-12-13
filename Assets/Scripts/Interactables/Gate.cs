@@ -13,20 +13,14 @@ public class Gate : MonoBehaviour
     private SOOperateLockEvent _deactivateEvent;
 
     [SerializeField, Required, AssetsOnly] [BoxGroup("Animations")]
-    private TransitionAsset _idle;
-
-    [SerializeField, Required, AssetsOnly] [BoxGroup("Animations")]
     private TransitionAsset _open;
 
-    [SerializeField, Required, AssetsOnly] [BoxGroup("Animations")]
-    private TransitionAsset _close;
-
     private AnimancerComponent _animancer;
+    private AnimancerState _gateAnimationState;
 
     private void Awake()
     {
         _animancer = GetComponent<AnimancerComponent>();
-        _animancer.Play(_idle);
     }
 
     private void OnEnable()
@@ -41,13 +35,23 @@ public class Gate : MonoBehaviour
         _deactivateEvent?.Unsubscribe(Deactivate);
     }
 
-    private void Activate(int lockNum)
+    private void Activate(int activeLockNum)
     {
-        _animancer.Play(_open);
+        if (activeLockNum != _lockNum) return;
+
+        _gateAnimationState = _animancer.Play(_open);
+
+        _gateAnimationState.Speed = 1.0f;
+        _gateAnimationState.IsPlaying = true;
+        _gateAnimationState.Events(this).OnEnd ??= () => { _gateAnimationState.IsPlaying = false; };
     }
 
-    private void Deactivate(int lockNum)
+    private void Deactivate(int deactiveLockNum)
     {
-        _animancer.Play(_close);
+        if (deactiveLockNum != _lockNum) return;
+
+        _gateAnimationState = _animancer.Play(_open);
+        _gateAnimationState.IsPlaying = true;
+        _gateAnimationState.Speed = -1.0f;
     }
 }

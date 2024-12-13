@@ -12,11 +12,16 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 0
+  m_InvalidKeywords:
+  - _ADD_PRECOMPUTED_VELOCITY
+  - _DISABLE_SSR_TRANSPARENT
+  - _EMISSION
+  - _ENABLE_FOG_ON_TRANSPARENT
+  - _SURFACE_TYPE_TRANSPARENT
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
@@ -272,7 +277,7 @@ Material:
     - _DetailTilingRocks: 0.0234
     - _DetailTilingSmall: 0.043
     - _DirtBreakup: 0.0238
-    - _DstBlend: 0
+    - _DstBlend: 10
     - _EnvironmentReflections: 1
     - _FallOff: 100
     - _FallOff1: 100
@@ -308,7 +313,7 @@ Material:
     - _TransShadow: 0.232
     - _Translucency: 0
     - _UVSec: 0
-    - _ZWrite: 1
+    - _ZWrite: 0
     - __dirty: 0
     - _falloff: 41
     - _smoothness: 0.175
@@ -316,9 +321,9 @@ Material:
     m_Colors:
     - _CliffColour: {r: 0, g: 0.110750526, b: 0.17647058, a: 0}
     - _Cliff_Colour: {r: 0.61764705, g: 0.20891005, b: 0.20891005, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 0}
     - _Color2: {r: 0.38235295, g: 0.35319176, b: 0.33737025, a: 0}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColor: {r: 1, g: 1, b: 1, a: 0}
     - _EmissiveColor1: {r: 1, g: 1, b: 1, a: 0}
     - _GroundColour: {r: 1, g: 1, b: 1, a: 0}
