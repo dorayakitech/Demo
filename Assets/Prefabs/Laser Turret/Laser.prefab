@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5044083651125617965}
   - component: {fileID: 2247797806003424463}
   - component: {fileID: 1079416969553159567}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sparks around
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4751,7 +4751,7 @@ GameObject:
   - component: {fileID: 7262393909686639871}
   - component: {fileID: 7262393909686639808}
   - component: {fileID: -7792475946064293089}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Laser
   m_TagString: Energy
   m_Icon: {fileID: 0}
@@ -9718,7 +9718,7 @@ GameObject:
   - component: {fileID: 7262393909694537732}
   - component: {fileID: 7262393909694537733}
   - component: {fileID: 2190349848620579214}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
