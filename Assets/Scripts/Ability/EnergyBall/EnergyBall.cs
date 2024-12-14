@@ -33,7 +33,7 @@ public class EnergyBall : MonoBehaviour
     private void Start()
     {
         GlobalVariablesManager.Instance.GetValue(VariableNamesDefine.TargetEnergyBallReceiver, out _targetSwitch);
-        IgnoreCollisionBetweenPlayer();
+        IgnoreCollision();
         GenerateVFX();
         Fly();
     }
@@ -105,7 +105,7 @@ public class EnergyBall : MonoBehaviour
         Instantiate(_impactParticle, transform.position, Quaternion.identity);
     }
 
-    private void IgnoreCollisionBetweenPlayer()
+    private void IgnoreCollision()
     {
         if (!GlobalVariablesManager.Instance.GetValue(VariableNamesDefine.PlayerCollider,
                 out CapsuleCollider playerCollider))

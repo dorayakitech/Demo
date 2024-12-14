@@ -60,3 +60,32 @@ public abstract class SOEvent<T> : ScriptableObject
         }
     }
 }
+
+public abstract class SOEvent<T, U> : ScriptableObject
+{
+    private readonly List<Action<T, U>> _subscribers = new();
+
+    public void Subscribe(Action<T, U> subscriber)
+    {
+        if (!_subscribers.Contains(subscriber))
+        {
+            _subscribers.Add(subscriber);
+        }
+    }
+
+    public void Unsubscribe(Action<T, U> subscriber)
+    {
+        if (_subscribers.Contains(subscriber))
+        {
+            _subscribers.Remove(subscriber);
+        }
+    }
+
+    public void Notify(T param1, U param2)
+    {
+        foreach (var subscriber in _subscribers)
+        {
+            subscriber.Invoke(param1, param2);
+        }
+    }
+}

@@ -10,6 +10,7 @@ public class CameraRayCast : MonoBehaviour
 
     private void LateUpdate()
     {
+        Debug.DrawLine(transform.position, Player.Instance.transform.position, Color.red);
         FadeOutOldObstacles();
         FadeInNewObstacles();
     }
