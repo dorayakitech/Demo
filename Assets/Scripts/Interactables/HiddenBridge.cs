@@ -85,18 +85,25 @@ public class HiddenBridge : SerializedMonoBehaviour
         _tweener?.Kill();
         _mat.DOFade(0.0f, _transitionDuration).OnComplete(() =>
         {
-            _meshRenderer.enabled = false;
             _collider.enabled = false;
 
             foreach (var task in _tasksAfterFadeOut)
             {
                 task.Execute(this);
             }
+        }).OnUpdate(() =>
+        {
+            if (_mat.color.a < 0.01f)
+                _meshRenderer.enabled = false;
         });
     }
 
     private void HandleInitHiddenState()
     {
-        _mat.DOFade(0.0f, 0.0f).OnComplete(() => { _meshRenderer.enabled = false; });
+        _mat.DOFade(0.0f, 0.0f).OnComplete(() =>
+        {
+            _meshRenderer.enabled = false;
+            _collider.enabled = false;
+        });
     }
 }
