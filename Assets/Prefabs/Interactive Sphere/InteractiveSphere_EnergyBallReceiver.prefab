@@ -4871,7 +4871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f16d70ffeab8504eb867c2697dcc93f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _range: 10
+  _range: 8
   _appearDuration: 1
   _cancelDuration: 0.25
   _disappearDuration: 0.7
@@ -4890,8 +4890,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactableItemType: 0
-  _detectedEvent: {fileID: 11400000, guid: bb0166c81b094bb499184e92d19b08e8, type: 2}
-  _undetectedEvent: {fileID: 11400000, guid: 9c4207d2969663b419817af44cf7817e, type: 2}
-  _setTargetEvent: {fileID: 0}
-  _unsetTargetEvent: {fileID: 0}
   _disappearEvent: {fileID: 11400000, guid: 9007ffab926c60a4b91b61397196779b, type: 2}

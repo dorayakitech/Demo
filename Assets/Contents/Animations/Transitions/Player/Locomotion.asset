@@ -33,7 +33,7 @@ MonoBehaviour:
         _Speeds:
         - 1
         - 1.2
-        - 1
+        - 1.3
         _SynchronizeChildren: 
         _Thresholds:
         - 0

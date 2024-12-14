@@ -7,6 +7,12 @@ public class FollowAndArcMovement : MonoBehaviour
     [SerializeField, Required] private float _heightOffset = 0.9f;
     [SerializeField, Required] private float _rotateSpeed = 10.0f;
 
+    [SerializeField, Required] [BoxGroup("Idle Properties"), LabelText("Float Offset")]
+    private float _idleFloatOffset = 0.2f;
+
+    [SerializeField, Required] [BoxGroup("Idle Properties"), LabelText("Float Duration")]
+    private float _idleFloatDuration = 0.8f;
+
     [SerializeField, Required] [BoxGroup("Follow Properties")]
     private float _followDistance = 2.0f;
 
@@ -47,6 +53,8 @@ public class FollowAndArcMovement : MonoBehaviour
     }
 
     public float HeightOffset => _heightOffset;
+    public float IdleFloatOffset => _idleFloatOffset;
+    public float IdleFloatDuration => _idleFloatDuration;
     public float FollowDistance => _followDistance;
     public float FollowDuration => _followDuration;
     public float FollowAngleRange => _followAngleRange;
@@ -69,6 +77,7 @@ public class FollowAndArcMovement : MonoBehaviour
 
     private void Update()
     {
+        if (_stateMachine.CurrentState is NPCIdleState) return;
         Rotate();
     }
 
@@ -84,8 +93,8 @@ public class FollowAndArcMovement : MonoBehaviour
         {
             case NPCIdleState:
                 // TODO:
-                if (Player.Instance.InputValue.MoveVector == Vector2.zero) break;
-                _stateMachine.TrySetState(_follow);
+                // if (Player.Instance.InputValue.MoveVector == Vector2.zero) break;
+                // _stateMachine.TrySetState(_follow);
 
                 break;
 
