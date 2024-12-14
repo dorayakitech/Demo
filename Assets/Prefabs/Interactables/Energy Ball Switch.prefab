@@ -189,6 +189,7 @@ MonoBehaviour:
     ReferencedUnityObjects:
     - {fileID: 11400000, guid: 9ec7938138fc8334690d9e82ac26b5d4, type: 2}
     - {fileID: 2100000, guid: f5a87e0c1466cb04d82551705bfebd4d, type: 2}
+    - {fileID: 2100000, guid: 7eb2957201e8981438592a92e74361ca, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -199,7 +200,7 @@ MonoBehaviour:
       Data: 0|System.Collections.Generic.List`1[[ICommand, Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 3
     - Name: 
       Entry: 7
       Data: 1|OperateLockCommand, Assembly-CSharp
@@ -218,6 +219,18 @@ MonoBehaviour:
     - Name: _newMaterial
       Entry: 10
       Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 3|ResetAppearanceCommand, Assembly-CSharp
+    - Name: _resetInterval
+      Entry: 4
+      Data: 5
+    - Name: _defaultMaterial
+      Entry: 10
+      Data: 2
     - Name: 
       Entry: 8
       Data: 

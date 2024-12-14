@@ -6780,11 +6780,11 @@ PrefabInstance:
       objectReference: {fileID: 1850483676087068815, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
     - target: {fileID: 1850483676087068815, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1850483676087068815, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
       propertyPath: 'serializationData.PrefabModifications.Array.data[0]'
-      value: '"path":"_tasksAfterActivated","length":1'
+      value: '"path":"_tasksAfterActivated","length":2'
       objectReference: {fileID: 0}
     - target: {fileID: 1850483676087068815, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
       propertyPath: 'serializationData.PrefabModifications.Array.data[1]'
@@ -6796,13 +6796,31 @@ PrefabInstance:
       value: '"path":"_tasksAfterActivated.[0]._newMaterial","value":$eref:0'
       objectReference: {fileID: 0}
     - target: {fileID: 1850483676087068815, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: 'serializationData.PrefabModifications.Array.data[3]'
+      value: '"path":"_tasksAfterActivated.[1]","value":{"$id":0,"$type":"ResetAppearanceCommand,
+        Assembly-CSharp","_resetInterval":5,"_defaultMaterial":$eref:1}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850483676087068815, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: 'serializationData.PrefabModifications.Array.data[4]'
+      value: '"path":"_tasksAfterActivated.[1]._defaultMaterial","value":$eref:1'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850483676087068815, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: 'serializationData.PrefabModifications.Array.data[5]'
+      value: '"path":"_tasksAfterActivated.[1]._resetInterval","value":{"$id":0,"$type":"System.Single,
+        mscorlib",5}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850483676087068815, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1850483676087068815, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
       propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: f5a87e0c1466cb04d82551705bfebd4d, type: 2}
+    - target: {fileID: 1850483676087068815, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7eb2957201e8981438592a92e74361ca, type: 2}
     - target: {fileID: 9024725636619428237, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.81
@@ -9676,11 +9694,11 @@ PrefabInstance:
       objectReference: {fileID: 1850483676087068815, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
     - target: {fileID: 1850483676087068815, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1850483676087068815, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
       propertyPath: 'serializationData.PrefabModifications.Array.data[0]'
-      value: '"path":"_tasksAfterActivated","length":1'
+      value: '"path":"_tasksAfterActivated","length":2'
       objectReference: {fileID: 0}
     - target: {fileID: 1850483676087068815, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
       propertyPath: 'serializationData.PrefabModifications.Array.data[1]'
@@ -9688,13 +9706,31 @@ PrefabInstance:
         Assembly-CSharp","_newMaterial":$eref:0}'
       objectReference: {fileID: 0}
     - target: {fileID: 1850483676087068815, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: 'serializationData.PrefabModifications.Array.data[2]'
+      value: '"path":"_tasksAfterActivated.[1]","value":{"$id":0,"$type":"ResetAppearanceCommand,
+        Assembly-CSharp","_resetInterval":5,"_defaultMaterial":$eref:1}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850483676087068815, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: 'serializationData.PrefabModifications.Array.data[3]'
+      value: '"path":"_tasksAfterActivated.[1]._defaultMaterial","value":$eref:1'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850483676087068815, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: 'serializationData.PrefabModifications.Array.data[4]'
+      value: '"path":"_tasksAfterActivated.[1]._resetInterval","value":{"$id":0,"$type":"System.Single,
+        mscorlib",5}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850483676087068815, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1850483676087068815, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
       propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: f5a87e0c1466cb04d82551705bfebd4d, type: 2}
+    - target: {fileID: 1850483676087068815, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
+      propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7eb2957201e8981438592a92e74361ca, type: 2}
     - target: {fileID: 9024725636619428237, guid: 14c837aaa35135c4fafca083cd175bd6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.81
@@ -15524,6 +15560,7 @@ MonoBehaviour:
     ReferencedUnityObjects:
     - {fileID: 11400000, guid: 9ec7938138fc8334690d9e82ac26b5d4, type: 2}
     - {fileID: 2100000, guid: f5a87e0c1466cb04d82551705bfebd4d, type: 2}
+    - {fileID: 2100000, guid: 7eb2957201e8981438592a92e74361ca, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -15534,7 +15571,7 @@ MonoBehaviour:
       Data: 0|System.Collections.Generic.List`1[[ICommand, Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 3
     - Name: 
       Entry: 7
       Data: 1|OperateLockCommand, Assembly-CSharp
@@ -15553,6 +15590,18 @@ MonoBehaviour:
     - Name: _newMaterial
       Entry: 10
       Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 3|ResetAppearanceCommand, Assembly-CSharp
+    - Name: _resetInterval
+      Entry: 4
+      Data: 5
+    - Name: _defaultMaterial
+      Entry: 10
+      Data: 2
     - Name: 
       Entry: 8
       Data: 
