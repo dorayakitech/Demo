@@ -43,15 +43,21 @@ public class EnergyLaserTurret : EnergyBallReceiver, IHidden
             mr.enabled = true;
         }
 
-        foreach (var mat in currentMaterials)
-        {
-            mat.DOFade(1.0f, _transitionDuration).OnComplete(ExecuteTasksAfterShow);
-        }
-
         foreach (var c in _colliders)
         {
             c.enabled = true;
         }
+
+        var seq = DOTween.Sequence();
+        for (var i = 0; i < currentMaterials.Count; i++)
+        {
+            if (i == 0)
+                seq.Append(currentMaterials[i].DOFade(1.0f, _transitionDuration));
+            else
+                seq.Join(currentMaterials[i].DOFade(1.0f, _transitionDuration));
+        }
+
+        seq.OnComplete(ExecuteTasksAfterShow);
     }
 
     private void Hide()
@@ -63,19 +69,25 @@ public class EnergyLaserTurret : EnergyBallReceiver, IHidden
             mr.enabled = false;
         }
 
-        foreach (var mat in currentMaterials)
-        {
-            mat.DOFade(0.0f, 0.0f);
-        }
-
         foreach (var c in _colliders)
         {
             c.enabled = false;
+        }
+
+        var seq = DOTween.Sequence();
+        for (var i = 0; i < currentMaterials.Count; i++)
+        {
+            if (i == 0)
+                seq.Append(currentMaterials[i].DOFade(0.0f, 0.0f));
+            else
+                seq.Join(currentMaterials[i].DOFade(0.0f, 0.0f));
         }
     }
 
     private void ExecuteTasksAfterShow()
     {
+        Debug.Log("ExecuteTasksAfterShow");
+
         foreach (var task in _tasksAfterShow)
         {
             task.Execute(this);

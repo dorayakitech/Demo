@@ -18,7 +18,7 @@ public class TransparencyController : MonoBehaviour
             if (mr.materials.Length == 0) continue;
 
             _materials.Add(mr.materials[0]);
-            _tweeners.Add(mr.materials[0].DOFade(_targetTransparency, _fadeDuration).Pause());
+            _tweeners.Add(mr.materials[0].DOFade(1.0f, 0.0f));
         }
     }
 
