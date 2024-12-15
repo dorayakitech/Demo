@@ -25,5 +25,9 @@ public class ChargeAttackTask : Action
         }
         return TaskStatus.Running;
     }
-    
+
+    public override void OnEnd()
+    {
+        Debug.Log("结束蓄力");
+    }
 }

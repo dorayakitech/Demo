@@ -40,11 +40,11 @@ public class RandomChangeEnergyLaserTurretPos : MonoBehaviour
         while(targets.Length > 1 && newLowIndex == _lowIndex)
             newLowIndex = UnityEngine.Random.Range(0, targets.Length);
         _lowIndex = newLowIndex;
-        var low = UnityEngine.Random.Range(0, targets.Length);
+        // var low = UnityEngine.Random.Range(0, targets.Length);
         for (int i = 0; i < targets.Length; i++)
         {
             var curPos = targets[i].position;
-            curPos.y = i == low ? LowY : HighY;
+            curPos.y = i == _lowIndex ? LowY : HighY;
             targets[i].DOMove(curPos, MoveTime);
         }
     }

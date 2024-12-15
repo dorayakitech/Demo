@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: -5843923928643880315}
   - component: {fileID: -3516059573341778601}
   - component: {fileID: 5705154297145670186}
+  - component: {fileID: 8135263601150182175}
   m_Layer: 0
   m_Name: BossEnergyBall
   m_TagString: Untagged
@@ -55,11 +56,11 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.15
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3446916179591751319
 MonoBehaviour:
@@ -239,3 +240,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8135263601150182175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8551089607830486817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a38fee6dbf03e440bb91fae68200fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: Filter
+      Entry: 7
+      Data: 0|ObjectTagHasMatch, Assembly-CSharp
+    - Name: Tag
+      Entry: 1
+      Data: Player
+    - Name: 
+      Entry: 8
+      Data: 
+  Event: {fileID: 11400000, guid: cf40c18e33ab22a43be688c287d9bc39, type: 2}
