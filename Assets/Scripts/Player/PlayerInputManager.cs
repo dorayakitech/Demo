@@ -74,6 +74,14 @@ public class PlayerInputManager : MonoBehaviour
         _inputActions.Player.Run.canceled -= OnChangeIsPressingRun;
         _inputActions.Player.SwitchAbility.started -= OnPressSwitchAbility;
     }
+
+    public void SetEnableState(bool enable)
+    {
+        if (enable)
+            _inputActions.Enable();
+        else
+            _inputActions.Disable();
+    }
 }
 
 public struct PlayerInputValue

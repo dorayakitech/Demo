@@ -4,7 +4,7 @@ public class PlayerAbilityPlayChargeAnimationCommand : ICommand
 {
     public virtual void Execute<T>(T receiver)
     {
-        var cfg = GameManager.Instance.ActiveAbilityConfig;
+        var cfg = GameStateManager.Instance.ActiveAbilityConfig;
 
         var state = Player.Instance.AbilityLayer.Play(cfg.ChargeAnimation);
         state.Events(this).OnEnd ??= () => { cfg.ChargeAnimationEndEvent.Notify(); };
@@ -26,7 +26,7 @@ public class PlayerAbilityPlayCastAnimationCommand : ICommand
 
     public virtual void Execute<T>(T receiver)
     {
-        var cfg = GameManager.Instance.ActiveAbilityConfig;
+        var cfg = GameStateManager.Instance.ActiveAbilityConfig;
 
         var state = Player.Instance.AbilityLayer.Play(cfg.CastAnimation);
         state.Events(this).OnEnd ??= () => { cfg.CastAnimationEndEvent.Notify(); };

@@ -92,9 +92,8 @@ public class FollowAndArcMovement : MonoBehaviour
         switch (_stateMachine.CurrentState)
         {
             case NPCIdleState:
-                // TODO:
-                // if (Player.Instance.InputValue.MoveVector == Vector2.zero) break;
-                // _stateMachine.TrySetState(_follow);
+                if (Player.Instance.InputValue.MoveVector != Vector2.zero && GameStateManager.Instance.IsNPCActive)
+                    _stateMachine.TrySetState(_follow);
 
                 break;
 

@@ -11,7 +11,7 @@ public class InteractiveSphereAppearCommand : ICommand
             return;
         }
 
-        Object.Instantiate(GameManager.Instance.ActiveAbilityConfig.InteractiveSpherePrefab,
+        Object.Instantiate(GameStateManager.Instance.ActiveAbilityConfig.InteractiveSpherePrefab,
             playerLeftHand.transform.position, Quaternion.identity);
     }
 }

@@ -4,7 +4,7 @@
 
     private void OnEnable()
     {
-        _config = GameManager.Instance.ActiveAbilityConfig;
+        _config = GameStateManager.Instance.ActiveAbilityConfig;
 
         foreach (var task in _config.CastStepOnEnableTasks)
         {

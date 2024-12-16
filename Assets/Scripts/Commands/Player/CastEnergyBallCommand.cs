@@ -11,7 +11,7 @@ public class CastEnergyBallCommand : ICommand
             return;
         }
 
-        var cfg = GameManager.Instance.ActiveAbilityConfig as SOEnergyBallAbilityConfig;
+        var cfg = GameStateManager.Instance.ActiveAbilityConfig as SOEnergyBallAbilityConfig;
 
         // calculate energy ball rotation
         var forwardDir = -playerLeftHand.transform.right;

@@ -123,7 +123,7 @@
                 {
                     "name": "",
                     "id": "92c22f1c-94b7-4b44-8dbb-6ef27b1b26fc",
-                    "path": "<XInputController>/buttonWest",
+                    "path": "<XInputController>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -172,6 +172,45 @@
                     "processors": "",
                     "groups": "",
                     "action": "SwitchAbility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Dialogue",
+            "id": "0927f333-b742-42e2-83c9-42fe841ec1e4",
+            "actions": [
+                {
+                    "name": "Continue",
+                    "type": "Button",
+                    "id": "8956dc5b-7399-4005-a629-a272d92e8534",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f44504eb-0950-4189-ae9f-1ac4f80a9c95",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Continue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7c01288e-cdee-4b10-8100-63233babae5e",
+                    "path": "<XInputController>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Continue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

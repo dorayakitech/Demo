@@ -14,4 +14,5 @@
     public const string LaserTurretShootingPoint = "Pivot/Gun/ShootingPoint";
     public const string LaserTurretGun = "Pivot/Gun";
     public const string InvisibleWallPropertyName = "_PlayerPos";
+    public const string PlayerTag = "Player";
 }

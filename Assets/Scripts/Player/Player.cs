@@ -15,6 +15,7 @@ public class Player : Singleton<Player>
     private AnimancerLayer _locomotionLayer;
     private AnimancerLayer _abilityLayer;
     private Rigidbody _rb;
+    private PlayerInputManager _inputManager;
 
     # region Singleton Properties
 
@@ -23,6 +24,7 @@ public class Player : Singleton<Player>
     public AnimancerLayer LocomotionLayer => _locomotionLayer;
     public AnimancerLayer AbilityLayer => _abilityLayer;
     public Rigidbody Rb => _rb;
+    public PlayerInputManager InputManager => _inputManager;
 
     # endregion
 
@@ -34,6 +36,7 @@ public class Player : Singleton<Player>
         _abilityLayer.Mask = _upperBodyMask;
 
         _rb = GetComponent<Rigidbody>();
+        _inputManager = GetComponentInChildren<PlayerInputManager>();
     }
 
     private void Start()
