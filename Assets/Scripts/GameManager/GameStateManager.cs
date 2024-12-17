@@ -7,13 +7,11 @@ public class GameStateManager : Singleton<GameStateManager>
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Change Active Ability")]
     private SOEvent _changeActiveAbilityEvent;
 
-    [SerializeField, Required, AssetsOnly] [BoxGroup("Abilities"), LabelText("Available")]
-    private List<SOAbilityConfig> _availableAbilities;
-
-    [SerializeField, ReadOnly] [BoxGroup("Abilities"), LabelText("Active Index")]
+    [SerializeField, ReadOnly] private List<SOAbilityConfig> _availableAbilities = new();
     private int _activeAbilityIndex;
 
-    public SOAbilityConfig ActiveAbilityConfig => _availableAbilities[_activeAbilityIndex];
+    public SOAbilityConfig ActiveAbilityConfig =>
+        _availableAbilities.Count == 0 ? null : _availableAbilities[_activeAbilityIndex];
 
     private bool _isNPCActive;
     public bool IsNPCActive => _isNPCActive;
@@ -38,5 +36,10 @@ public class GameStateManager : Singleton<GameStateManager>
     public void EnableNPC()
     {
         _isNPCActive = true;
+    }
+
+    public void StudyNewAbility(SOAbilityConfig abilityConfig)
+    {
+        _availableAbilities.Add(abilityConfig);
     }
 }

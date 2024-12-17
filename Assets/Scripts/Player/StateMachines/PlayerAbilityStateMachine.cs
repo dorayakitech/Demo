@@ -57,7 +57,8 @@ public class PlayerAbilityStateMachine : MonoBehaviour
                 _isChargeAnimationEnd = false;
                 _isCastAnimationEnd = false;
 
-                if (Player.Instance.InputValue.IsPressingUseAbility)
+                if (Player.Instance.InputValue.IsPressingUseAbility &&
+                    GameStateManager.Instance.ActiveAbilityConfig != null)
                     _stateMachine.TrySetState(_charge);
 
                 break;

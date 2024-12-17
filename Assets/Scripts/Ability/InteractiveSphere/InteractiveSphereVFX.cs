@@ -54,6 +54,7 @@ public class InteractiveSphereVFX : MonoBehaviour
 
     private void OnDisappearEvent()
     {
+        transform.DOKill();
         transform.DOScale(Vector3.zero, _disappearDuration).OnComplete(() => { Destroy(gameObject); });
     }
 
