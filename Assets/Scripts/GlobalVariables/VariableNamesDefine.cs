@@ -1,8 +1,9 @@
 ﻿public static class VariableNamesDefine
 {
-    public const string PlayerLeftHand = "Hand_L";
+    public const string PlayerLeftHand = "Player_Hand_L";
     public const string PlayerColliderGameObject = "Root";
     public const string PlayerCollider = "PlayerCollider";
+    public const string PlayerHitPointGameObject = "Player Hit Point";
     public const string GroundTag = "Ground";
     public const string TargetEnergyBallReceiver = "TargetEnergyBallReceiver";
     public const string TargetGravityObject = "TargetGravityObject";
@@ -15,4 +16,10 @@
     public const string LaserTurretGun = "Pivot/Gun";
     public const string InvisibleWallPropertyName = "_PlayerPos";
     public const string PlayerTag = "Player";
+    public const string EnterBossRoomConversationTitle = "Enter Boss Room";
+    public const string BossCollider = "BossCollider";
+    public const string BossWeaponObject = "Boss Weapon";
+    public const string BossFlashedArm = "Flashed Arm";
+    public const string BossFlashedHand = "Flashed Hand";
+    public const string BossLaserShootPoint = "Boss Laser Shoot Point";
 }

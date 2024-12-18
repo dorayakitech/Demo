@@ -65,6 +65,9 @@ public class Player : Singleton<Player>
         var leftHandGameObj = GameObject.Find(VariableNamesDefine.PlayerLeftHand);
         GlobalVariablesManager.Instance.SetValue(VariableNamesDefine.PlayerLeftHand, leftHandGameObj);
 
+        var playerHitPointGameObj = GameObject.Find(VariableNamesDefine.PlayerHitPointGameObject);
+        GlobalVariablesManager.Instance.SetValue(VariableNamesDefine.PlayerHitPointGameObject, playerHitPointGameObj);
+
         var playerColliderGameObj = GameObject.Find(VariableNamesDefine.PlayerColliderGameObject);
         GlobalVariablesManager.Instance.SetValue(VariableNamesDefine.PlayerCollider,
             playerColliderGameObj.GetComponent<CapsuleCollider>());

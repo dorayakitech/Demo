@@ -93,4 +93,10 @@ public class EnergyLaserTurret : EnergyBallReceiver, IHidden
             task.Execute(this);
         }
     }
+
+    protected override void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.TryGetComponent(out Laser laser) && laser.LaserSource == Laser.Source.Boss) return;
+        base.OnCollisionEnter(other);
+    }
 }

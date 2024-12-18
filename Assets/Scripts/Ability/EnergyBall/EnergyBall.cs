@@ -114,7 +114,15 @@ public class EnergyBall : MonoBehaviour
             return;
         }
 
+        if (!GlobalVariablesManager.Instance.GetValue(VariableNamesDefine.BossCollider,
+                out CapsuleCollider bossCollider))
+        {
+            Debug.LogError("Player Collider Not Found!");
+            return;
+        }
+
         Physics.IgnoreCollision(_collider, playerCollider, true);
+        Physics.IgnoreCollision(_collider, bossCollider, true);
     }
 
     private void GenerateVFX()

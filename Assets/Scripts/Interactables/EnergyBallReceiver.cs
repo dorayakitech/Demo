@@ -37,7 +37,7 @@ public abstract class EnergyBallReceiver : SerializedMonoBehaviour, IInteractabl
     {
     }
 
-    private void OnCollisionEnter(Collision other)
+    protected virtual void OnCollisionEnter(Collision other)
     {
         if (!other.collider.CompareTag(VariableNamesDefine.EnergyTag) || !enabled) return;
         Activate();

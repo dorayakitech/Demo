@@ -7,7 +7,7 @@ public class GameStateManager : Singleton<GameStateManager>
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Change Active Ability")]
     private SOEvent _changeActiveAbilityEvent;
 
-    [SerializeField, ReadOnly] private List<SOAbilityConfig> _availableAbilities = new();
+    [SerializeField] private List<SOAbilityConfig> _availableAbilities = new();
     private int _activeAbilityIndex;
 
     public SOAbilityConfig ActiveAbilityConfig =>

@@ -1,15 +1,30 @@
-using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
+    public enum Source
+    {
+        Turret,
+        Boss
+    }
+
     [SerializeField, Required] private float _flyForce = 100.0f;
     [SerializeField, Required, AssetsOnly] private GameObject _hitVFX;
 
+    [SerializeField, Required] [BoxGroup("Collision"), LabelText("Ignore Player")]
+    private bool _ignoreCollisionBetweenPlayer;
+
+    [SerializeField, Required] [BoxGroup("Collision"), LabelText("Ignore Boss")]
+    private bool _ignoreCollisionBetweenBoss;
+
+    [SerializeField, Required, EnumToggleButtons]
+    private Source _source = Source.Turret;
+
     private Rigidbody _rb;
     private Collider _collider;
-    private CapsuleCollider _playerCollider;
+
+    public Source LaserSource => _source;
 
     private void Awake()
     {
@@ -19,10 +34,7 @@ public class Laser : MonoBehaviour
 
     private void Start()
     {
-        if (!GlobalVariablesManager.Instance.GetValue(VariableNamesDefine.PlayerCollider, out _playerCollider))
-            Debug.LogError("Player Collider Not Found");
-
-        Physics.IgnoreCollision(_collider, _playerCollider, true);
+        HandleCollision();
         Fly();
     }
 
@@ -41,5 +53,26 @@ public class Laser : MonoBehaviour
     private void OnBecameInvisible()
     {
         Destroy(gameObject);
+    }
+
+    private void HandleCollision()
+    {
+        if (_ignoreCollisionBetweenPlayer)
+        {
+            if (!GlobalVariablesManager.Instance.GetValue(VariableNamesDefine.PlayerCollider,
+                    out CapsuleCollider playerCollider))
+                Debug.LogError("Player Collider Not Found");
+
+            Physics.IgnoreCollision(_collider, playerCollider, true);
+        }
+
+        if (_ignoreCollisionBetweenBoss)
+        {
+            if (!GlobalVariablesManager.Instance.GetValue(VariableNamesDefine.BossCollider,
+                    out CapsuleCollider bossCollider))
+                Debug.LogError("Player Collider Not Found");
+
+            Physics.IgnoreCollision(_collider, bossCollider, true);
+        }
     }
 }
