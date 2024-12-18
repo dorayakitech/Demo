@@ -278,18 +278,76 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
-    SerializedBytes: 0101140000005f007400610073006b007300410066007400650072004100630074006900760061007400650064002f000000000148000000530079007300740065006d002e0043006f006c006c0065006300740069006f006e0073002e00470065006e0065007200690063002e004c00690073007400600031005b005b00490043006f006d006d0061006e0064002c00200041007300730065006d0062006c0079002d004300530068006100720070005d005d002c0020006d00730063006f0072006c006900620000000000060100000000000000022f010000000128000000530068006f006f00740045006e0065007200670079004c00610073006500720043006f006d006d0061006e0064002c00200041007300730065006d0062006c0079002d00430053006800610072007000010000001f01110000005f006300680061007200670069006e0067004400750072006100740069006f006e00000000400b010c0000005f006300680061007200670069006e006700560046005800000000000b01060000005f006c006100730065007200010000001f01130000005f00730068006f006f0074005300680061006b0065004400750072006100740069006f006e000000003f1f01100000005f00730068006f006f0074005300680061006b00650046006f007200630065000000803f05070501010f0000005f007400610073006b00730041006600740065007200530068006f0077003000000000020000000600000000000000000705
+    SerializedFormat: 2
+    SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 4744367516841075316, guid: 9550b7551a4212547aa4c4b2677bbbd9, type: 3}
-    - {fileID: 3293533369816611583}
+    - {fileID: 7262393909686639809, guid: de77d1acd521bf24b9ca4276df6d621d, type: 3}
+    - {fileID: 11400000, guid: c06e4aad84e573e42b8f15fb3695fcfb, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: _tasksAfterActivated
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[ICommand, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 1|ShootEnergyLaserCommand, Assembly-CSharp
+    - Name: _chargingDuration
+      Entry: 4
+      Data: 2
+    - Name: _chargingVFX
+      Entry: 10
+      Data: 0
+    - Name: _laser
+      Entry: 10
+      Data: 1
+    - Name: _shootShakeDuration
+      Entry: 4
+      Data: 0.5
+    - Name: _shootShakeForce
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 2|FightTurretActivateCommand, Assembly-CSharp
+    - Name: _fightTurretActivateEvent
+      Entry: 10
+      Data: 2
+    - Name: _waitForNotify
+      Entry: 4
+      Data: 2.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _tasksAfterShow
+      Entry: 7
+      Data: 3|System.Collections.Generic.List`1[[ICommand, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   _initShow: 0
-  _transitionDuration: 1
+  _transitionDuration: 2
 --- !u!114 &4144608422898727618
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2627,6 +2627,22 @@ PrefabInstance:
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 311577200596154240, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
+    - target: {fileID: 311577200596154240, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 311577200596154240, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
+      propertyPath: 'serializationData.PrefabModifications.Array.data[0]'
+      value: '"path":"_tasksAfterActivated","length":0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 311577200596154240, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
+      propertyPath: 'serializationData.PrefabModifications.Array.data[1]'
+      value: '"path":"_tasksAfterDeactivated","length":0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 311577200596154240, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3460716989427996495, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.35
@@ -12914,7 +12930,9 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _changeActiveAbilityEvent: {fileID: 11400000, guid: 0ab48ff0f21ab664d955ac18a5f0b577, type: 2}
-  _availableAbilities: []
+  _availableAbilities:
+  - {fileID: 11400000, guid: 824a3e788b01f714d8eee01b01084578, type: 2}
+  - {fileID: 11400000, guid: 01fe7643847fed2488331c0f1fe8ace6, type: 2}
 --- !u!4 &375729325
 Transform:
   m_ObjectHideFlags: 0
@@ -24437,6 +24455,22 @@ PrefabInstance:
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 311577200596154240, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
+    - target: {fileID: 311577200596154240, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 311577200596154240, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
+      propertyPath: 'serializationData.PrefabModifications.Array.data[0]'
+      value: '"path":"_tasksAfterActivated","length":0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 311577200596154240, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
+      propertyPath: 'serializationData.PrefabModifications.Array.data[1]'
+      value: '"path":"_tasksAfterDeactivated","length":0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 311577200596154240, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3460716989427996495, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.92
@@ -40479,7 +40513,7 @@ Transform:
   m_GameObject: {fileID: 1214205939}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 152.8, y: 0, z: 125}
+  m_LocalPosition: {x: 153.29, y: 0, z: 121.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -41996,12 +42030,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bossFightCfg: {fileID: 11400000, guid: 6a8d837db9896664ab0b15405e168db3, type: 2}
   _hitByBossLaserEvent: {fileID: 11400000, guid: 377ca969dd409714db60366688efcbd0, type: 2}
+  _fightTurretActivateEvent: {fileID: 11400000, guid: c06e4aad84e573e42b8f15fb3695fcfb, type: 2}
   _spawnPoints:
   - {fileID: 5639101852111878792}
   - {fileID: 729493411866493268}
   - {fileID: 1324880901925977447}
   - {fileID: 7456997622379820942}
-  _turretExistDuration: 10
 --- !u!1 &1260571417
 GameObject:
   m_ObjectHideFlags: 0
@@ -58373,6 +58407,22 @@ PrefabInstance:
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 311577200596154240, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
+    - target: {fileID: 311577200596154240, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 311577200596154240, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
+      propertyPath: 'serializationData.PrefabModifications.Array.data[0]'
+      value: '"path":"_tasksAfterActivated","length":0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 311577200596154240, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
+      propertyPath: 'serializationData.PrefabModifications.Array.data[1]'
+      value: '"path":"_tasksAfterDeactivated","length":0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 311577200596154240, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3460716989427996495, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.87
@@ -58725,7 +58775,7 @@ Transform:
   m_GameObject: {fileID: 1746772270}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: 138.71545, y: 11.499998, z: 110.91544}
+  m_LocalPosition: {x: 139.20544, y: 11.500003, z: 107.175446}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -67958,6 +68008,22 @@ PrefabInstance:
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 311577200596154240, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
+    - target: {fileID: 311577200596154240, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 311577200596154240, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
+      propertyPath: 'serializationData.PrefabModifications.Array.data[0]'
+      value: '"path":"_tasksAfterActivated","length":0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 311577200596154240, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
+      propertyPath: 'serializationData.PrefabModifications.Array.data[1]'
+      value: '"path":"_tasksAfterDeactivated","length":0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 311577200596154240, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3460716989427996495, guid: a2b96eadfb403ac47866c4eb7cec38c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.331
@@ -69355,7 +69421,7 @@ Transform:
   m_GameObject: {fileID: 2051232611}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: 138.71545, y: 11.499998, z: 110.91544}
+  m_LocalPosition: {x: 139.20544, y: 11.500003, z: 107.175446}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

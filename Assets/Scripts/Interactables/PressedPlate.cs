@@ -46,13 +46,11 @@ public class PressedPlate : SerializedMonoBehaviour, IKey
 
     public void Activate()
     {
-        Debug.Log("PressedPlate Activate");
         RunTasks(_tasksAfterActivated);
     }
 
     public void Deactivate()
     {
-        Debug.Log("PressedPlate Deactivate");
         RunTasks(_tasksAfterDeactivated);
     }
 

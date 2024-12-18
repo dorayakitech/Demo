@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 public class BattleFieldSpawnState : BattleFieldBaseState
 {
-    public Action Callback;
+    public Action StateEndCallback;
     private EnergyLaserTurret _turret;
 
     public BattleFieldSpawnState(BattleField context) : base(context)
@@ -18,12 +18,7 @@ public class BattleFieldSpawnState : BattleFieldBaseState
     {
         var turretObj = GenerateATurret();
         _turret = turretObj.GetComponent<EnergyLaserTurret>();
-
-        // Show turret
         _turret.Show();
-
-        // Start Countdown
-        context.StartCoroutine(TurretLifeTimeCountdown(context.TurretExistDuration));
     }
 
     private GameObject GenerateATurret()
@@ -39,9 +34,18 @@ public class BattleFieldSpawnState : BattleFieldBaseState
         return items[index];
     }
 
-    private IEnumerator TurretLifeTimeCountdown(float lifeTime)
+    public void TurretActivate()
     {
-        yield return new WaitForSeconds(lifeTime);
-        _turret.Hide(false, () => { Debug.Log("彻底隐藏了~~~"); });
+        // in order to deactivate pressed plate
+        _turret.transform.DOMoveY(1.0f, 0.8f).SetRelative().OnComplete(HideTurret);
+    }
+
+    private void HideTurret()
+    {
+        _turret.Hide(() =>
+        {
+            Object.Destroy(_turret.gameObject);
+            StateEndCallback?.Invoke();
+        });
     }
 }

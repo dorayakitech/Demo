@@ -24,8 +24,6 @@ public class EnergyLaserTurret : EnergyBallReceiver, IHidden
 
     protected override void Awake()
     {
-        Debug.Log("EnergyLaserTurret Awake");
-
         base.Awake();
 
         _chargingPoint = transform.Find(VariableNamesDefine.LaserTurretChargingPoint);
@@ -34,7 +32,7 @@ public class EnergyLaserTurret : EnergyBallReceiver, IHidden
         _colliders = GetComponentsInChildren<Collider>().ToList();
 
         if (!_initShow)
-            Hide(true);
+            HandleInitHide();
     }
 
     public void Show()
@@ -60,42 +58,41 @@ public class EnergyLaserTurret : EnergyBallReceiver, IHidden
                 seq.Join(currentMaterials[i].DOFade(1.0f, _transitionDuration));
         }
 
-        seq.OnComplete(ExecuteTasksAfterShow);
+        seq.OnComplete((() => { ExecuteTasksAfterShow(); }));
     }
 
-    public void Hide(bool immediately, Action onComplete = null)
+    public void Hide(Action onComplete = null)
     {
         CurrentShow = false;
-
-        foreach (var mr in meshRenderers)
-        {
-            mr.enabled = false;
-        }
-
-        foreach (var c in _colliders)
-        {
-            c.enabled = false;
-        }
 
         var seq = DOTween.Sequence();
         for (var i = 0; i < currentMaterials.Count; i++)
         {
             if (i == 0)
-                // seq.Append(currentMaterials[i].DOFade(0.0f, immediately ? 0.0f : _transitionDuration));
-                seq.Append(currentMaterials[i].DOFade(0.0f, 3.0f));
+                seq.Append(currentMaterials[i].DOFade(0.0f, _transitionDuration));
             else
-                // seq.Join(currentMaterials[i].DOFade(0.0f, immediately ? 0.0f : _transitionDuration));
-                seq.Join(currentMaterials[i].DOFade(0.0f, 3.0f));
+                seq.Join(currentMaterials[i].DOFade(0.0f, _transitionDuration));
         }
 
         // Callback
-        seq.OnComplete(() => { onComplete?.Invoke(); });
+        seq.OnComplete(() =>
+        {
+            foreach (var mr in meshRenderers)
+            {
+                mr.enabled = false;
+            }
+
+            foreach (var c in _colliders)
+            {
+                c.enabled = false;
+            }
+
+            onComplete?.Invoke();
+        });
     }
 
     private void ExecuteTasksAfterShow()
     {
-        Debug.Log("ExecuteTasksAfterShow");
-
         foreach (var task in _tasksAfterShow)
         {
             task.Execute(this);
@@ -106,5 +103,25 @@ public class EnergyLaserTurret : EnergyBallReceiver, IHidden
     {
         if (other.gameObject.TryGetComponent(out Laser laser) && laser.LaserSource == Laser.Source.Boss) return;
         base.OnCollisionEnter(other);
+    }
+
+    private void HandleInitHide()
+    {
+        foreach (var mr in meshRenderers)
+        {
+            mr.enabled = false;
+        }
+
+        foreach (var c in _colliders)
+        {
+            c.enabled = false;
+        }
+
+        foreach (var mat in currentMaterials)
+        {
+            Color color = mat.color;
+            color.a = 0.0f;
+            mat.color = color;
+        }
     }
 }
