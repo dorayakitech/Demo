@@ -23,5 +23,6 @@ public class Glove : SerializedMonoBehaviour
     {
         if (!other.CompareTag(VariableNamesDefine.PlayerTag)) return;
         _taskAfterTriggered.Execute(this);
+        Destroy(gameObject);
     }
 }

@@ -16,7 +16,7 @@ public class MyDialoguesManager : SerializedMonoBehaviour
     [SerializeField, Required, SceneObjectsOnly] [BoxGroup("UI Buttons"), LabelText("NPC Continue")]
     private Button _npcContinueBtn;
 
-    [SerializeField, Required] private Dictionary<string, ICommand> _tasksAfterConversation;
+    [SerializeField, Required] private Dictionary<string, List<ICommand>> _tasksAfterConversation;
 
     private PlayerInputActions _inputActions;
     private readonly List<string> _activatedConversationTitles = new();
@@ -70,8 +70,13 @@ public class MyDialoguesManager : SerializedMonoBehaviour
         _inputActions.Disable();
 
         // Do something
-        if (_tasksAfterConversation.TryGetValue(_currentConversationTitle, out var task))
-            task.Execute(this);
+        if (_tasksAfterConversation.TryGetValue(_currentConversationTitle, out var tasks))
+        {
+            foreach (var task in tasks)
+            {
+                task.Execute(this);
+            }
+        }
 
         _currentConversationTitle = "";
     }

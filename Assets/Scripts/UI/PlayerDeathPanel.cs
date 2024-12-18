@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerDeathPanel : MonoBehaviour
+public class PlayerDeathPanel : MonoBehaviour, IPanel
 {
     [SerializeField, Required] private float _transitionDuration = 0.25f;
     [SerializeField, Required] private float _delayBetweenTransition = 0.25f;
@@ -48,8 +48,12 @@ public class PlayerDeathPanel : MonoBehaviour
         _transitionCoroutine = null;
     }
 
-    public void SetEnable(bool enable)
+    public void Show()
     {
-        gameObject.SetActive(enable);
+        gameObject.SetActive(true);
+    }
+
+    public void Continue()
+    {
     }
 }

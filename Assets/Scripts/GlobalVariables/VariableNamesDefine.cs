@@ -17,6 +17,7 @@
     public const string InvisibleWallPropertyName = "_PlayerPos";
     public const string PlayerTag = "Player";
     public const string EnterBossRoomConversationTitle = "Enter Boss Room";
+    public const string BossDefeatedConversationTitle = "Boss Defeated";
     public const string BossCollider = "BossCollider";
     public const string BossWeaponObject = "Boss Weapon";
     public const string BossFlashedArm = "Flashed Arm";

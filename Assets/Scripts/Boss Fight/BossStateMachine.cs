@@ -15,6 +15,9 @@ public class BossStateMachine : MonoBehaviour
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Is Hit")]
     private SOEvent _isHitEvent;
 
+    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Dialogue Trigger")]
+    private SODialogueTriggerEvent _triggerDialogueEvent;
+
     private readonly StateMachine<BossBaseState>.WithDefault _stateMachine = new();
     private BossBaseState _idle;
     private BossBaseState _standUp;
@@ -33,6 +36,7 @@ public class BossStateMachine : MonoBehaviour
     public AnimancerComponent Animancer => _animancer;
     public BehaviorTree BossAI => _bossAI;
     public Rigidbody Rb => _rb;
+    public SODialogueTriggerEvent TriggerDialogueEvent => _triggerDialogueEvent;
 
     private void Awake()
     {
