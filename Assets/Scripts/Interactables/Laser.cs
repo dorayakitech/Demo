@@ -1,7 +1,8 @@
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class Laser : MonoBehaviour
+public class Laser : SerializedMonoBehaviour
 {
     public enum Source
     {
@@ -20,6 +21,8 @@ public class Laser : MonoBehaviour
 
     [SerializeField, Required, EnumToggleButtons]
     private Source _source = Source.Turret;
+
+    [SerializeField] private List<ICommand> _tasksWhenCollision = new();
 
     private Rigidbody _rb;
     private Collider _collider;
@@ -45,9 +48,15 @@ public class Laser : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Destroy(gameObject);
         var contactPoint = other.GetContact(0);
         Instantiate(_hitVFX, contactPoint.point, Quaternion.identity);
+
+        foreach (var task in _tasksWhenCollision)
+        {
+            task.Execute(other);
+        }
+
+        Destroy(gameObject);
     }
 
     private void OnBecameInvisible()

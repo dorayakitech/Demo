@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using Sirenix.OdinInspector;
@@ -23,6 +24,8 @@ public class EnergyLaserTurret : EnergyBallReceiver, IHidden
 
     protected override void Awake()
     {
+        Debug.Log("EnergyLaserTurret Awake");
+
         base.Awake();
 
         _chargingPoint = transform.Find(VariableNamesDefine.LaserTurretChargingPoint);
@@ -31,7 +34,7 @@ public class EnergyLaserTurret : EnergyBallReceiver, IHidden
         _colliders = GetComponentsInChildren<Collider>().ToList();
 
         if (!_initShow)
-            Hide();
+            Hide(true);
     }
 
     public void Show()
@@ -60,7 +63,7 @@ public class EnergyLaserTurret : EnergyBallReceiver, IHidden
         seq.OnComplete(ExecuteTasksAfterShow);
     }
 
-    private void Hide()
+    public void Hide(bool immediately, Action onComplete = null)
     {
         CurrentShow = false;
 
@@ -78,10 +81,15 @@ public class EnergyLaserTurret : EnergyBallReceiver, IHidden
         for (var i = 0; i < currentMaterials.Count; i++)
         {
             if (i == 0)
-                seq.Append(currentMaterials[i].DOFade(0.0f, 0.0f));
+                // seq.Append(currentMaterials[i].DOFade(0.0f, immediately ? 0.0f : _transitionDuration));
+                seq.Append(currentMaterials[i].DOFade(0.0f, 3.0f));
             else
-                seq.Join(currentMaterials[i].DOFade(0.0f, 0.0f));
+                // seq.Join(currentMaterials[i].DOFade(0.0f, immediately ? 0.0f : _transitionDuration));
+                seq.Join(currentMaterials[i].DOFade(0.0f, 3.0f));
         }
+
+        // Callback
+        seq.OnComplete(() => { onComplete?.Invoke(); });
     }
 
     private void ExecuteTasksAfterShow()
