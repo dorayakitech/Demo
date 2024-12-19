@@ -42,7 +42,7 @@ public class BattleFieldSpawnState : BattleFieldBaseState
 
     private void HideTurret()
     {
-        _turret.Hide(() =>
+        _turret.Hide(false, () =>
         {
             Object.Destroy(_turret.gameObject);
             StateEndCallback?.Invoke();

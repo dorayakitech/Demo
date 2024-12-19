@@ -61,7 +61,7 @@ public class EnergyLaserTurret : EnergyBallReceiver, IHidden
         seq.OnComplete((() => { ExecuteTasksAfterShow(); }));
     }
 
-    public void Hide(Action onComplete = null)
+    public void Hide(bool immediately = false, Action onComplete = null)
     {
         CurrentShow = false;
 
@@ -69,9 +69,9 @@ public class EnergyLaserTurret : EnergyBallReceiver, IHidden
         for (var i = 0; i < currentMaterials.Count; i++)
         {
             if (i == 0)
-                seq.Append(currentMaterials[i].DOFade(0.0f, _transitionDuration));
+                seq.Append(currentMaterials[i].DOFade(0.0f, immediately ? 0.0f : _transitionDuration));
             else
-                seq.Join(currentMaterials[i].DOFade(0.0f, _transitionDuration));
+                seq.Join(currentMaterials[i].DOFade(0.0f, immediately ? 0.0f : _transitionDuration));
         }
 
         // Callback
