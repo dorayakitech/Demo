@@ -69,7 +69,7 @@ public class HiddenBridge : SerializedMonoBehaviour
 
         // Must Be Here! Not in OnComplete!
         _meshRenderer.enabled = true;
-        _mat.DOFade(1.0f, _transitionDuration).OnComplete(() =>
+        _tweener = _mat.DOFade(1.0f, _transitionDuration).OnComplete(() =>
         {
             _collider.enabled = true;
 
@@ -83,7 +83,7 @@ public class HiddenBridge : SerializedMonoBehaviour
     private void FadeOut()
     {
         _tweener?.Kill();
-        _mat.DOFade(0.0f, _transitionDuration).OnComplete(() =>
+        _tweener = _mat.DOFade(0.0f, _transitionDuration).OnComplete(() =>
         {
             _collider.enabled = false;
 
@@ -100,10 +100,25 @@ public class HiddenBridge : SerializedMonoBehaviour
 
     public void Hide()
     {
-        _mat.DOFade(0.0f, 0.0f).OnComplete(() =>
+        _currentShowState = false;
+
+        _tweener?.Kill();
+        _tweener = _mat.DOFade(0.0f, 0.0f).OnComplete(() =>
         {
             _meshRenderer.enabled = false;
             _collider.enabled = false;
+        });
+    }
+
+    public void Show()
+    {
+        _currentShowState = true;
+
+        _tweener?.Kill();
+        _tweener = _mat.DOFade(1.0f, 0.0f).OnComplete(() =>
+        {
+            _meshRenderer.enabled = true;
+            _collider.enabled = true;
         });
     }
 }

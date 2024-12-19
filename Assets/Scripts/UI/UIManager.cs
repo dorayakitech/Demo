@@ -42,7 +42,7 @@ public class UIManager : Singleton<UIManager>
     private SOEvent _showOutroPanelEvent;
 
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Player Death")]
-    private SOPlayerDeathEvent _deathEvent;
+    private SOEvent _deathEvent;
 
     private PlayerInputActions _inputActions;
     private IPanel _activePanel;
@@ -138,7 +138,7 @@ public class UIManager : Singleton<UIManager>
         _pausePanel.SelectButton(idx);
     }
 
-    private void OnPlayerDeath(int _)
+    private void OnPlayerDeath()
     {
         _playerDeathPanel.Show();
         EnableUIInputAndDisablePlayerInput(true);

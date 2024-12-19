@@ -6,9 +6,7 @@ using UnityEngine;
 public class DeathTrigger : MonoBehaviour
 {
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Player Death")]
-    private SOPlayerDeathEvent _deathEvent;
-
-    [SerializeField, Required] private int _roomNum;
+    private SOEvent _deathEvent;
 
     private BoxCollider _collider;
     private RespawnManager _respawnManager;
@@ -25,7 +23,7 @@ public class DeathTrigger : MonoBehaviour
     {
         if (!other.CompareTag(VariableNamesDefine.PlayerTag)) return;
 
-        _deathEvent.Notify(_roomNum);
+        _deathEvent.Notify();
         _respawnManager.Respawn();
     }
 }

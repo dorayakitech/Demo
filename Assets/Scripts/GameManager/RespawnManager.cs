@@ -9,7 +9,7 @@ public class RespawnManager : SerializedMonoBehaviour
     private Transform _respawnPoint;
 
     [SerializeField, Required] private List<ICommand> _respawnProcess = new();
-    [SerializeField, Required] private float _timeBeforeRespawn = 1.0f;
+    [SerializeField, Required] private float _timeBeforeRespawn = 0.8f;
 
     private Coroutine _respawnCoroutine;
 
