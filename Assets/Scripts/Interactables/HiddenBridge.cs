@@ -34,7 +34,7 @@ public class HiddenBridge : SerializedMonoBehaviour
         _collider = GetComponent<Collider>();
 
         if (!_initShow)
-            HandleInitHiddenState();
+            Hide();
     }
 
     private void OnEnable()
@@ -98,7 +98,7 @@ public class HiddenBridge : SerializedMonoBehaviour
         });
     }
 
-    private void HandleInitHiddenState()
+    public void Hide()
     {
         _mat.DOFade(0.0f, 0.0f).OnComplete(() =>
         {

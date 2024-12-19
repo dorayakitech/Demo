@@ -17,11 +17,8 @@ public class UIManager : Singleton<UIManager>
     [SerializeField, Required, SceneObjectsOnly]
     private PausePanel _pausePanel;
 
-    [SerializeField, Required, SceneObjectsOnly]
-    private StartPanel _startPanel;
-
-    [SerializeField, Required, SceneObjectsOnly]
-    private IntroPanel _introPanel;
+    [SerializeField, SceneObjectsOnly] private StartPanel _startPanel;
+    [SerializeField, SceneObjectsOnly] private IntroPanel _introPanel;
 
     [SerializeField, Required, SceneObjectsOnly]
     private OutroPanel _outroPanel;
@@ -44,6 +41,9 @@ public class UIManager : Singleton<UIManager>
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Show Outro Panel")]
     private SOEvent _showOutroPanelEvent;
 
+    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Player Death")]
+    private SOPlayerDeathEvent _deathEvent;
+
     private PlayerInputActions _inputActions;
     private IPanel _activePanel;
 
@@ -52,7 +52,7 @@ public class UIManager : Singleton<UIManager>
         _inputActions = new PlayerInputActions();
         _inputActions.Disable();
 
-        InitPanelsState();
+        // InitPanelsState();
         SetCallbacks();
     }
 
@@ -66,6 +66,7 @@ public class UIManager : Singleton<UIManager>
         _genericConversationEndEvent.Subscribe(OnReShowAbilityPanel);
         _playerPressPauseEvent.Subscribe(OnShowPauseMenu);
         _showOutroPanelEvent.Subscribe(ShowOutroPanel);
+        _deathEvent.Subscribe(OnPlayerDeath);
     }
 
     private void OnDisable()
@@ -78,11 +79,12 @@ public class UIManager : Singleton<UIManager>
         _genericConversationEndEvent.Unsubscribe(OnReShowAbilityPanel);
         _playerPressPauseEvent.Unsubscribe(OnShowPauseMenu);
         _showOutroPanelEvent.Unsubscribe(ShowOutroPanel);
+        _deathEvent.Unsubscribe(OnPlayerDeath);
     }
 
     private void Start()
     {
-        ShowStartPanel();
+        // ShowStartPanel();
     }
 
     private void OnPressContinue(InputAction.CallbackContext ctx)
@@ -136,6 +138,12 @@ public class UIManager : Singleton<UIManager>
         _pausePanel.SelectButton(idx);
     }
 
+    private void OnPlayerDeath(int _)
+    {
+        _playerDeathPanel.Show();
+        EnableUIInputAndDisablePlayerInput(true);
+    }
+
     private void SubscribeInputActions()
     {
         _inputActions.UI.Continue.started += OnPressContinue;
@@ -178,6 +186,7 @@ public class UIManager : Singleton<UIManager>
         _pausePanel.gameObject.SetActive(false);
         _popupPanel.gameObject.SetActive(false);
         _outroPanel.gameObject.SetActive(false);
+        _playerDeathPanel.gameObject.SetActive(false);
     }
 
     private void SetCallbacks()
@@ -187,6 +196,7 @@ public class UIManager : Singleton<UIManager>
         HandleStartPanelCallback();
         HandleIntroPanelCallback();
         HandleOutroPanelCallback();
+        HandlePlayerDeathPanelCallback();
     }
 
     private void HandlePopupPanelCallback()
@@ -251,6 +261,11 @@ public class UIManager : Singleton<UIManager>
     private void HandleOutroPanelCallback()
     {
         _outroPanel.OnEnd = Application.Quit;
+    }
+
+    private void HandlePlayerDeathPanelCallback()
+    {
+        _playerDeathPanel.OnEnd = () => { EnableUIInputAndDisablePlayerInput(false); };
     }
 
     private void EnableUIInputAndDisablePlayerInput(bool yes)

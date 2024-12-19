@@ -10,7 +10,7 @@ public class PlayerDeathPanel : MonoBehaviour, IPanel
     [SerializeField, Required] private float _transitionDuration = 0.25f;
     [SerializeField, Required] private float _delayBetweenTransition = 0.25f;
 
-    [HideInInspector] public Action Callback;
+    [HideInInspector] public Action OnEnd;
 
     private Image _image;
     private Coroutine _transitionCoroutine;
@@ -44,8 +44,10 @@ public class PlayerDeathPanel : MonoBehaviour, IPanel
         _tweener = _image.DOFade(0.0f, _transitionDuration);
         yield return _tweener.WaitForCompletion();
 
-        Callback?.Invoke();
         _transitionCoroutine = null;
+        gameObject.SetActive(false);
+
+        OnEnd?.Invoke();
     }
 
     public void Show()
