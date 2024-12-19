@@ -1,3 +1,4 @@
+using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,6 +17,9 @@ public class UIManager : Singleton<UIManager>
 
     [SerializeField, Required, SceneObjectsOnly]
     private PausePanel _pausePanel;
+
+    [SerializeField, Required, SceneObjectsOnly]
+    private StartPanel _startPanel;
 
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribe"), LabelText("Show Popup")]
     private SOShowPopupEvent _showPopupEvent;
@@ -63,6 +67,11 @@ public class UIManager : Singleton<UIManager>
         _genericConversationStartEvent.Unsubscribe(OnHideAbilityPanel);
         _genericConversationEndEvent.Unsubscribe(OnReShowAbilityPanel);
         _playerPressPauseEvent.Unsubscribe(OnShowPauseMenu);
+    }
+
+    private void Start()
+    {
+        ShowStartPanel();
     }
 
     private void OnPressContinue(InputAction.CallbackContext ctx)
@@ -160,5 +169,14 @@ public class UIManager : Singleton<UIManager>
     {
         _inputActions.UI.Continue.started -= OnPressContinue;
         _inputActions.UI.SelectMenuButton.started -= OnSelectPauseButton;
+    }
+
+    private void ShowStartPanel()
+    {
+        _inputActions.Enable();
+        Player.Instance.InputManager.SetEnableState(false);
+
+        _startPanel.Show();
+        _activePanel = _startPanel;
     }
 }
