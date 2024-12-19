@@ -1,4 +1,3 @@
-using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -20,6 +19,9 @@ public class UIManager : Singleton<UIManager>
 
     [SerializeField, Required, SceneObjectsOnly]
     private StartPanel _startPanel;
+
+    [SerializeField, Required, SceneObjectsOnly]
+    private IntroPanel _introPanel;
 
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribe"), LabelText("Show Popup")]
     private SOShowPopupEvent _showPopupEvent;
@@ -71,7 +73,8 @@ public class UIManager : Singleton<UIManager>
 
     private void Start()
     {
-        ShowStartPanel();
+        // ShowStartPanel();
+        ShowIntroPanel();
     }
 
     private void OnPressContinue(InputAction.CallbackContext ctx)
@@ -85,40 +88,7 @@ public class UIManager : Singleton<UIManager>
         _popupPanel.Show();
         _activePanel = _popupPanel;
 
-        _inputActions.Enable();
-        Player.Instance.InputManager.SetEnableState(false);
-    }
-
-    private void SetCallbacks()
-    {
-        _popupPanel.OnClose = tasks =>
-        {
-            _inputActions.Disable();
-            Player.Instance.InputManager.SetEnableState(true);
-
-            foreach (var task in tasks)
-            {
-                task.Execute(this);
-            }
-        };
-
-        _pausePanel.OnConfirm = buttonType =>
-        {
-            switch (buttonType)
-            {
-                case PausePanel.ButtonType.Continue:
-                    _pausePanel.Hide();
-                    Time.timeScale = 1.0f;
-                    break;
-
-                case PausePanel.ButtonType.QuitGame:
-                    Application.Quit();
-                    break;
-            }
-
-            _inputActions.Disable();
-            Player.Instance.InputManager.SetEnableState(true);
-        };
+        EnableUIInputAndDisablePlayerInput(true);
     }
 
     private void OnShowAbilityPanel(string abilityName)
@@ -142,8 +112,7 @@ public class UIManager : Singleton<UIManager>
         _activePanel = _pausePanel;
 
         Time.timeScale = 0.0f;
-        _inputActions.Enable();
-        Player.Instance.InputManager.SetEnableState(false);
+        EnableUIInputAndDisablePlayerInput(true);
     }
 
     private void OnSelectPauseButton(InputAction.CallbackContext ctx)
@@ -173,10 +142,92 @@ public class UIManager : Singleton<UIManager>
 
     private void ShowStartPanel()
     {
-        _inputActions.Enable();
-        Player.Instance.InputManager.SetEnableState(false);
-
         _startPanel.Show();
         _activePanel = _startPanel;
+        EnableUIInputAndDisablePlayerInput(true);
+    }
+
+    private void ShowIntroPanel()
+    {
+        _introPanel.Show();
+        _activePanel = _introPanel;
+        EnableUIInputAndDisablePlayerInput(true);
+    }
+
+    private void SetCallbacks()
+    {
+        HandlePopupPanelCallback();
+        HandlePausePanelCallback();
+        HandleStartPanelCallback();
+        HandleIntroPanelCallback();
+    }
+
+    private void HandlePopupPanelCallback()
+    {
+        _popupPanel.OnClose = tasks =>
+        {
+            EnableUIInputAndDisablePlayerInput(false);
+
+            foreach (var task in tasks)
+            {
+                task.Execute(this);
+            }
+        };
+    }
+
+    private void HandlePausePanelCallback()
+    {
+        _pausePanel.OnConfirm = buttonType =>
+        {
+            switch (buttonType)
+            {
+                case PausePanel.ButtonType.Continue:
+                    _pausePanel.Hide();
+                    Time.timeScale = 1.0f;
+                    break;
+
+                case PausePanel.ButtonType.QuitGame:
+                    Application.Quit();
+                    break;
+            }
+
+            EnableUIInputAndDisablePlayerInput(false);
+        };
+    }
+
+    private void HandleStartPanelCallback()
+    {
+        _startPanel.OnEnd = tasks =>
+        {
+            EnableUIInputAndDisablePlayerInput(false);
+
+            foreach (var task in tasks)
+            {
+                task.Execute(this);
+            }
+        };
+    }
+
+    private void HandleIntroPanelCallback()
+    {
+        _introPanel.OnEnd = tasks =>
+        {
+            EnableUIInputAndDisablePlayerInput(false);
+
+            foreach (var task in tasks)
+            {
+                task.Execute(this);
+            }
+        };
+    }
+
+    private void EnableUIInputAndDisablePlayerInput(bool yes)
+    {
+        if (yes)
+            _inputActions.Enable();
+        else
+            _inputActions.Disable();
+
+        Player.Instance.InputManager.SetEnableState(!yes);
     }
 }

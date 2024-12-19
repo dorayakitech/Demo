@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using Sirenix.OdinInspector;
@@ -19,6 +20,7 @@ public class StartPanel : SerializedMonoBehaviour, IPanel
     [SerializeField, Required] private float _maskTransitionDuration = 0.5f;
     [SerializeField, Required] private float _startTextTransitionDuration = 0.5f;
     [SerializeField, Required] private List<ICommand> _tasksAfterQuit = new();
+    [HideInInspector] public Action<List<ICommand>> OnEnd;
 
     private void Awake()
     {
@@ -35,7 +37,12 @@ public class StartPanel : SerializedMonoBehaviour, IPanel
 
     public void Continue()
     {
-        _foregroundGroup.DOFade(0.0f, _maskTransitionDuration);
+        _foregroundGroup.DOFade(0.0f, _maskTransitionDuration)
+            .OnComplete(() =>
+            {
+                Destroy(gameObject);
+                OnEnd?.Invoke(_tasksAfterQuit);
+            });
     }
 
     private void ShowStartText()
