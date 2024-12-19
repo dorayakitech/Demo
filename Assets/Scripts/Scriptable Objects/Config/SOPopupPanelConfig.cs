@@ -7,6 +7,8 @@ public class SOPopupPanelConfig : SerializedScriptableObject
 {
     [SerializeField, Required] public string Title;
     [SerializeField, Required] public Sprite Image;
+    [SerializeField, Required] public float ImageWidth;
+    [SerializeField, Required] public float ImageHeight;
     [SerializeField] public string Tutorial;
     [SerializeField] public List<ICommand> TasksAfterClose = new();
 }

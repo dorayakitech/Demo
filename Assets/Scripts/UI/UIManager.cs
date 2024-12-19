@@ -12,10 +12,20 @@ public class UIManager : Singleton<UIManager>
     [SerializeField, Required, SceneObjectsOnly]
     private PopupPanel _popupPanel;
 
-    [SerializeField, Required] private Dictionary<string, SOPopupPanelConfig> _popupPanelConfigs = new();
+    [SerializeField, Required, SceneObjectsOnly]
+    private AbilityPanel _abilityPanel;
 
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribe"), LabelText("Show Popup")]
     private SOShowPopupEvent _showPopupEvent;
+
+    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Show Ability")]
+    private SOShowAbilityIndicatorEvent _showAbilityEvent;
+
+    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Conversation Start")]
+    private SOEvent _genericConversationStartEvent;
+
+    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Conversation End")]
+    private SOEvent _genericConversationEndEvent;
 
     private PlayerInputActions _inputActions;
     private IPanel _activePanel;
@@ -33,6 +43,9 @@ public class UIManager : Singleton<UIManager>
         _inputActions.UI.Continue.started += OnPressContinue;
 
         _showPopupEvent.Subscribe(OnShowPopup);
+        _showAbilityEvent.Subscribe(OnShowAbilityPanel);
+        _genericConversationStartEvent.Subscribe(OnHideAbilityPanel);
+        _genericConversationEndEvent.Subscribe(OnReShowAbilityPanel);
     }
 
     private void OnDisable()
@@ -40,6 +53,9 @@ public class UIManager : Singleton<UIManager>
         _inputActions.UI.Continue.started -= OnPressContinue;
 
         _showPopupEvent.Unsubscribe(OnShowPopup);
+        _showAbilityEvent.Unsubscribe(OnShowAbilityPanel);
+        _genericConversationStartEvent.Unsubscribe(OnHideAbilityPanel);
+        _genericConversationEndEvent.Unsubscribe(OnReShowAbilityPanel);
     }
 
     private void OnPressContinue(InputAction.CallbackContext ctx)
@@ -59,10 +75,30 @@ public class UIManager : Singleton<UIManager>
 
     private void SetCallbacks()
     {
-        _popupPanel.OnClose = () =>
+        _popupPanel.OnClose = tasks =>
         {
             _inputActions.Disable();
             Player.Instance.InputManager.SetEnableState(true);
+
+            foreach (var task in tasks)
+            {
+                task.Execute(this);
+            }
         };
+    }
+
+    private void OnShowAbilityPanel(string abilityName)
+    {
+        _abilityPanel.ShowAbility(abilityName);
+    }
+
+    private void OnHideAbilityPanel()
+    {
+        _abilityPanel.HideAbility();
+    }
+
+    private void OnReShowAbilityPanel()
+    {
+        _abilityPanel.ReShow();
     }
 }

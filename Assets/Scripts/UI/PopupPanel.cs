@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
@@ -18,7 +19,7 @@ public class PopupPanel : MonoBehaviour, IPanel
     [SerializeField, Required, SceneObjectsOnly]
     private TMP_Text _tutorial;
 
-    [HideInInspector] public Action OnClose;
+    [HideInInspector] public Action<List<ICommand>> OnClose;
 
     private RectTransform _rectTransform;
     private SOPopupPanelConfig _config;
@@ -40,6 +41,7 @@ public class PopupPanel : MonoBehaviour, IPanel
 
         // update UI
         _title.text = _config.Title;
+        _img.rectTransform.sizeDelta = new Vector2(_config.ImageWidth, _config.ImageHeight);
         _img.sprite = _config.Image;
         if (_config.Tutorial != null)
             _tutorial.text = _config.Tutorial;
@@ -56,14 +58,8 @@ public class PopupPanel : MonoBehaviour, IPanel
     {
         _rectTransform.DOScale(Vector3.zero, _transitionDuration).SetEase(Ease.InOutQuint).OnComplete(() =>
         {
-            OnClose?.Invoke();
-
-            foreach (var task in _config.TasksAfterClose)
-            {
-                task.Execute(this);
-            }
-
             gameObject.SetActive(false);
+            OnClose?.Invoke(_config.TasksAfterClose);
         });
     }
 }

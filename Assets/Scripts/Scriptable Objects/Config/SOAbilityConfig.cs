@@ -5,6 +5,8 @@ using UnityEngine;
 
 public abstract class SOAbilityConfig : SerializedScriptableObject
 {
+    [Required] public string Name;
+
     [Required, BoxGroup("Tasks"), TitleGroup("Tasks/Charge Step"), LabelText("On Enable")]
     public readonly List<ICommand> ChargeStepOnEnableTasks;
 

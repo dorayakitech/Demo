@@ -63,7 +63,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: ChargeStepLateUpdateTasks
+    - Name: CastStepOnEnableTasks
       Entry: 7
       Data: 5|System.Collections.Generic.List`1[[ICommand, Assembly-CSharp]], mscorlib
     - Name: 
@@ -71,28 +71,7 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 7
-      Data: 6|AttractGravityObjectCommand, Assembly-CSharp
-    - Name: _objMoveSpeed
-      Entry: 4
-      Data: 5
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: CastStepOnEnableTasks
-      Entry: 7
-      Data: 7|System.Collections.Generic.List`1[[ICommand, Assembly-CSharp]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 8|PlayerAbilityPlayCastAnimationCommand, Assembly-CSharp
+      Data: 6|PlayerAbilityPlayCastAnimationCommand, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 
@@ -104,13 +83,13 @@ MonoBehaviour:
       Data: 
     - Name: CastStepOnDisableTasks
       Entry: 7
-      Data: 9|System.Collections.Generic.List`1[[ICommand, Assembly-CSharp]], mscorlib
+      Data: 7|System.Collections.Generic.List`1[[ICommand, Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 10|PlayerAbilityFadeOutAnimationCommand, Assembly-CSharp
+      Data: 8|PlayerAbilityFadeOutAnimationCommand, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 
@@ -120,6 +99,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  Name: Gravity
   ChargeAnimation: {fileID: 11400000, guid: 270fd7a71b4a6ab49aa2d3523bd0f72e, type: 2}
   CastAnimation: {fileID: 11400000, guid: 286f7b1b7a6963048ae38264addc4699, type: 2}
   ChargeAnimationEndEvent: {fileID: 11400000, guid: ecd4f0f35f779c2429e9b98af5ce0d1e, type: 2}

@@ -7,6 +7,9 @@ public class GameStateManager : Singleton<GameStateManager>
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Change Active Ability")]
     private SOEvent _changeActiveAbilityEvent;
 
+    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Update Ability Panel")]
+    private SOShowAbilityIndicatorEvent _updateAbilityPanelEvent;
+
     [SerializeField] private List<SOAbilityConfig> _availableAbilities = new();
     private int _activeAbilityIndex;
 
@@ -31,6 +34,9 @@ public class GameStateManager : Singleton<GameStateManager>
         _activeAbilityIndex += 1;
         if (_activeAbilityIndex >= _availableAbilities.Count)
             _activeAbilityIndex = 0;
+
+        if (ActiveAbilityConfig != null)
+            _updateAbilityPanelEvent.Notify(ActiveAbilityConfig.Name);
     }
 
     public void EnableNPC()

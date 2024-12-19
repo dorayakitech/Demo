@@ -48,4 +48,6 @@ MonoBehaviour:
       Data: 
   Title: Glove Lalala~~
   Image: {fileID: 21300000, guid: cf594f2fb4e50bc43bdc7335a25fe37f, type: 3}
+  ImageWidth: 300
+  ImageHeight: 300
   Tutorial: 

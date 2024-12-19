@@ -10,6 +10,12 @@ public class MyDialoguesManager : SerializedMonoBehaviour
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Trigger Dialogue")]
     private SODialogueTriggerEvent _dialogueTriggerEvent;
 
+    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Conversation Start")]
+    private SOEvent _genericConversationStartEvent;
+
+    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Conversation End")]
+    private SOEvent _genericConversationEndEvent;
+
     [SerializeField, Required, SceneObjectsOnly] [BoxGroup("UI Buttons"), LabelText("Player Continue")]
     private Button _playerContinueBtn;
 
@@ -17,6 +23,7 @@ public class MyDialoguesManager : SerializedMonoBehaviour
     private Button _npcContinueBtn;
 
     [SerializeField, Required] private Dictionary<string, List<ICommand>> _tasksAfterConversation;
+    [SerializeField, Required] private List<string> _forbiddenGenericConversationEnd = new();
 
     private PlayerInputActions _inputActions;
     private readonly List<string> _activatedConversationTitles = new();
@@ -58,14 +65,15 @@ public class MyDialoguesManager : SerializedMonoBehaviour
 
     private void OnConversationStart(Transform t)
     {
-        Debug.Log("Conversation Start: " + t.name);
         Player.Instance.InputManager.SetEnableState(false);
         _inputActions.Enable();
+
+        // Notify
+        _genericConversationStartEvent.Notify();
     }
 
     private void OnConversationEnd(Transform t)
     {
-        Debug.Log("Conversation End: " + t.name);
         Player.Instance.InputManager.SetEnableState(true);
         _inputActions.Disable();
 
@@ -77,6 +85,10 @@ public class MyDialoguesManager : SerializedMonoBehaviour
                 task.Execute(this);
             }
         }
+
+        // Notify
+        if (!_forbiddenGenericConversationEnd.Contains(_currentConversationTitle))
+            _genericConversationEndEvent.Notify();
 
         _currentConversationTitle = "";
     }
