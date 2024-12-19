@@ -10,6 +10,9 @@ public class PlayerInputManager : MonoBehaviour
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Switch Ability Pressed")]
     private SOEvent _switchAbilityPressedEvent;
 
+    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Pause Pressed")]
+    private SOEvent _pausePressedEvent;
+
     private PlayerInputActions _inputActions;
     private PlayerInputValue _inputValue;
 
@@ -62,6 +65,7 @@ public class PlayerInputManager : MonoBehaviour
         _inputActions.Player.Run.performed += OnChangeIsPressingRun;
         _inputActions.Player.Run.canceled += OnChangeIsPressingRun;
         _inputActions.Player.SwitchAbility.started += OnPressSwitchAbility;
+        _inputActions.Player.Pause.started += OnPressPause;
     }
 
     private void Unsubscribe()
@@ -73,6 +77,7 @@ public class PlayerInputManager : MonoBehaviour
         _inputActions.Player.Run.performed -= OnChangeIsPressingRun;
         _inputActions.Player.Run.canceled -= OnChangeIsPressingRun;
         _inputActions.Player.SwitchAbility.started -= OnPressSwitchAbility;
+        _inputActions.Player.Pause.started -= OnPressPause;
     }
 
     public void SetEnableState(bool enable)
@@ -81,6 +86,11 @@ public class PlayerInputManager : MonoBehaviour
             _inputActions.Enable();
         else
             _inputActions.Disable();
+    }
+
+    private void OnPressPause(InputAction.CallbackContext ctx)
+    {
+        _pausePressedEvent.Notify();
     }
 }
 

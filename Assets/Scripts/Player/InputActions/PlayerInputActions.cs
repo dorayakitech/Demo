@@ -62,6 +62,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""2a1447ba-0201-469d-987d-fea0bfac72f5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -196,6 +205,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""SwitchAbility"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c080e75d-64a3-4f5d-9029-771376fe3fab"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""77823d39-a126-4043-a9f9-b6abdaac0d45"",
+                    ""path"": ""<XInputController>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -250,6 +281,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectMenuButton"",
+                    ""type"": ""Value"",
+                    ""id"": ""cb1b7d7e-4388-455c-a6ad-98046642f793"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -274,6 +314,50 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Continue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""b8bd87f1-1439-4381-9d91-216d7696c567"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectMenuButton"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""d26861d9-3c08-486e-862a-d7610d424168"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectMenuButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""67372598-38c1-4d91-99fa-fb321113f4be"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectMenuButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""138e8205-4e90-4b5d-bfa5-d4935f5f7619"",
+                    ""path"": ""<XInputController>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectMenuButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -286,12 +370,14 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_UseAbility = m_Player.FindAction("UseAbility", throwIfNotFound: true);
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         m_Player_SwitchAbility = m_Player.FindAction("SwitchAbility", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         // Dialogue
         m_Dialogue = asset.FindActionMap("Dialogue", throwIfNotFound: true);
         m_Dialogue_Continue = m_Dialogue.FindAction("Continue", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Continue = m_UI.FindAction("Continue", throwIfNotFound: true);
+        m_UI_SelectMenuButton = m_UI.FindAction("SelectMenuButton", throwIfNotFound: true);
     }
 
     ~@PlayerInputActions()
@@ -364,6 +450,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_UseAbility;
     private readonly InputAction m_Player_Run;
     private readonly InputAction m_Player_SwitchAbility;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -372,6 +459,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @UseAbility => m_Wrapper.m_Player_UseAbility;
         public InputAction @Run => m_Wrapper.m_Player_Run;
         public InputAction @SwitchAbility => m_Wrapper.m_Player_SwitchAbility;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -393,6 +481,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @SwitchAbility.started += instance.OnSwitchAbility;
             @SwitchAbility.performed += instance.OnSwitchAbility;
             @SwitchAbility.canceled += instance.OnSwitchAbility;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -409,6 +500,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @SwitchAbility.started -= instance.OnSwitchAbility;
             @SwitchAbility.performed -= instance.OnSwitchAbility;
             @SwitchAbility.canceled -= instance.OnSwitchAbility;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -477,11 +571,13 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_Continue;
+    private readonly InputAction m_UI_SelectMenuButton;
     public struct UIActions
     {
         private @PlayerInputActions m_Wrapper;
         public UIActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Continue => m_Wrapper.m_UI_Continue;
+        public InputAction @SelectMenuButton => m_Wrapper.m_UI_SelectMenuButton;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -494,6 +590,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Continue.started += instance.OnContinue;
             @Continue.performed += instance.OnContinue;
             @Continue.canceled += instance.OnContinue;
+            @SelectMenuButton.started += instance.OnSelectMenuButton;
+            @SelectMenuButton.performed += instance.OnSelectMenuButton;
+            @SelectMenuButton.canceled += instance.OnSelectMenuButton;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -501,6 +600,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Continue.started -= instance.OnContinue;
             @Continue.performed -= instance.OnContinue;
             @Continue.canceled -= instance.OnContinue;
+            @SelectMenuButton.started -= instance.OnSelectMenuButton;
+            @SelectMenuButton.performed -= instance.OnSelectMenuButton;
+            @SelectMenuButton.canceled -= instance.OnSelectMenuButton;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -524,6 +626,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnUseAbility(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
         void OnSwitchAbility(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IDialogueActions
     {
@@ -532,5 +635,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     public interface IUIActions
     {
         void OnContinue(InputAction.CallbackContext context);
+        void OnSelectMenuButton(InputAction.CallbackContext context);
     }
 }

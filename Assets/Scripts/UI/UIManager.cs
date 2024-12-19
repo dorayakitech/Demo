@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,6 +14,9 @@ public class UIManager : Singleton<UIManager>
     [SerializeField, Required, SceneObjectsOnly]
     private AbilityPanel _abilityPanel;
 
+    [SerializeField, Required, SceneObjectsOnly]
+    private PausePanel _pausePanel;
+
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribe"), LabelText("Show Popup")]
     private SOShowPopupEvent _showPopupEvent;
 
@@ -26,6 +28,9 @@ public class UIManager : Singleton<UIManager>
 
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Conversation End")]
     private SOEvent _genericConversationEndEvent;
+
+    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Player Press Pause")]
+    private SOEvent _playerPressPauseEvent;
 
     private PlayerInputActions _inputActions;
     private IPanel _activePanel;
@@ -40,22 +45,24 @@ public class UIManager : Singleton<UIManager>
 
     private void OnEnable()
     {
-        _inputActions.UI.Continue.started += OnPressContinue;
+        SubscribeInputActions();
 
         _showPopupEvent.Subscribe(OnShowPopup);
         _showAbilityEvent.Subscribe(OnShowAbilityPanel);
         _genericConversationStartEvent.Subscribe(OnHideAbilityPanel);
         _genericConversationEndEvent.Subscribe(OnReShowAbilityPanel);
+        _playerPressPauseEvent.Subscribe(OnShowPauseMenu);
     }
 
     private void OnDisable()
     {
-        _inputActions.UI.Continue.started -= OnPressContinue;
+        UnsubscribeInputActions();
 
         _showPopupEvent.Unsubscribe(OnShowPopup);
         _showAbilityEvent.Unsubscribe(OnShowAbilityPanel);
         _genericConversationStartEvent.Unsubscribe(OnHideAbilityPanel);
         _genericConversationEndEvent.Unsubscribe(OnReShowAbilityPanel);
+        _playerPressPauseEvent.Unsubscribe(OnShowPauseMenu);
     }
 
     private void OnPressContinue(InputAction.CallbackContext ctx)
@@ -85,6 +92,24 @@ public class UIManager : Singleton<UIManager>
                 task.Execute(this);
             }
         };
+
+        _pausePanel.OnConfirm = buttonType =>
+        {
+            switch (buttonType)
+            {
+                case PausePanel.ButtonType.Continue:
+                    _pausePanel.Hide();
+                    Time.timeScale = 1.0f;
+                    break;
+
+                case PausePanel.ButtonType.QuitGame:
+                    Application.Quit();
+                    break;
+            }
+
+            _inputActions.Disable();
+            Player.Instance.InputManager.SetEnableState(true);
+        };
     }
 
     private void OnShowAbilityPanel(string abilityName)
@@ -100,5 +125,40 @@ public class UIManager : Singleton<UIManager>
     private void OnReShowAbilityPanel()
     {
         _abilityPanel.ReShow();
+    }
+
+    private void OnShowPauseMenu()
+    {
+        _pausePanel.Show();
+        _activePanel = _pausePanel;
+
+        Time.timeScale = 0.0f;
+        _inputActions.Enable();
+        Player.Instance.InputManager.SetEnableState(false);
+    }
+
+    private void OnSelectPauseButton(InputAction.CallbackContext ctx)
+    {
+        var inputVal = ctx.ReadValue<Vector2>();
+
+        var idx = inputVal.y switch
+        {
+            > 0 => -1,
+            < 0 => 1,
+            _ => 0
+        };
+        _pausePanel.SelectButton(idx);
+    }
+
+    private void SubscribeInputActions()
+    {
+        _inputActions.UI.Continue.started += OnPressContinue;
+        _inputActions.UI.SelectMenuButton.started += OnSelectPauseButton;
+    }
+
+    private void UnsubscribeInputActions()
+    {
+        _inputActions.UI.Continue.started -= OnPressContinue;
+        _inputActions.UI.SelectMenuButton.started -= OnSelectPauseButton;
     }
 }
