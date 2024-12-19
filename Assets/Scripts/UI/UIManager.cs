@@ -23,6 +23,9 @@ public class UIManager : Singleton<UIManager>
     [SerializeField, Required, SceneObjectsOnly]
     private IntroPanel _introPanel;
 
+    [SerializeField, Required, SceneObjectsOnly]
+    private OutroPanel _outroPanel;
+
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribe"), LabelText("Show Popup")]
     private SOShowPopupEvent _showPopupEvent;
 
@@ -37,6 +40,9 @@ public class UIManager : Singleton<UIManager>
 
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Player Press Pause")]
     private SOEvent _playerPressPauseEvent;
+
+    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Show Outro Panel")]
+    private SOEvent _showOutroPanelEvent;
 
     private PlayerInputActions _inputActions;
     private IPanel _activePanel;
@@ -59,6 +65,7 @@ public class UIManager : Singleton<UIManager>
         _genericConversationStartEvent.Subscribe(OnHideAbilityPanel);
         _genericConversationEndEvent.Subscribe(OnReShowAbilityPanel);
         _playerPressPauseEvent.Subscribe(OnShowPauseMenu);
+        _showOutroPanelEvent.Subscribe(ShowOutroPanel);
     }
 
     private void OnDisable()
@@ -70,6 +77,7 @@ public class UIManager : Singleton<UIManager>
         _genericConversationStartEvent.Unsubscribe(OnHideAbilityPanel);
         _genericConversationEndEvent.Unsubscribe(OnReShowAbilityPanel);
         _playerPressPauseEvent.Unsubscribe(OnShowPauseMenu);
+        _showOutroPanelEvent.Unsubscribe(ShowOutroPanel);
     }
 
     private void Start()
@@ -154,6 +162,13 @@ public class UIManager : Singleton<UIManager>
         EnableUIInputAndDisablePlayerInput(true);
     }
 
+    private void ShowOutroPanel()
+    {
+        _outroPanel.Show();
+        _activePanel = _outroPanel;
+        EnableUIInputAndDisablePlayerInput(true);
+    }
+
     private void InitPanelsState()
     {
         _startPanel.gameObject.SetActive(true);
@@ -162,6 +177,7 @@ public class UIManager : Singleton<UIManager>
         _introPanel.gameObject.SetActive(false);
         _pausePanel.gameObject.SetActive(false);
         _popupPanel.gameObject.SetActive(false);
+        _outroPanel.gameObject.SetActive(false);
     }
 
     private void SetCallbacks()
@@ -170,6 +186,7 @@ public class UIManager : Singleton<UIManager>
         HandlePausePanelCallback();
         HandleStartPanelCallback();
         HandleIntroPanelCallback();
+        HandleOutroPanelCallback();
     }
 
     private void HandlePopupPanelCallback()
@@ -229,6 +246,11 @@ public class UIManager : Singleton<UIManager>
                 task.Execute(this);
             }
         };
+    }
+
+    private void HandleOutroPanelCallback()
+    {
+        _outroPanel.OnEnd = Application.Quit;
     }
 
     private void EnableUIInputAndDisablePlayerInput(bool yes)
