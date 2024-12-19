@@ -46,6 +46,7 @@ public class UIManager : Singleton<UIManager>
         _inputActions = new PlayerInputActions();
         _inputActions.Disable();
 
+        InitPanelsState();
         SetCallbacks();
     }
 
@@ -73,8 +74,7 @@ public class UIManager : Singleton<UIManager>
 
     private void Start()
     {
-        // ShowStartPanel();
-        ShowIntroPanel();
+        ShowStartPanel();
     }
 
     private void OnPressContinue(InputAction.CallbackContext ctx)
@@ -147,11 +147,21 @@ public class UIManager : Singleton<UIManager>
         EnableUIInputAndDisablePlayerInput(true);
     }
 
-    private void ShowIntroPanel()
+    public void ShowIntroPanel()
     {
         _introPanel.Show();
         _activePanel = _introPanel;
         EnableUIInputAndDisablePlayerInput(true);
+    }
+
+    private void InitPanelsState()
+    {
+        _startPanel.gameObject.SetActive(true);
+        _abilityPanel.gameObject.SetActive(true);
+
+        _introPanel.gameObject.SetActive(false);
+        _pausePanel.gameObject.SetActive(false);
+        _popupPanel.gameObject.SetActive(false);
     }
 
     private void SetCallbacks()

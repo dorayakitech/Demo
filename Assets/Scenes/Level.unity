@@ -42112,7 +42112,7 @@ Transform:
   m_GameObject: {fileID: 1214205939}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 153, y: 0, z: 110.3}
+  m_LocalPosition: {x: -5.02, y: 0, z: -3.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -51450,7 +51450,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1469070073
 RectTransform:
   m_ObjectHideFlags: 0
@@ -51525,7 +51525,9 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 0bdd92b2e616955469cddee378d0d240, type: 2}
+    - {fileID: 11400000, guid: fe518ebeaf4002c409292cbb3078b690, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -51536,7 +51538,19 @@ MonoBehaviour:
       Data: 0|System.Collections.Generic.List`1[[ICommand, Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|ShowPopupCommand, Assembly-CSharp
+    - Name: _showPopupEvent
+      Entry: 10
       Data: 0
+    - Name: _config
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -52393,7 +52407,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1494434955
 RectTransform:
   m_ObjectHideFlags: 0
@@ -54574,7 +54588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1542090598
 RectTransform:
   m_ObjectHideFlags: 0
@@ -54661,7 +54675,13 @@ MonoBehaviour:
       Data: 0|System.Collections.Generic.List`1[[ICommand, Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 0
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|ShowIntroPanelCommand, Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -57497,7 +57517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1638241836
 RectTransform:
   m_ObjectHideFlags: 0
@@ -61830,7 +61850,7 @@ Transform:
   m_GameObject: {fileID: 1746772270}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: 138.91544, y: 11.500002, z: 96.21544}
+  m_LocalPosition: {x: -19.104567, y: 11.500002, z: -17.154566}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -72823,7 +72843,7 @@ Transform:
   m_GameObject: {fileID: 2051232611}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: 138.91544, y: 11.500002, z: 96.21544}
+  m_LocalPosition: {x: -19.104567, y: 11.500002, z: -17.154566}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
