@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f8d1de1ab7d49218a6ebd93691f4833, type: 3}
-  m_Name: GetGloveAndAbility
+  m_Name: EnergyBallExplosion
   m_EditorClassIdentifier: 
-  SoundType: 6
-  Clip: {fileID: 8300000, guid: a56d405897a0e264189011c9680b9f93, type: 3}
+  SoundType: 4
+  Clip: {fileID: 8300000, guid: 92e308832502cc1468d7f2a47358119c, type: 3}
   Volume: 0.4
   Loop: 0
   DelayTime: 0

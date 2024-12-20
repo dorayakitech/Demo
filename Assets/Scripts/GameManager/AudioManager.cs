@@ -9,14 +9,20 @@ public class AudioManager : Singleton<AudioManager>
     {
         PlayerWalk,
         PlayerRun,
+        ShowAbilitySphere,
+        ShootEnergyBall,
+        EnergyBallExplosion,
         DoorOperation,
         GetGloveAndAbility,
-        GeneralPopup
+        GeneralPopup,
+        ShowPauseMenu,
+        MovePauseMenuButton,
+        ConfirmInPauseMenu
     }
 
     [SerializeField, Required] private Dictionary<SoundType, SOSound> _soundDict = new();
-    [SerializeField, ReadOnly] private Dictionary<SoundType, AudioSource> _sourceDict = new();
-    [SerializeField, ReadOnly] private Dictionary<SoundType, float> _lastPlayTimeDict = new();
+    private Dictionary<SoundType, AudioSource> _sourceDict = new();
+    private Dictionary<SoundType, float> _lastPlayTimeDict = new();
 
     private void Awake()
     {

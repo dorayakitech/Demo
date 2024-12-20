@@ -4,6 +4,8 @@
 
     private void OnEnable()
     {
+        AudioManager.Instance.Play(AudioManager.SoundType.ShowAbilitySphere);
+
         _config = GameStateManager.Instance.ActiveAbilityConfig;
 
         foreach (var task in _config.ChargeStepOnEnableTasks)

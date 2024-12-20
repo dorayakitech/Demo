@@ -67,6 +67,8 @@ public class PausePanel : MonoBehaviour, IPanel
                 OnConfirm?.Invoke(ButtonType.QuitGame);
                 break;
         }
+
+        AudioManager.Instance.Play(AudioManager.SoundType.ConfirmInPauseMenu);
     }
 
     public void SelectButton(int index)
@@ -79,6 +81,7 @@ public class PausePanel : MonoBehaviour, IPanel
             _selectedIndex = 0;
 
         ChangeAppearance();
+        AudioManager.Instance.Play(AudioManager.SoundType.MovePauseMenuButton);
     }
 
     private void ChangeAppearance()

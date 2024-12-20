@@ -20,5 +20,7 @@ public class CastEnergyBallCommand : ICommand
         var targetRot = Quaternion.LookRotation(forwardDir);
 
         Object.Instantiate(cfg!.EnergyBallPrefab, playerLeftHand.transform.position, targetRot);
+
+        AudioManager.Instance.Play(AudioManager.SoundType.ShootEnergyBall);
     }
 }

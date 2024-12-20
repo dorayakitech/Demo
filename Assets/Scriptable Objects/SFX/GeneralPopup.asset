@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8d1de1ab7d49218a6ebd93691f4833, type: 3}
   m_Name: GeneralPopup
   m_EditorClassIdentifier: 
-  SoundType: 4
+  SoundType: 7
   Clip: {fileID: 8300000, guid: 963778ce42d6b4b40819279db1375f20, type: 3}
   Volume: 0.4
   Loop: 0

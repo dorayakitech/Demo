@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f8d1de1ab7d49218a6ebd93691f4833, type: 3}
-  m_Name: GetGloveAndAbility
+  m_Name: ShootEnergyBall
   m_EditorClassIdentifier: 
-  SoundType: 6
-  Clip: {fileID: 8300000, guid: a56d405897a0e264189011c9680b9f93, type: 3}
+  SoundType: 3
+  Clip: {fileID: 8300000, guid: cb9c7b9d355e06c4183f8f1c6283d936, type: 3}
   Volume: 0.4
   Loop: 0
   DelayTime: 0
