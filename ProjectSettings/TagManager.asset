@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Energy
+  - Missile
+  - Crate
   layers:
   - Default
   - TransparentFX

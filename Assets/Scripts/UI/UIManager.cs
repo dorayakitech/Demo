@@ -23,6 +23,9 @@ public class UIManager : Singleton<UIManager>
     [SerializeField, Required, SceneObjectsOnly]
     private OutroPanel _outroPanel;
 
+    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Death Fade Out End")]
+    private SOEvent _playerDeathFadeOutEndEvent;
+
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribe"), LabelText("Show Popup")]
     private SOShowPopupEvent _showPopupEvent;
 
@@ -42,7 +45,7 @@ public class UIManager : Singleton<UIManager>
     private SOEvent _showOutroPanelEvent;
 
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Player Death")]
-    private SOEvent _deathEvent;
+    private SOPlayerDeathEvent _playerDeathEvent;
 
     private PlayerInputActions _inputActions;
     private IPanel _activePanel;
@@ -66,7 +69,7 @@ public class UIManager : Singleton<UIManager>
         _genericConversationEndEvent.Subscribe(OnReShowAbilityPanel);
         _playerPressPauseEvent.Subscribe(OnShowPauseMenu);
         _showOutroPanelEvent.Subscribe(ShowOutroPanel);
-        _deathEvent.Subscribe(OnPlayerDeath);
+        _playerDeathEvent.Subscribe(OnPlayerDeath);
     }
 
     private void OnDisable()
@@ -79,7 +82,7 @@ public class UIManager : Singleton<UIManager>
         _genericConversationEndEvent.Unsubscribe(OnReShowAbilityPanel);
         _playerPressPauseEvent.Unsubscribe(OnShowPauseMenu);
         _showOutroPanelEvent.Unsubscribe(ShowOutroPanel);
-        _deathEvent.Unsubscribe(OnPlayerDeath);
+        _playerDeathEvent.Unsubscribe(OnPlayerDeath);
     }
 
     private void Start()
@@ -138,7 +141,7 @@ public class UIManager : Singleton<UIManager>
         _pausePanel.SelectButton(idx);
     }
 
-    private void OnPlayerDeath()
+    private void OnPlayerDeath(DeathTrigger _)
     {
         _playerDeathPanel.Show();
         EnableUIInputAndDisablePlayerInput(true);
@@ -265,7 +268,11 @@ public class UIManager : Singleton<UIManager>
 
     private void HandlePlayerDeathPanelCallback()
     {
-        _playerDeathPanel.OnEnd = () => { EnableUIInputAndDisablePlayerInput(false); };
+        _playerDeathPanel.OnEnd = () =>
+        {
+            EnableUIInputAndDisablePlayerInput(false);
+            _playerDeathFadeOutEndEvent.Notify();
+        };
     }
 
     private void EnableUIInputAndDisablePlayerInput(bool yes)

@@ -65,6 +65,12 @@ public class GravityObject : MonoBehaviour, IInteractable
         _stateMachine.DefaultState = _staticState;
     }
 
+    // this can happen when player drop the object to the dark
+    private void OnDisable()
+    {
+        _stateMachine.TrySetState(_staticState);
+    }
+
     private void Update()
     {
         _stateMachine.CurrentState.Update();

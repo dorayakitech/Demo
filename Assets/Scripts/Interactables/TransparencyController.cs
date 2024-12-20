@@ -22,6 +22,14 @@ public class TransparencyController : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        foreach (var tw in _tweeners)
+        {
+            tw?.Kill();
+        }
+    }
+
     public void FadeIn()
     {
         for (var i = 0; i < _materials.Count; i++)

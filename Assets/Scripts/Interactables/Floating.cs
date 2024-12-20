@@ -2,15 +2,23 @@ using System.Collections;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Floating : MonoBehaviour
 {
     [SerializeField, Required] private float _floatingDistance = 0.5f;
     [SerializeField, Required] private float _floatingDuration = 1.0f;
 
+    private Tweener _tweener;
+
     private void Start()
     {
         StartCoroutine(WaitForRandomSeconds());
+    }
+
+    private void OnDisable()
+    {
+        _tweener?.Kill();
     }
 
     private IEnumerator WaitForRandomSeconds()
@@ -22,7 +30,7 @@ public class Floating : MonoBehaviour
 
     private void StartFloating()
     {
-        transform.DOMoveY(_floatingDistance, _floatingDuration)
+        _tweener = transform.DOMoveY(_floatingDistance, _floatingDuration)
             .SetRelative().SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
     }
 }

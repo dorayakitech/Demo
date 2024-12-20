@@ -16,11 +16,15 @@ public class InteractiveSphereDetection : MonoBehaviour
     private void OnEnable()
     {
         _disappearEvent.Subscribe(OnInteractiveSphereDisappear);
+
+        // save to global variables in order to remove when player is dead
+        GlobalVariablesManager.Instance.SetValue(VariableNamesDefine.AbilitySphere, gameObject);
     }
 
     private void OnDisable()
     {
         _disappearEvent.Unsubscribe(OnInteractiveSphereDisappear);
+        GlobalVariablesManager.Instance.RemoveValue(VariableNamesDefine.AbilitySphere);
     }
 
     private void OnTriggerEnter(Collider other)

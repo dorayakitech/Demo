@@ -10,7 +10,7 @@ public class PressedPlate : SerializedMonoBehaviour, IKey
     [SerializeField, Required] private List<ICommand> _tasksAfterDeactivated = new();
 
     private InteractableFlashVFX _flashVFX;
-    private readonly List<Collider> _pressers = new();
+    [SerializeField] private List<Collider> _pressers = new();
     private List<MeshRenderer> _meshRenderers;
     private List<Material> _currentMaterials;
     private bool _isActive;
@@ -35,6 +35,9 @@ public class PressedPlate : SerializedMonoBehaviour, IKey
 
     private void OnTriggerExit(Collider other)
     {
+        // in order to avoid a weird bug
+        if (_pressers.Count == 0) return;
+
         if (_pressers.Contains(other))
             _pressers.Remove(other);
 

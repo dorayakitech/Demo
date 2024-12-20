@@ -23,6 +23,7 @@ public class InteractiveSphereVFX : MonoBehaviour
     private SOEvent _cancelEvent;
 
     private GameObject _playerLeftHand;
+    private Tweener _tweener;
 
     private void OnEnable()
     {
@@ -34,6 +35,8 @@ public class InteractiveSphereVFX : MonoBehaviour
     {
         _disappearEvent.Unsubscribe(OnDisappearEvent);
         _cancelEvent.Unsubscribe(OnCancelEvent);
+
+        _tweener?.Kill();
     }
 
     private void Start()
@@ -43,8 +46,8 @@ public class InteractiveSphereVFX : MonoBehaviour
             Debug.LogError("Player Left Hand not found");
         }
 
-        transform.DOKill();
-        transform.DOScale(Vector3.one * _range, _appearDuration);
+        _tweener?.Kill();
+        _tweener = transform.DOScale(Vector3.one * _range, _appearDuration);
     }
 
     private void LateUpdate()
@@ -54,13 +57,13 @@ public class InteractiveSphereVFX : MonoBehaviour
 
     private void OnDisappearEvent()
     {
-        transform.DOKill();
-        transform.DOScale(Vector3.zero, _disappearDuration).OnComplete(() => { Destroy(gameObject); });
+        _tweener?.Kill();
+        _tweener = transform.DOScale(Vector3.zero, _disappearDuration).OnComplete(() => { Destroy(gameObject); });
     }
 
     private void OnCancelEvent()
     {
-        transform.DOKill();
-        transform.DOScale(Vector3.zero, _cancelDuration).OnComplete(() => { Destroy(gameObject); });
+        _tweener?.Kill();
+        _tweener = transform.DOScale(Vector3.zero, _cancelDuration).OnComplete(() => { Destroy(gameObject); });
     }
 }

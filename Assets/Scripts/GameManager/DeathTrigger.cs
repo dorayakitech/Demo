@@ -1,29 +1,46 @@
+using System.Collections;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
-[RequireComponent(typeof(RespawnManager))]
 public class DeathTrigger : MonoBehaviour
 {
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Player Death")]
-    private SOEvent _deathEvent;
+    private SOPlayerDeathEvent _playerDeathEvent;
+
+    [SerializeField, Required] private string _roomName;
+    [SerializeField, Required] private float _waitTimeToTriggerFadeOut;
 
     private BoxCollider _collider;
-    private RespawnManager _respawnManager;
+
+    public string RoomName => _roomName;
 
     private void Awake()
     {
         _collider = GetComponent<BoxCollider>();
         _collider.isTrigger = true;
-
-        _respawnManager = GetComponent<RespawnManager>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag(VariableNamesDefine.PlayerTag)) return;
+        StartCoroutine(WaitForTriggerFadeOut(_waitTimeToTriggerFadeOut));
+    }
 
-        _deathEvent.Notify();
-        _respawnManager.Respawn();
+    private void OnTriggerExit(Collider other)
+    {
+        if (!other.CompareTag(VariableNamesDefine.CrateTag)) return;
+
+        if (GlobalVariablesManager.Instance.GetValue(VariableNamesDefine.TargetGravityObject,
+                out GameObject targetGravityObject) && targetGravityObject == gameObject)
+            GlobalVariablesManager.Instance.RemoveValue(VariableNamesDefine.TargetGravityObject);
+
+        Destroy(other.gameObject);
+    }
+
+    private IEnumerator WaitForTriggerFadeOut(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        _playerDeathEvent.Notify(this);
     }
 }

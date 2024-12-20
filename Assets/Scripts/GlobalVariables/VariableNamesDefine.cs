@@ -24,4 +24,6 @@
     public const string BossFlashedHand = "Flashed Hand";
     public const string BossLaserShootPoint = "Boss Laser Shoot Point";
     public const string IntroContentEndAppearing = "IntroContentEndAppearing";
+    public const string CrateTag = "Crate";
+    public const string AbilitySphere = "AbilitySphere";
 }

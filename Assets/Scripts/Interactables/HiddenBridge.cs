@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using Sirenix.OdinInspector;
@@ -17,14 +18,11 @@ public class HiddenBridge : SerializedMonoBehaviour
     [SerializeField] private List<ICommand> _tasksAfterFadeIn = new();
     [SerializeField] private List<ICommand> _tasksAfterFadeOut = new();
 
-    private bool _currentShowState;
+    [SerializeField] private bool _currentShowState;
     private MeshRenderer _meshRenderer;
     private Material _mat;
     private Collider _collider;
     private Tweener _tweener;
-
-    public int LockNum => _lockNum;
-    public bool CurrentShowState => _currentShowState;
 
     private void Awake()
     {
@@ -34,7 +32,7 @@ public class HiddenBridge : SerializedMonoBehaviour
         _collider = GetComponent<Collider>();
 
         if (!_initShow)
-            Hide();
+            Hide(() => { });
     }
 
     private void OnEnable()
@@ -45,6 +43,7 @@ public class HiddenBridge : SerializedMonoBehaviour
     private void OnDisable()
     {
         _activateEvent.Unsubscribe(Activate);
+        _tweener?.Kill();
     }
 
     private void Activate(int activeLockNum)
@@ -72,7 +71,6 @@ public class HiddenBridge : SerializedMonoBehaviour
         _tweener = _mat.DOFade(1.0f, _transitionDuration).OnComplete(() =>
         {
             _collider.enabled = true;
-
             foreach (var task in _tasksAfterFadeIn)
             {
                 task.Execute(this);
@@ -86,7 +84,6 @@ public class HiddenBridge : SerializedMonoBehaviour
         _tweener = _mat.DOFade(0.0f, _transitionDuration).OnComplete(() =>
         {
             _collider.enabled = false;
-
             foreach (var task in _tasksAfterFadeOut)
             {
                 task.Execute(this);
@@ -98,7 +95,7 @@ public class HiddenBridge : SerializedMonoBehaviour
         });
     }
 
-    public void Hide()
+    private void Hide(Action onComplete)
     {
         _currentShowState = false;
 
@@ -107,18 +104,7 @@ public class HiddenBridge : SerializedMonoBehaviour
         {
             _meshRenderer.enabled = false;
             _collider.enabled = false;
-        });
-    }
-
-    public void Show()
-    {
-        _currentShowState = true;
-
-        _tweener?.Kill();
-        _tweener = _mat.DOFade(1.0f, 0.0f).OnComplete(() =>
-        {
-            _meshRenderer.enabled = true;
-            _collider.enabled = true;
+            onComplete.Invoke();
         });
     }
 }
