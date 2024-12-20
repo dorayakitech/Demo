@@ -47,6 +47,9 @@ public class UIManager : Singleton<UIManager>
     [SerializeField, Required, AssetsOnly] [BoxGroup("Events Subscribed"), LabelText("Player Death")]
     private SOPlayerDeathEvent _playerDeathEvent;
 
+    [SerializeField, Required, AssetsOnly] [BoxGroup("Events Published"), LabelText("Player Defeated By Boss")]
+    private SOEvent _playerDefeatedByBossEvent;
+
     private PlayerInputActions _inputActions;
     private IPanel _activePanel;
 
@@ -70,6 +73,7 @@ public class UIManager : Singleton<UIManager>
         _playerPressPauseEvent.Subscribe(OnShowPauseMenu);
         _showOutroPanelEvent.Subscribe(ShowOutroPanel);
         _playerDeathEvent.Subscribe(OnPlayerDeath);
+        _playerDefeatedByBossEvent.Subscribe(OnPlayerDefeatedByBoss);
     }
 
     private void OnDisable()
@@ -83,6 +87,7 @@ public class UIManager : Singleton<UIManager>
         _playerPressPauseEvent.Unsubscribe(OnShowPauseMenu);
         _showOutroPanelEvent.Unsubscribe(ShowOutroPanel);
         _playerDeathEvent.Unsubscribe(OnPlayerDeath);
+        _playerDefeatedByBossEvent.Unsubscribe(OnPlayerDefeatedByBoss);
     }
 
     private void Start()
@@ -142,6 +147,12 @@ public class UIManager : Singleton<UIManager>
     }
 
     private void OnPlayerDeath(DeathTrigger _)
+    {
+        _playerDeathPanel.Show();
+        EnableUIInputAndDisablePlayerInput(true);
+    }
+
+    private void OnPlayerDefeatedByBoss()
     {
         _playerDeathPanel.Show();
         EnableUIInputAndDisablePlayerInput(true);

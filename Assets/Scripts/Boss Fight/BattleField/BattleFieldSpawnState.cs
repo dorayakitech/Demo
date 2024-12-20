@@ -17,6 +17,7 @@ public class BattleFieldSpawnState : BattleFieldBaseState
     public override void OnEnterState()
     {
         var turretObj = GenerateATurret();
+        turretObj.transform.parent = context.transform;
         _turret = turretObj.GetComponent<EnergyLaserTurret>();
         _turret.Show();
     }

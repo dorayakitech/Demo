@@ -15,6 +15,7 @@ public class EnergyLaserTurret : EnergyBallReceiver, IHidden
     private Transform _shootingPoint;
     private Transform _gun;
     private List<Collider> _colliders = new();
+    private Sequence _seq;
 
     public Transform ChargingPoint => _chargingPoint;
     public Transform ShootingPoint => _shootingPoint;
@@ -35,6 +36,11 @@ public class EnergyLaserTurret : EnergyBallReceiver, IHidden
             HandleInitHide();
     }
 
+    private void OnDisable()
+    {
+        _seq?.Kill();
+    }
+
     public void Show()
     {
         CurrentShow = true;
@@ -49,33 +55,35 @@ public class EnergyLaserTurret : EnergyBallReceiver, IHidden
             c.enabled = true;
         }
 
-        var seq = DOTween.Sequence();
+        _seq?.Kill();
+        _seq = DOTween.Sequence();
         for (var i = 0; i < currentMaterials.Count; i++)
         {
             if (i == 0)
-                seq.Append(currentMaterials[i].DOFade(1.0f, _transitionDuration));
+                _seq.Append(currentMaterials[i].DOFade(1.0f, _transitionDuration));
             else
-                seq.Join(currentMaterials[i].DOFade(1.0f, _transitionDuration));
+                _seq.Join(currentMaterials[i].DOFade(1.0f, _transitionDuration));
         }
 
-        seq.OnComplete((() => { ExecuteTasksAfterShow(); }));
+        _seq.OnComplete((() => { ExecuteTasksAfterShow(); }));
     }
 
     public void Hide(bool immediately = false, Action onComplete = null)
     {
         CurrentShow = false;
 
-        var seq = DOTween.Sequence();
+        _seq?.Kill();
+        _seq = DOTween.Sequence();
         for (var i = 0; i < currentMaterials.Count; i++)
         {
             if (i == 0)
-                seq.Append(currentMaterials[i].DOFade(0.0f, immediately ? 0.0f : _transitionDuration));
+                _seq.Append(currentMaterials[i].DOFade(0.0f, immediately ? 0.0f : _transitionDuration));
             else
-                seq.Join(currentMaterials[i].DOFade(0.0f, immediately ? 0.0f : _transitionDuration));
+                _seq.Join(currentMaterials[i].DOFade(0.0f, immediately ? 0.0f : _transitionDuration));
         }
 
         // Callback
-        seq.OnComplete(() =>
+        _seq.OnComplete(() =>
         {
             foreach (var mr in meshRenderers)
             {

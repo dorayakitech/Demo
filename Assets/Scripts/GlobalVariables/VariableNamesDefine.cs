@@ -26,4 +26,5 @@
     public const string IntroContentEndAppearing = "IntroContentEndAppearing";
     public const string CrateTag = "Crate";
     public const string AbilitySphere = "AbilitySphere";
+    public const string BossFightRespawnPointKey = "Boss";
 }
