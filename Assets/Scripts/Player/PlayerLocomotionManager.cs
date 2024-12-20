@@ -34,7 +34,12 @@ public class PlayerLocomotionManager : MonoBehaviour
         if (Player.Instance.InputValue.MoveVector == Vector2.zero)
             _parameterValue.TargetValue = 0.0f;
         else
+        {
             _parameterValue.TargetValue = Player.Instance.InputValue.IsPressingRun ? 1.0f : 0.5f;
+            AudioManager.Instance.Play(Player.Instance.InputValue.IsPressingRun
+                ? AudioManager.SoundType.PlayerRun
+                : AudioManager.SoundType.PlayerWalk);
+        }
     }
 
     private void Look()

@@ -38,6 +38,8 @@ public class AutoGate : MonoBehaviour
         _animationState.Speed = _openAnimation.Speed;
         _animationState.IsPlaying = true;
         _animationState.Events(this).OnEnd ??= () => { _animationState.IsPlaying = false; };
+
+        AudioManager.Instance.Play(AudioManager.SoundType.DoorOperation);
     }
 
     private void OnClose()
@@ -45,5 +47,7 @@ public class AutoGate : MonoBehaviour
         _animationState = _animancer.Play(_openAnimation);
         _animationState.Speed = _openAnimation.Speed * -1.0f;
         _animationState.IsPlaying = true;
+
+        AudioManager.Instance.Play(AudioManager.SoundType.DoorOperation);
     }
 }
