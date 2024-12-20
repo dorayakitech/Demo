@@ -9,7 +9,9 @@ public class AudioManager : Singleton<AudioManager>
     {
         PlayerWalk,
         PlayerRun,
-        DoorOperation
+        DoorOperation,
+        GetGloveAndAbility,
+        GeneralPopup
     }
 
     [SerializeField, Required] private Dictionary<SoundType, SOSound> _soundDict = new();

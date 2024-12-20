@@ -18,6 +18,8 @@ public class Gate : MonoBehaviour
     private AnimancerComponent _animancer;
     private AnimancerState _gateAnimationState;
 
+    private bool _hasOpened;
+
     private void Awake()
     {
         _animancer = GetComponent<AnimancerComponent>();
@@ -44,6 +46,10 @@ public class Gate : MonoBehaviour
         _gateAnimationState.Speed = _open.Speed;
         _gateAnimationState.IsPlaying = true;
         _gateAnimationState.Events(this).OnEnd ??= () => { _gateAnimationState.IsPlaying = false; };
+
+        if (_hasOpened) return;
+        AudioManager.Instance.Play(AudioManager.SoundType.DoorOperation);
+        _hasOpened = true;
     }
 
     private void Deactivate(int deactiveLockNum)
@@ -53,5 +59,9 @@ public class Gate : MonoBehaviour
         _gateAnimationState = _animancer.Play(_open);
         _gateAnimationState.IsPlaying = true;
         _gateAnimationState.Speed = _open.Speed * -1.0f;
+
+        if (_hasOpened) return;
+        AudioManager.Instance.Play(AudioManager.SoundType.DoorOperation);
+        _hasOpened = true;
     }
 }

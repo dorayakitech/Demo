@@ -62,3 +62,4 @@ MonoBehaviour:
   ImageWidth: 900
   ImageHeight: 300
   Tutorial: Press Q
+  SFX: {fileID: 11400000, guid: 5555d1276cf3d8145b9747cf695ea0f9, type: 2}

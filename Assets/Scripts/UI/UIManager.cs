@@ -58,7 +58,7 @@ public class UIManager : Singleton<UIManager>
         _inputActions = new PlayerInputActions();
         _inputActions.Disable();
 
-        // InitPanelsState();
+        InitPanelsState();
         SetCallbacks();
     }
 
@@ -92,7 +92,7 @@ public class UIManager : Singleton<UIManager>
 
     private void Start()
     {
-        // ShowStartPanel();
+        ShowStartPanel();
     }
 
     private void OnPressContinue(InputAction.CallbackContext ctx)
@@ -107,6 +107,7 @@ public class UIManager : Singleton<UIManager>
         _activePanel = _popupPanel;
 
         EnableUIInputAndDisablePlayerInput(true);
+        AudioManager.Instance.Play(config.SFX.SoundType);
     }
 
     private void OnShowAbilityPanel(string abilityName)

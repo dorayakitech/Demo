@@ -52,3 +52,4 @@ MonoBehaviour:
   ImageWidth: 300
   ImageHeight: 300
   Tutorial: GOGOGO!!!
+  SFX: {fileID: 11400000, guid: dfe3691d29cb9324fab654290c3af865, type: 2}
