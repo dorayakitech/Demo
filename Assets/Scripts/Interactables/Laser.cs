@@ -51,6 +51,8 @@ public class Laser : SerializedMonoBehaviour
         var contactPoint = other.GetContact(0);
         Instantiate(_hitVFX, contactPoint.point, Quaternion.identity);
 
+        AudioManager.Instance.Play(AudioManager.SoundType.EnergyBallExplosion);
+
         foreach (var task in _tasksWhenCollision)
         {
             task.Execute(other);

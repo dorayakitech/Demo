@@ -26,11 +26,14 @@ public class ShootEnergyLaserCommand : ICommand
 
     private IEnumerator ChargeForShoot(float duration)
     {
+        AudioManager.Instance.Play(AudioManager.SoundType.TurretCharge);
+
         var chargingVFX = Object.Instantiate(_chargingVFX,
             _turret.ChargingPoint.position, Quaternion.identity, _turret.transform);
         Object.Destroy(chargingVFX, duration);
 
         yield return new WaitForSeconds(duration);
+        AudioManager.Instance.Stop(AudioManager.SoundType.TurretCharge);
 
         // Shake
         _turret.Gun.DOShakePosition(_shootShakeDuration, new Vector3(0.0f, 0.0f, _shootShakeForce));
@@ -38,6 +41,8 @@ public class ShootEnergyLaserCommand : ICommand
         // Generate laser
         var laser = Object.Instantiate(_laser, _turret.ShootingPoint.position,
             _turret.ShootingPoint.rotation * Quaternion.Euler(0.0f, 180.0f, 0.0f));
+
+        AudioManager.Instance.Play(AudioManager.SoundType.ShootEnergyBall);
 
         // handle collision
         IgnoreCollision(laser);

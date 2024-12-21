@@ -19,6 +19,7 @@ public class Gate : MonoBehaviour
     private AnimancerState _gateAnimationState;
 
     private bool _hasOpened;
+    private bool _hasClosed;
 
     private void Awake()
     {
@@ -47,6 +48,8 @@ public class Gate : MonoBehaviour
         _gateAnimationState.IsPlaying = true;
         _gateAnimationState.Events(this).OnEnd ??= () => { _gateAnimationState.IsPlaying = false; };
 
+        // handle SFX
+        _hasClosed = false;
         if (_hasOpened) return;
         AudioManager.Instance.Play(AudioManager.SoundType.DoorOperation);
         _hasOpened = true;
@@ -60,8 +63,10 @@ public class Gate : MonoBehaviour
         _gateAnimationState.IsPlaying = true;
         _gateAnimationState.Speed = _open.Speed * -1.0f;
 
-        if (_hasOpened) return;
+        // handle SFX
+        _hasOpened = false;
+        if (_hasClosed) return;
         AudioManager.Instance.Play(AudioManager.SoundType.DoorOperation);
-        _hasOpened = true;
+        _hasClosed = true;
     }
 }

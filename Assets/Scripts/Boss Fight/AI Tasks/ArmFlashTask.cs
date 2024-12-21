@@ -36,6 +36,7 @@ public class ArmFlashTask : Action
     public override void OnStart()
     {
         StartFlash();
+        AudioManager.Instance.Play(AudioManager.SoundType.BossArmFlash);
     }
 
     public override void OnEnd()
@@ -46,6 +47,8 @@ public class ArmFlashTask : Action
         // Reset Material
         ChangeMaterial(_armMaterials[0], ref _armRenderers);
         ChangeMaterial(_handMaterials[0], ref _handRenderers);
+
+        AudioManager.Instance.Stop(AudioManager.SoundType.BossArmFlash);
     }
 
     public override TaskStatus OnUpdate()

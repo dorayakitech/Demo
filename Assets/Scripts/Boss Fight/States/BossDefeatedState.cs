@@ -14,5 +14,7 @@
             state.IsPlaying = false;
             context.TriggerDialogueEvent.Notify(VariableNamesDefine.BossDefeatedConversationTitle);
         };
+
+        AudioManager.Instance.Play(AudioManager.SoundType.BossDefeated);
     }
 }

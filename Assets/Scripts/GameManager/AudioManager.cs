@@ -17,7 +17,14 @@ public class AudioManager : Singleton<AudioManager>
         GeneralPopup,
         ShowPauseMenu,
         MovePauseMenuButton,
-        ConfirmInPauseMenu
+        ConfirmInPauseMenu,
+        HiddenBridgeShow,
+        TurretCharge,
+        BossAim,
+        BossShoot,
+        BossStandUp,
+        BossArmFlash,
+        BossDefeated
     }
 
     [SerializeField, Required] private Dictionary<SoundType, SOSound> _soundDict = new();
@@ -58,5 +65,16 @@ public class AudioManager : Singleton<AudioManager>
         if (!(Time.time - lastPlayTime >= sound.DelayTime)) return;
         source.Play();
         _lastPlayTimeDict[sound.SoundType] = Time.time;
+    }
+
+    public void Stop(SoundType soundType)
+    {
+        if (!_sourceDict.TryGetValue(soundType, out var source))
+        {
+            Debug.LogError($"{soundType} not found");
+            return;
+        }
+
+        source.Stop();
     }
 }

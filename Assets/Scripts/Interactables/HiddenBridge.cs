@@ -49,7 +49,6 @@ public class HiddenBridge : SerializedMonoBehaviour
     private void Activate(int activeLockNum)
     {
         if (_lockNum != activeLockNum) return;
-
         _currentShowState = !_currentShowState;
         HandleState(_currentShowState);
     }
@@ -64,7 +63,7 @@ public class HiddenBridge : SerializedMonoBehaviour
 
     private void FadeIn()
     {
-        _tweener?.Kill();
+        _tweener?.Kill(true);
 
         // Must Be Here! Not in OnComplete!
         _meshRenderer.enabled = true;
@@ -76,11 +75,13 @@ public class HiddenBridge : SerializedMonoBehaviour
                 task.Execute(this);
             }
         });
+
+        AudioManager.Instance.Play(AudioManager.SoundType.HiddenBridgeShow);
     }
 
     private void FadeOut()
     {
-        _tweener?.Kill();
+        _tweener?.Kill(true);
         _tweener = _mat.DOFade(0.0f, _transitionDuration).OnComplete(() =>
         {
             _collider.enabled = false;
@@ -99,7 +100,7 @@ public class HiddenBridge : SerializedMonoBehaviour
     {
         _currentShowState = false;
 
-        _tweener?.Kill();
+        _tweener?.Kill(true);
         _tweener = _mat.DOFade(0.0f, 0.0f).OnComplete(() =>
         {
             _meshRenderer.enabled = false;

@@ -25,6 +25,13 @@ public class AimTask : Action
     {
         var state = _animancer.Play(_bossFightConfig.AimAnimation);
         state.Events(this).OnEnd ??= () => { state.IsPlaying = false; };
+
+        AudioManager.Instance.Play(AudioManager.SoundType.BossAim);
+    }
+
+    public override void OnEnd()
+    {
+        AudioManager.Instance.Stop(AudioManager.SoundType.BossAim);
     }
 
     public override TaskStatus OnUpdate()

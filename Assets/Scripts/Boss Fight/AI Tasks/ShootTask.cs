@@ -26,6 +26,8 @@ public class ShootTask : Action
 
         HandleTransformInfo();
         HandleAnimation();
+
+        AudioManager.Instance.Play(AudioManager.SoundType.BossShoot);
     }
 
     public override TaskStatus OnUpdate()
