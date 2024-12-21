@@ -12,7 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6428a2088f7442128993e178891c4f88, type: 3}
   m_Name: Intro2Config
   m_EditorClassIdentifier: 
-  Content: Lorem ipsum dolor sit amet, consectetur adipiscing elit, prehenderit in
-    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est<?IntroContentEndAppearing>
+  Content: in culpa qui officia deserunt mollit anim id est<?IntroContentEndAppearing>
   Background: {fileID: 21300000, guid: 7442d56dac2aab34280060b3211c3954, type: 3}

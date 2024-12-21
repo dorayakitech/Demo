@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6428a2088f7442128993e178891c4f88, type: 3}
-  m_Name: Intro1Config
+  m_Script: {fileID: 11500000, guid: 2f8d1de1ab7d49218a6ebd93691f4833, type: 3}
+  m_Name: BGM
   m_EditorClassIdentifier: 
-  Content: sunt in culpa qui officia deserunt mollit anim id est<?IntroContentEndAppearing>
-  Background: {fileID: 21300000, guid: 2db258ab50ba23046aff66d9c32687e9, type: 3}
+  SoundType: 19
+  Clip: {fileID: 8300000, guid: f7b96971c7d231d489a9baa44cbd5027, type: 3}
+  Volume: 0.33
+  Loop: 1
+  DelayTime: 0

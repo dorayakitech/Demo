@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -25,10 +26,13 @@ public class AudioManager : Singleton<AudioManager>
         BossStandUp,
         BossArmFlash,
         BossDefeated,
-        SwitchAbility
+        SwitchAbility,
+        BGM,
+        BossFightBGM
     }
 
     [SerializeField, Required] private Dictionary<SoundType, SOSound> _soundDict = new();
+    [SerializeField, Required] private float _fadeBGMDuration = 0.8f;
     private Dictionary<SoundType, AudioSource> _sourceDict = new();
     private Dictionary<SoundType, float> _lastPlayTimeDict = new();
 
@@ -44,6 +48,11 @@ public class AudioManager : Singleton<AudioManager>
 
             _sourceDict.Add(kv.Key, source);
         }
+    }
+
+    private void Start()
+    {
+        Play(SoundType.BGM);
     }
 
     public void Play(SoundType soundType)
@@ -77,5 +86,29 @@ public class AudioManager : Singleton<AudioManager>
         }
 
         source.Stop();
+    }
+
+    public void FadeOutBGM(SoundType soundType)
+    {
+        if (!_sourceDict.TryGetValue(soundType, out var source))
+        {
+            Debug.LogError($"{soundType} not found");
+            return;
+        }
+
+        source.DOFade(0.0f, _fadeBGMDuration).OnComplete(() => { source.Stop(); });
+    }
+
+    public void FadeInBGM(SoundType soundType)
+    {
+        if (!_sourceDict.TryGetValue(soundType, out var source) || !_soundDict.TryGetValue(soundType, out var sound))
+        {
+            Debug.LogError($"{soundType} not found");
+            return;
+        }
+
+        source.volume = 0.0f;
+        source.Play();
+        source.DOFade(sound.Volume, _fadeBGMDuration);
     }
 }
