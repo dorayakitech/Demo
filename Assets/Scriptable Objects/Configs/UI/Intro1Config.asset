@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6428a2088f7442128993e178891c4f88, type: 3}
   m_Name: Intro1Config
   m_EditorClassIdentifier: 
-  Content: sunt in culpa qui officia deserunt mollit anim id est<?IntroContentEndAppearing>
+  Content: In the future, Earth faced an unprecedented energy crisis and ecological
+    disaster. To combat this, humanity built the "Solar Tower" to absorb and store
+    solar energy. However, a mysterious cosmic storm caused the tower's core to malfunction,
+    plunging Earth back into crisis.<?IntroContentEndAppearing>
   Background: {fileID: 21300000, guid: 90c85af14bbe04b4888fce1ee6133fea, type: 3}

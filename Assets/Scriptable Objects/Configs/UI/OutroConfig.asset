@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78eb532406134b1a9abef5d865a1d958, type: 3}
   m_Name: OutroConfig
   m_EditorClassIdentifier: 
-  Content: Lorem ipsum dolor sit amet, consectetur adipiscing elit, prehenderit in
-    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est<?IntroContentEndAppearing>
+  Content: 'The journey ahead is full of unknowns. Can the scientist overcome the
+    challenges and find the Seed of Light?
+
+    <align=center>To Be Continued...?
+    Maybe ^_^</align>
+
+    <align=center>Thank you very much for playing my game</align><?IntroContentEndAppearing>'
