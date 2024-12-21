@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Intro1Config
   m_EditorClassIdentifier: 
   Content: sunt in culpa qui officia deserunt mollit anim id est<?IntroContentEndAppearing>
-  Background: {fileID: 21300000, guid: 2db258ab50ba23046aff66d9c32687e9, type: 3}
+  Background: {fileID: 21300000, guid: 90c85af14bbe04b4888fce1ee6133fea, type: 3}
