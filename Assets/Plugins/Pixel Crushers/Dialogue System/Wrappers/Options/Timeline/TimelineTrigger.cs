@@ -1,5 +1,4 @@
-// Recompile at 2024/12/15 19:56:19
-#if USE_TIMELINE
+﻿#if USE_TIMELINE
 #if UNITY_2017_1_OR_NEWER
 // Copyright (c) Pixel Crushers. All rights reserved.
 
