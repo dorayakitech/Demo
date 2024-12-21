@@ -31,7 +31,7 @@ public class StartPanel : SerializedMonoBehaviour, IPanel
 
     public void Show()
     {
-        _maskImage.rectTransform.DOMoveX(_maskImage.rectTransform.rect.width, _maskTransitionDuration)
+        _maskImage.rectTransform.DOMoveX(3000.0f, _maskTransitionDuration)
             .SetRelative().SetEase(Ease.InQuart).OnComplete(ShowStartText);
     }
 
