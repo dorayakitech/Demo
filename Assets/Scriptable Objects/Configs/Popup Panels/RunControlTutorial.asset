@@ -51,5 +51,5 @@ MonoBehaviour:
   Image: {fileID: 21300000, guid: dc62d037f04d01348bb9d23b8f26a0ac, type: 3}
   ImageWidth: 300
   ImageHeight: 300
-  Tutorial: 
+  Tutorial: PRESS <color=#FFD700>SHIFT</color> TO RUN
   SFX: {fileID: 11400000, guid: 5555d1276cf3d8145b9747cf695ea0f9, type: 2}
