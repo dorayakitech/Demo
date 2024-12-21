@@ -2940,7 +2940,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: press SPACE to quit
+  m_text: PRESS SPACE TO QUIT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9890,6 +9890,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 7e79df647969f864aa0ae02d682b73a9, type: 2}
     - {fileID: 11400000, guid: 6c94213c176b4c04cbcde47cf38d471e, type: 2}
     - {fileID: 11400000, guid: ccb70de0da063dc4483486f32278e3c8, type: 2}
+    - {fileID: 1401575040}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -9908,7 +9909,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 6
+      Data: 7
     - Name: 
       Entry: 7
       Data: 
@@ -10116,6 +10117,39 @@ MonoBehaviour:
     - Name: _soundType
       Entry: 3
       Data: 19
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: NPC Guide Way
+    - Name: $v
+      Entry: 7
+      Data: 17|System.Collections.Generic.List`1[[ICommand, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 18|SetCameraPriorityCommand, Assembly-CSharp
+    - Name: _targetCamera
+      Entry: 10
+      Data: 7
+    - Name: _priority
+      Entry: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -12218,7 +12252,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Press SPACE to skip
+  m_text: 'PRESS SPACE TO SKIP
 
 '
   m_isRightToLeft: 0
@@ -14690,7 +14724,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press SPACE to skip
+  m_text: PRESS SPACE TO SKIP
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -23855,7 +23889,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -32, y: -32}
+  m_SizeDelta: {x: -96, y: -48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1034663176
 MonoBehaviour:
@@ -23904,8 +23938,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -23995,7 +24029,7 @@ MonoBehaviour:
   waitForNormalChars: 0.03
   waitLong: 0.6
   waitMiddle: 0.2
-  avoidMultiplePunctuationWait: 0
+  avoidMultiplePunctuationWait: 1
   waitForNewLines: 1
   waitForLastCharacter: 1
   useTypewriterWaitForDisappearances: 1
@@ -28427,7 +28461,7 @@ Transform:
   m_GameObject: {fileID: 1214205939}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.62, y: 0, z: -2.93}
+  m_LocalPosition: {x: -12.04, y: 0, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -33786,7 +33820,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -32, y: -32}
+  m_SizeDelta: {x: -96, y: -48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1453373311
 MonoBehaviour:
@@ -33835,8 +33869,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -33926,7 +33960,7 @@ MonoBehaviour:
   waitForNormalChars: 0.03
   waitLong: 0.6
   waitMiddle: 0.2
-  avoidMultiplePunctuationWait: 0
+  avoidMultiplePunctuationWait: 1
   waitForNewLines: 1
   waitForLastCharacter: 1
   useTypewriterWaitForDisappearances: 1
@@ -34480,7 +34514,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -16, y: 16}
-  m_SizeDelta: {x: 360, y: 30}
+  m_SizeDelta: {x: 500, y: 30}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1483005970
 MonoBehaviour:
@@ -40501,7 +40535,7 @@ Transform:
   m_GameObject: {fileID: 1746772270}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: -25.704567, y: 11.500002, z: -17.014566}
+  m_LocalPosition: {x: -26.124567, y: 11.500003, z: -17.084566}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47261,7 +47295,7 @@ Transform:
   m_GameObject: {fileID: 2051232611}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: -25.704567, y: 11.500002, z: -17.014566}
+  m_LocalPosition: {x: -26.124567, y: 11.500003, z: -17.084566}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -50194,7 +50228,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -16, y: 16}
-  m_SizeDelta: {x: 360, y: 30}
+  m_SizeDelta: {x: 500, y: 30}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &2136960546
 MonoBehaviour:
@@ -61584,7 +61618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bossFightCfg: {fileID: 11400000, guid: 6a8d837db9896664ab0b15405e168db3, type: 2}
-  _bossHP: 1
+  _bossHP: 2
   _dialogueEndedEvent: {fileID: 11400000, guid: 6c94213c176b4c04cbcde47cf38d471e, type: 2}
   _isHitEvent: {fileID: 11400000, guid: bb429c26a57c92c4e8158a6068fd1f74, type: 2}
   _triggerDialogueEvent: {fileID: 11400000, guid: 904f5f9d11b78b64d8c4ad7cb949a590, type: 2}
