@@ -137,8 +137,9 @@ public class UIManager : Singleton<UIManager>
 
     private void OnSelectPauseButton(InputAction.CallbackContext ctx)
     {
-        var inputVal = ctx.ReadValue<Vector2>();
+        if (_activePanel is not PausePanel) return;
 
+        var inputVal = ctx.ReadValue<Vector2>();
         var idx = inputVal.y switch
         {
             > 0 => -1,

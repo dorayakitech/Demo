@@ -281,9 +281,9 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11400000, guid: c06e4aad84e573e42b8f15fb3695fcfb, type: 2}
     - {fileID: 4744367516841075316, guid: 9550b7551a4212547aa4c4b2677bbbd9, type: 3}
     - {fileID: 7262393909686639809, guid: de77d1acd521bf24b9ca4276df6d621d, type: 3}
+    - {fileID: 11400000, guid: c06e4aad84e573e42b8f15fb3695fcfb, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -297,34 +297,34 @@ MonoBehaviour:
       Data: 2
     - Name: 
       Entry: 7
-      Data: 1|FightTurretActivateCommand, Assembly-CSharp
-    - Name: _fightTurretActivateEvent
-      Entry: 10
-      Data: 0
-    - Name: _waitForNotify
-      Entry: 4
-      Data: 2.1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 2|ShootEnergyLaserCommand, Assembly-CSharp
+      Data: 1|ShootEnergyLaserCommand, Assembly-CSharp
     - Name: _chargingDuration
       Entry: 4
       Data: 2
     - Name: _chargingVFX
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: _laser
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: _shootShakeDuration
       Entry: 4
       Data: 0.5
     - Name: _shootShakeForce
       Entry: 4
       Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 2|FightTurretActivateCommand, Assembly-CSharp
+    - Name: _fightTurretActivateEvent
+      Entry: 10
+      Data: 2
+    - Name: _waitForNotify
+      Entry: 4
+      Data: 2.1
     - Name: 
       Entry: 8
       Data: 

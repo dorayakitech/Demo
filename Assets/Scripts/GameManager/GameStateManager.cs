@@ -35,8 +35,9 @@ public class GameStateManager : Singleton<GameStateManager>
         if (_activeAbilityIndex >= _availableAbilities.Count)
             _activeAbilityIndex = 0;
 
-        if (ActiveAbilityConfig != null)
-            _updateAbilityPanelEvent.Notify(ActiveAbilityConfig.Name);
+        if (ActiveAbilityConfig == null) return;
+        _updateAbilityPanelEvent.Notify(ActiveAbilityConfig.Name);
+        AudioManager.Instance.Play(AudioManager.SoundType.SwitchAbility);
     }
 
     public void EnableNPC()

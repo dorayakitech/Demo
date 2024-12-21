@@ -24,7 +24,8 @@ public class AudioManager : Singleton<AudioManager>
         BossShoot,
         BossStandUp,
         BossArmFlash,
-        BossDefeated
+        BossDefeated,
+        SwitchAbility
     }
 
     [SerializeField, Required] private Dictionary<SoundType, SOSound> _soundDict = new();
